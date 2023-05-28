@@ -76,6 +76,11 @@ public class UI {
         int posX = gp.screenWidth/2 - 175;
         int posY = gp.screenHeight /4 + 150;
         g2.drawImage(input, posX, posY, 300, 95, null);
+        g2.drawImage(intro_choose, 161, 190, 200, 120, null);
+        int posY2 = posY + 100;
+        g2.drawImage(intro_choose, 551, 190, 200, 120, null);
+        posY2 += 100;
+        g2.drawImage(intro_choose, 930, 190, 200, 120, null);
     }
     
     public void drawTitleScreen(){
