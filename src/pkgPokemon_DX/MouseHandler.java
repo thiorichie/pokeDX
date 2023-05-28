@@ -39,6 +39,7 @@ public class MouseHandler implements MouseListener{
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
+//                gp.remove();
             }
             if((x >= 552 && x <= 747) && (y <= 264 && y >= 233 && gp.gameState == gp.storyState)){
                 gp.gameState = gp.playState;

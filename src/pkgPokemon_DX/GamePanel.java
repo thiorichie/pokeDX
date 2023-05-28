@@ -7,8 +7,11 @@ package pkgPokemon_DX;
 import entity.Player;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import object.SuperObject;
 import tile.TileManager;
@@ -125,7 +128,11 @@ public class GamePanel extends JPanel implements Runnable{
         
         //TITLE SCREEN
         if(gameState == titleState){
-            ui.draw(g2);
+            try {
+                ui.draw(g2);
+            } catch (FontFormatException ex) {
+                Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else{
             //Tile Draw
@@ -138,8 +145,12 @@ public class GamePanel extends JPanel implements Runnable{
             }
             //Player Draw
             player.draw(g2);
-            //UI Draw
-            ui.draw(g2);
+            try {
+                //UI Draw
+                ui.draw(g2);
+            } catch (FontFormatException ex) {
+                Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         //DEBUG
 //        if (keyH.checkDrawTime == true){
