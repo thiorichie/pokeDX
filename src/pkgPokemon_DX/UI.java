@@ -19,7 +19,8 @@ import javax.swing.*;
  * @author thior
  */
 public class UI {
-    BufferedImage input, bg, bg_blank, btn_start, btn_load, btn_exit;
+    BufferedImage input, bg, btn_start, btn_load, btn_exit;
+    BufferedImage bg_intro, intro_choose;
     GamePanel gp;
     Graphics2D g2;
     Font arial_40, arial_80B;
@@ -65,13 +66,13 @@ public class UI {
     public void drawStoryScreen(){
         // STORY BACKGROUND
         try{
-            bg_blank = ImageIO.read(getClass().getResourceAsStream("/bground/bg_blank.png"));
-            input = ImageIO.read(getClass().getResourceAsStream("/bground/input.jpg"));
+            bg_intro = ImageIO.read(getClass().getResourceAsStream("/story/bg_intro.png"));
+            intro_choose = ImageIO.read(getClass().getResourceAsStream("/story/intro_choose.png"));
         }
         catch(IOException e){
             e.printStackTrace();
         }
-        g2.drawImage(bg_blank, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        g2.drawImage(bg_intro, 0, 0, gp.screenWidth, gp.screenHeight, null);
         int posX = gp.screenWidth/2 - 175;
         int posY = gp.screenHeight /4 + 150;
         g2.drawImage(input, posX, posY, 300, 95, null);
