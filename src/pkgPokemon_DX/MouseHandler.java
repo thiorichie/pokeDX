@@ -15,6 +15,7 @@ public class MouseHandler implements MouseListener{
     GamePanel gp;
     boolean clicked = false;
     
+    
     public MouseHandler(GamePanel gp){
         this.gp = gp;
     }
@@ -71,6 +72,7 @@ public class MouseHandler implements MouseListener{
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
+                gp.removeAll();
                 
             }
             
