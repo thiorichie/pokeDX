@@ -71,7 +71,7 @@ public class MouseHandler implements MouseListener{
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
-                
+                gp.removeAll();
             }
             
         }

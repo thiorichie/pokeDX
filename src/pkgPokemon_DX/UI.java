@@ -54,14 +54,9 @@ public class UI {
         g2.setColor(Color.white);
         
         if(gp.gameState == gp.playState){
-            if (input_nama == null) {
-                System.out.println("gaada isi");
-            }
-            else{
-                System.out.println("ada isi");
-            }
-            gp.remove(input_nama);
+            
         }
+        
         if(gp.gameState == gp.pauseState){
             drawPauseScreen();
         }

@@ -24,7 +24,7 @@ public class TileManager {
     public TileManager(GamePanel gp){
         this.gp = gp;
         
-        tile = new Tile[10];
+        tile = new Tile[30];
         mapTileNum = new int [gp.maksWorldCol][gp.maksWorldRow];
         getTileImage();
         loadMap("/maps/protomap001.txt");
@@ -55,6 +55,34 @@ public class TileManager {
             
             tile[6] = new Tile();
             tile[6].image = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
+            
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/rumah/1.png"));
+            
+            tile[8] = new Tile();
+            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/rumah/2.png"));
+            
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/rumah/3.png"));
+            
+            tile[10] = new Tile();
+            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/rumah/4.png"));
+            
+            tile[11] = new Tile();
+            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/rumah/5.png"));
+            
+            tile[12] = new Tile();
+            tile[12].image = ImageIO.read(getClass().getResourceAsStream("/rumah/6.png"));
+            
+            tile[13] = new Tile();
+            tile[13].image = ImageIO.read(getClass().getResourceAsStream("/rumah/7.png"));
+            
+            tile[14] = new Tile();
+            tile[14].image = ImageIO.read(getClass().getResourceAsStream("/rumah/8.png"));
+            
+            tile[15] = new Tile();
+            tile[15].image = ImageIO.read(getClass().getResourceAsStream("/rumah/9.png"));
+            
         } 
         catch (IOException e) {
             e.printStackTrace();
