@@ -12,18 +12,19 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import pkgPokemon_DX.GamePanel;
 import pkgPokemon_DX.KeyHandler;
+import java.util.HashMap;
 
 /**
  *
  * @author thior
  */
 public class Player extends Entity{
+    public  HashMap<String, Integer> inventory = new HashMap<>();
     GamePanel gp;
     KeyHandler keyH;
     
     public final int screenX;
     public final int screenY;
-    public int hasKey = 0;
     
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
@@ -129,16 +130,22 @@ public class Player extends Entity{
             
             switch(objectName){
                 case "Key":
-                    hasKey++;
                     gp.obj[gp.currentMap][i] = null;
-                    System.out.println("Key : " + hasKey);
+                    System.out.println("Key : " + inventory.get("key"));
+                    if(inventory.containsKey("key")) {
+                        inventory.put("key", inventory.get("key") + 1);
+                    } else {
+                        inventory.put("key", 1);
+                    }
                     break;
                 case "Door":
-                    if (hasKey > 0) {
+                    if (inventory.containsKey("key") ) {
                         gp.obj[gp.currentMap][i] = null;
-                        hasKey--;
+                        if(inventory.get("key") - 1 >= 0) {
+                            inventory.put("key", inventory.get("key") - 1);
+                        }
                     }
-                    System.out.println("Key : " + hasKey);
+                    System.out.println("Key : " + inventory.get("key"));
                     break;
                 case "Fem1":
                     if (gp.gameState == gp.playState && gp.currentMap == 0) {

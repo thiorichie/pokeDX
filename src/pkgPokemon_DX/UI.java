@@ -18,12 +18,15 @@ import javax.imageio.ImageIO;
 import object.OBJ_Key;
 import javax.swing.*;
 import static javax.swing.UIManager.get;
+import java.util.HashMap;
 
 /**
  *
  * @author thior
  */
 public class UI {
+    HashMap<String, BufferedImage> inventory_entity = new HashMap<>();
+    BufferedImage btn_inventory, inventory_gui;
     BufferedImage input, bg, btn_start, btn_load, btn_exit;
     BufferedImage bg_intro, intro_choose, dialog_box,input_name;
     GamePanel gp;
@@ -59,15 +62,15 @@ public class UI {
         messageOn = true;
     }
     public void draw (Graphics2D g2) throws FontFormatException{
+        gp.removeAll();
         this.g2 = g2;
         g2.setFont(pokemonFont);
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setColor(Color.white);
         
         if(gp.gameState == gp.playState){
-            
+            drawGameUI();
         }
-        
         if(gp.gameState == gp.pauseState){
             drawPauseScreen();
         }
@@ -83,7 +86,61 @@ public class UI {
         if (gp.gameState == gp.dialogueState) {
             drawDialogueScreen();
         }
+        if (gp.gameState == gp.inventoryState) {
+            drawInventoryScreen();
+        }
     }
+    
+    private void removeLabel(JLabel label) {
+        Timer timer = new Timer(5000, e -> {
+            gp.remove(label); // Remove the label from the frame
+            gp.revalidate(); // Re-validate the frame to reflect the changes
+            gp.repaint(); // Repaint the frame to reflect the changes
+        });
+        
+        timer.setRepeats(false); // Only execute once
+        timer.start();
+    }
+    
+    public void drawInventoryScreen() throws FontFormatException {
+        final int x_awal = 478;
+        final int y_awal = 264;
+        final int x_awal_label = 515;
+        final int y_awal_label = 296;
+        int n_inventory = 0;
+         // INVENTORY SCREEN
+         try {
+             inventory_gui = ImageIO.read(getClass().getResourceAsStream("/game_gui/inventory_gui.png"));
+             inventory_entity.put("key", ImageIO.read(getClass().getResourceAsStream("/objects/key.png")));
+         }
+         
+         catch(IOException e){
+            e.printStackTrace();
+        }
+         
+         g2.drawImage(inventory_gui, 420, 140, 497, 493, null);
+         for(String key : gp.player.inventory.keySet()) {
+             if(gp.player.inventory.get(key) > 0) g2.drawImage(inventory_entity.get(key), x_awal, y_awal, 48, 48, null);
+                JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
+                label.setBounds(x_awal_label, y_awal_label, 200, 30);
+                label.setForeground(Color.white);
+                gp.add(label);
+                n_inventory++;
+         }
+     }
+    
+     public void drawGameUI() throws FontFormatException {
+         // GAME UI
+         try {
+             btn_inventory = ImageIO.read(getClass().getResourceAsStream("/button/inventory.png"));
+         }
+         
+         catch(IOException e){
+            e.printStackTrace();
+        }
+         
+         g2.drawImage(btn_inventory, 15, 15, 87, 80, null);
+     }
     
     public void drawStoryScreen() throws FontFormatException{
         // STORY BACKGROUND

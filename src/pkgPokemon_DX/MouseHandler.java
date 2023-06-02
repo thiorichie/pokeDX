@@ -34,6 +34,21 @@ public class MouseHandler implements MouseListener{
             System.out.println("pos X = " + x + ", pos Y = " + y);
             
             clicked =false;
+            
+            // close inventory
+            if(((x >= 846 && x <= 876) && (y >= 176 && y <= 206) || ((x <= 436 || x >= 899) || (y <= 164 || y >= 603))) && gp.gameState == gp.inventoryState) {
+                gp.gameState = gp.playState;
+                gp.stopMusic();
+                gp.playMusic(y);
+            }
+            
+            // open inventory
+            if((x >= 23 && x <= 91) && (y >= 20 && y <= 87) && gp.gameState == gp.playState) {
+                gp.gameState = gp.inventoryState;
+                gp.stopMusic();
+                gp.playMusic(y);
+            }
+            
             //cek klo start game ditekan
             if((x >= 478 && x <= 768) && (y <= 415 && y >= 344 && gp.gameState == gp.titleState)){
                 gp.gameState = gp.storyState;
