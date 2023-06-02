@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/Main.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/objects/boots.png</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Key.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/AssetSetter.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/Sound.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/world01.txt</file>
@@ -20,8 +21,10 @@
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/CollisionChecker.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/MouseHandler.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/tile/Tile.java</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/SuperObject.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/objects/door.png</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/UI.java</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Door.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/entity/Player.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/message.txt</file>
         </group>
