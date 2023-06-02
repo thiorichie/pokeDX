@@ -73,7 +73,6 @@ public class MouseHandler implements MouseListener{
                 gp.stopMusic();
                 gp.playMusic(y);
                 gp.removeAll();
-                
             }
             
         }

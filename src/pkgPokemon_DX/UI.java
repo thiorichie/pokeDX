@@ -56,6 +56,7 @@ public class UI {
         if(gp.gameState == gp.playState){
             
         }
+        
         if(gp.gameState == gp.pauseState){
             drawPauseScreen();
         }

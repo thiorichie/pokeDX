@@ -19,15 +19,16 @@ import pkgPokemon_DX.GamePanel;
 public class TileManager {
     GamePanel gp;
     public Tile[] tile;
-    public int mapTileNum[][];
+    public int mapTileNum[][][];
     
     public TileManager(GamePanel gp){
         this.gp = gp;
         
-        tile = new Tile[10];
-        mapTileNum = new int [gp.maksWorldCol][gp.maksWorldRow];
+        tile = new Tile[200];
+        mapTileNum = new int [gp.maksMap][gp.maksWorldCol][gp.maksWorldRow];
         getTileImage();
-        loadMap("/maps/protomap001.txt");
+        loadMap("/maps/protomap001.txt",0);
+        loadMap("/maps/protomap002.txt",1);
     }
     
     public void getTileImage(){
@@ -55,13 +56,42 @@ public class TileManager {
             
             tile[6] = new Tile();
             tile[6].image = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
+            
+            tile[7] = new Tile();
+            tile[7].image = ImageIO.read(getClass().getResourceAsStream("/rumah/1.png"));
+            
+            tile[8] = new Tile();
+            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/rumah/2.png"));
+            
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/rumah/3.png"));
+            
+            tile[10] = new Tile();
+            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/rumah/4.png"));
+            
+            tile[11] = new Tile();
+            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/rumah/5.png"));
+            
+            tile[12] = new Tile();
+            tile[12].image = ImageIO.read(getClass().getResourceAsStream("/rumah/6.png"));
+            
+            tile[13] = new Tile();
+            tile[13].image = ImageIO.read(getClass().getResourceAsStream("/rumah/7.png"));
+            
+            tile[14] = new Tile();
+            tile[14].image = ImageIO.read(getClass().getResourceAsStream("/rumah/8.png"));
+            
+            tile[15] = new Tile();
+            tile[15].image = ImageIO.read(getClass().getResourceAsStream("/rumah/9.png"));
+            
         } 
         catch (IOException e) {
             e.printStackTrace();
         }
     }
     
-    public void loadMap(String filePath){
+    
+    public void loadMap(String filePath,int map){
         try {
             InputStream is = getClass().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -75,7 +105,7 @@ public class TileManager {
                 while (col < gp.maksWorldCol){
                     String numbers[] = line.split(" ");
                     int num = Integer.parseInt(numbers[col]);
-                    mapTileNum[col][row] = num;
+                    mapTileNum[map][col][row] = num;
                     col++;
                 }
                 if (col == gp.maksWorldCol){
@@ -95,7 +125,7 @@ public class TileManager {
         int worldRow = 0;
         
         while (worldCol < gp.maksWorldCol && worldRow < gp.maksWorldRow){
-            int tileNum = mapTileNum[worldCol][worldRow];
+            int tileNum = mapTileNum[gp.currentMap][worldCol][worldRow];
             
             int worldX = worldCol * gp.tilesSize;
             int worldY = worldRow * gp.tilesSize;

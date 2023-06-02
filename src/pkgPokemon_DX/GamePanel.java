@@ -33,8 +33,10 @@ public class GamePanel extends JPanel implements Runnable{
     public final int screenHeight = tilesSize * maxScreenRow; // 576px
     
     //WORLD SETTING
-    public final int maksWorldCol = 28;
-    public final int maksWorldRow = 20;
+    public final int maksWorldCol = 30;
+    public final int maksWorldRow = 100;
+    public final int maksMap = 10;
+    public int currentMap = 0;
     
     //FPS
     int FPS = 60;
@@ -48,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable{
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public UI ui = new UI (this);
+    public EventHandler eHandler = new EventHandler(this);
     Thread gameThread;
     
     //ENTITY AND OBJECT
