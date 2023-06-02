@@ -10,10 +10,14 @@ import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.text.DecimalFormat;
+import java.io.InputStream;
+import static java.lang.reflect.Array.get;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import object.OBJ_Key;
 import javax.swing.*;
+import static javax.swing.UIManager.get;
 
 /**
  *
@@ -24,24 +28,30 @@ public class UI {
     BufferedImage bg_intro, intro_choose, dialog_box,input_name;
     GamePanel gp;
     Graphics2D g2;
-    Font arial_40, arial_80B;
-    Font customFont;
-//    BufferedImage keyImage;
+    Font pokemonFont;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinish = false;
-    double playTime;
-    DecimalFormat dFormat = new DecimalFormat("#0.00");
     
-    public static JTextField input_nama;
+    //dialog yg ditampilin
+    public String CurrentDialogue = "";
+    //input nama
+    public JTextField input_nama;
+    public String p_name="";
         
     public UI (GamePanel gp){
         this.gp = gp;
-        arial_40 = new Font("Arial", Font.PLAIN, 40);
-        arial_80B = new Font("Arial", Font.BOLD, 80);
-//        OBJ_Key key = new OBJ_Key();
-//        keyImage = key.image;
+        
+        try {
+            InputStream cusFont = getClass().getResourceAsStream("/font/PKMN_RBYGSC.ttf");
+            pokemonFont = Font.createFont(Font.TRUETYPE_FONT, cusFont);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     public void showMessage (String text){
@@ -50,7 +60,8 @@ public class UI {
     }
     public void draw (Graphics2D g2) throws FontFormatException{
         this.g2 = g2;
-        g2.setFont(arial_40);
+        g2.setFont(pokemonFont);
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setColor(Color.white);
         
         if(gp.gameState == gp.playState){
@@ -68,6 +79,9 @@ public class UI {
         }
         if (gp.gameState == gp.inputNameState) {
             drawInputNameScreen();
+        }
+        if (gp.gameState == gp.dialogueState) {
+            drawDialogueScreen();
         }
     }
     
@@ -99,8 +113,8 @@ public class UI {
 //        //masukin font baru
 //        
 //        try{
-//            customFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/PKMN_RBYGSC.ttf"));
-//            customFont = customFont.deriveFont(Font.BOLD,18f);
+//            pokemonFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/PKMN_RBYGSC.ttf"));
+//            pokemonFont = pokemonFont.deriveFont(Font.BOLD,18f);
 //            
 //        }
 //        catch(IOException e){
@@ -111,21 +125,22 @@ public class UI {
 //        JLabel nama_prof = new JLabel("Prof. Samuel");
 //        nama_prof.setBounds(35,523,200,posY2-473);
 //        nama_prof.setForeground(Color.white);
-//        nama_prof.setFont(customFont);
+//        nama_prof.setFont(pokemonFont);
 //        
 //        
 //        
-//        customFont = customFont.deriveFont(20f);
+//        pokemonFont = pokemonFont.deriveFont(20f);
 //        JLabel Desc = new JLabel("Hello there, please pick your first pokemon  ");
 //        Desc.setBounds(40,posY2+75,1000,posY2-473);
 //        Desc.setForeground(Color.white);
-//        Desc.setFont(customFont);
+//        Desc.setFont(pokemonFont);
 //        
 //        // di add ke screen
 //        gp.add(nama_prof);
 //        gp.add(Desc);
 //        
     }
+    
     
     public void drawTitleScreen(){
         //TITLE BACKGROUND
@@ -172,18 +187,45 @@ public class UI {
         input_nama.setBackground(null);
         input_nama.setHorizontalAlignment(JTextField.CENTER);
         
-        try{
-            customFont = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/PKMN_RBYGSC.ttf"));
-            customFont = customFont.deriveFont(Font.BOLD,28f);
-            
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
         
-        input_nama.setFont(customFont);
+        
+        input_nama.setFont(g2.getFont().deriveFont(Font.BOLD,28f));
         
         gp.add(input_nama);
+    }
+    
+    public void drawDialogueScreen(){
+        //inisialisasi koordinat window dialognya
+        int x = gp.tilesSize*2;
+        int y = gp.screenHeight - gp.tilesSize*5;
+        int width = gp.screenWidth - (x*2);
+        int height = gp.tilesSize * 4;
+        
+        drawSubWindow(x, y, width, height);
+        //buat nge set tulisan nya koornya mulai dr mana
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
+        x += gp.tilesSize;
+        y += gp.tilesSize;
+        
+        //buat cek apakah 1 kalimat ada /n nya? klo ada pindahin ke bwh bang
+        for (String line : CurrentDialogue.split("\n")) {
+            g2.drawString(line, x, y);
+            y+=40;
+        }
+        
+        
+    }
+    
+    public void drawSubWindow(int x, int y,int width,int height){
+        //set warna buat windows dialog param ke 4 opacity
+        Color c = new Color(0,0,0,210);
+        g2.setColor(c);
+        //bkin kotak nya
+        g2.fillRoundRect(x, y, width, height,35,35);
+        
+        c = new Color(255,255,255);
+        g2.setColor(c);
+        g2.drawRoundRect(x, y, width, height,25,25);
         
     }
     

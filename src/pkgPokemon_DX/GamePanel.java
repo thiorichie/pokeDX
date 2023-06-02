@@ -55,7 +55,8 @@ public class GamePanel extends JPanel implements Runnable{
     
     //ENTITY AND OBJECT
     public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[10]; 
+    public SuperObject obj[][] = new SuperObject[maksMap][10]; 
+    public SuperObject currentNPC;
     
     //GAME STATE
     public int gameState;
@@ -64,6 +65,7 @@ public class GamePanel extends JPanel implements Runnable{
     public final int pauseState = 2;
     public final int storyState = 3;
     public final int inputNameState = 4;
+    public final int dialogueState = 5;
     
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -144,8 +146,8 @@ public class GamePanel extends JPanel implements Runnable{
             tileManager.draw(g2);
             //Object Draw
             for(int i = 0; i < obj.length; i++){
-                if (obj[i] != null){
-                    obj[i].draw(g2, this);
+                if (obj[currentMap][i] != null){
+                    obj[currentMap][i].draw(g2, this);
                 }
             }
             //Player Draw

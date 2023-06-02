@@ -6,6 +6,7 @@ package pkgPokemon_DX;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import object.SuperObject;
 
 /**
  *
@@ -29,40 +30,56 @@ public class KeyHandler implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         
-        if(code == KeyEvent.VK_W){
-            upPressed = true;
-        }
-        
-        if(code == KeyEvent.VK_A){
-            leftPressed = true;
-        }
-        
-        if(code == KeyEvent.VK_S){
-            downPressed = true;
-        }
-        
-        if(code == KeyEvent.VK_D){
-            rightPressed = true;
-        }
-        
-        if(code == KeyEvent.VK_ESCAPE){
-            if(gp.gameState == gp.playState){
+        //play state
+        if (gp.gameState == gp.playState) {
+            if (code == KeyEvent.VK_W) {
+                upPressed = true;
+            }
+
+            if (code == KeyEvent.VK_A) {
+                leftPressed = true;
+            }
+
+            if (code == KeyEvent.VK_S) {
+                downPressed = true;
+            }
+
+            if (code == KeyEvent.VK_D) {
+                rightPressed = true;
+            }
+
+            if (code == KeyEvent.VK_ESCAPE) {
                 gp.gameState = gp.pauseState;
+                
             }
-            else if(gp.gameState == gp.pauseState){
-                gp.gameState = gp.playState;
+
+            //DEBUG
+            if (code == KeyEvent.VK_T) {
+                if (checkDrawTime == false) {
+                    checkDrawTime = true;
+                } else if (checkDrawTime == true) {
+                    checkDrawTime = false;
+                }
             }
         }
         
-        //DEBUG
-        if(code == KeyEvent.VK_T){
-            if(checkDrawTime == false){
-                checkDrawTime = true;
-            }
-            else if (checkDrawTime == true){
-                checkDrawTime = false;
+        //pause state
+        else if (gp.gameState == gp.pauseState) {
+            if (code == KeyEvent.VK_ESCAPE) {
+                gp.gameState = gp.playState;
+                
             }
         }
+        
+        //dialogue state
+        else if (gp.gameState == gp.dialogueState) {
+            if (code == KeyEvent.VK_ENTER) {
+                gp.currentNPC.dialogueIndex++;
+                System.out.println("Index berhasil ditambah");
+                gp.currentNPC.speak(gp);
+            }
+        }
+        
     }
 
     @Override

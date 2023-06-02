@@ -125,20 +125,35 @@ public class Player extends Entity{
     public void pickUpObj (int i){
         if (i != 999){
             
-            String objectName = gp.obj[i].name;
+            String objectName = gp.obj[gp.currentMap][i].name;
             
             switch(objectName){
                 case "Key":
                     hasKey++;
-                    gp.obj[i] = null;
+                    gp.obj[gp.currentMap][i] = null;
                     System.out.println("Key : " + hasKey);
                     break;
                 case "Door":
                     if (hasKey > 0) {
-                        gp.obj[i] = null;
+                        gp.obj[gp.currentMap][i] = null;
                         hasKey--;
                     }
                     System.out.println("Key : " + hasKey);
+                    break;
+                case "Fem1":
+                    if (gp.gameState == gp.playState && gp.currentMap == 0) {
+                        gp.gameState = gp.dialogueState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                        gp.currentNPC.speak(gp);
+                    }
+                    break;
+                case "Fem2":
+                    //bool still speaking buat cek msh ngmg ta ga npc e
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 0) {
+                        gp.gameState = gp.dialogueState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                        gp.currentNPC.speak(gp);
+                    }
                     break;
             }
         }
