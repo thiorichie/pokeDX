@@ -92,7 +92,7 @@ public class Player extends Entity{
             pickUpObj(objIndex);
             
             //Check event
-            
+            gp.eHandler.checkEvent();
             
             //If coll = false, then player can move
             if (collisionOn == false){

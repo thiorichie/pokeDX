@@ -4,10 +4,15 @@
  */
 package pkgPokemon_DX;
 
+import java.awt.Rectangle;
+
 /**
  *
  * @author WILLIAM
  */
-public class eventRect {
+public class eventRect extends Rectangle {
+    
+    int eventRectDefaultX, eventRectDefaultY;
+    boolean eventDone = false;
     
 }
