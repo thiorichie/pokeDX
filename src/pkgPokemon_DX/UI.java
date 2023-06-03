@@ -28,7 +28,11 @@ public class UI {
     HashMap<String, BufferedImage> inventory_entity = new HashMap<>();
     BufferedImage btn_inventory, inventory_gui;
     BufferedImage input, bg, btn_start, btn_load, btn_exit;
-    BufferedImage bg_intro, intro_choose, dialog_box,input_name;
+    //buat story screen
+    BufferedImage bg_intro, intro_choose,input_name;
+    //buat battle screen
+    BufferedImage bg_battle,poke1,poke2,hp_bar;
+            
     GamePanel gp;
     Graphics2D g2;
     Font pokemonFont;
@@ -89,6 +93,69 @@ public class UI {
         if (gp.gameState == gp.inventoryState) {
             drawInventoryScreen();
         }
+        if (gp.gameState == gp.battleState) {
+            drawBattleScreen();
+        }
+    }
+    
+    public void drawBattleScreen(){
+        //input battle bg
+        try{
+            bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
+            hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
+            poke1 = ImageIO.read(getClass().getResourceAsStream("/battle/pikachu.png"));
+            poke2 = ImageIO.read(getClass().getResourceAsStream("/battle/arceus.png"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        int x_name=gp.tilesSize*2;
+        int y_name=gp.tilesSize*3/2;
+        int width;
+        int height;
+        
+        //gmbr battle bg
+        g2.drawImage(bg_battle, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        g2.drawString("Pikachu", x_name, y_name);
+        width = x_name + gp.tilesSize*7;
+        g2.drawString("Lvl 1", width, y_name);
+        //draw hp bar
+        height = gp.tilesSize/2;
+        y_name+= gp.tilesSize/2;
+        g2.drawImage(hp_bar, x_name, y_name, width, height, null);
+        
+        //draw poke 1
+        //letak posisi awal
+        x_name = gp.tilesSize*19 + gp.tilesSize/2;
+        y_name = gp.tilesSize*3;
+        width = gp.tilesSize*5;
+        height = gp.tilesSize*5;
+        g2.drawImage(poke1, x_name, y_name, width, height, null);
+        
+        //draw poke 2
+        //letak posisi awal
+        x_name = gp.tilesSize*4;
+        y_name = gp.screenHeight - gp.tilesSize*11;
+        width = gp.tilesSize*9;
+        height = gp.tilesSize*9;
+        g2.drawImage(poke2, x_name, y_name, width, height, null);
+        
+        
+        
+        //inisialisasi koordinat window dialognya
+        int x = gp.tilesSize*2;
+        int y = gp.screenHeight - gp.tilesSize*4 - gp.tilesSize/2 ;
+        width = gp.screenWidth - (x*2);
+        height = gp.tilesSize * 4;
+        
+        drawSubWindow(x, y, width, height);
+        //buat pas gambar tulisan di dialog windows
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        x += gp.tilesSize;
+        y += gp.tilesSize;
+        g2.drawString("Battle has start", x, y);
     }
     
     private void removeLabel(JLabel label) {
@@ -129,7 +196,7 @@ public class UI {
          }
      }
     
-     public void drawGameUI() throws FontFormatException {
+    public void drawGameUI() throws FontFormatException {
          // GAME UI
          try {
              btn_inventory = ImageIO.read(getClass().getResourceAsStream("/button/inventory.png"));
@@ -147,7 +214,7 @@ public class UI {
         try{
             bg_intro = ImageIO.read(getClass().getResourceAsStream("/story/bg_intro_2.png"));
             intro_choose = ImageIO.read(getClass().getResourceAsStream("/story/intro_choose.png"));
-            dialog_box = ImageIO.read(getClass().getResourceAsStream("/story/input.jpg"));
+            
         }
         catch(IOException e){
             e.printStackTrace();
