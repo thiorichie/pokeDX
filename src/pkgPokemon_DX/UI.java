@@ -65,12 +65,12 @@ public class UI {
         message = text;
         messageOn = true;
     }
-    public void draw (Graphics2D g2) throws FontFormatException{
-        gp.removeAll();
+    public void draw (Graphics2D g2) throws FontFormatException {
         this.g2 = g2;
         g2.setFont(pokemonFont);
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setColor(Color.white);
+        
         
         if(gp.gameState == gp.playState){
             drawGameUI();
@@ -83,9 +83,6 @@ public class UI {
         }
         if (gp.gameState == gp.storyState) {
             drawStoryScreen();
-        }
-        if (gp.gameState == gp.inputNameState) {
-            drawInputNameScreen();
         }
         if (gp.gameState == gp.dialogueState) {
             drawDialogueScreen();
@@ -210,17 +207,6 @@ public class UI {
         g2.drawString("Battle has start", x, y);
     }
     
-    private void removeLabel(JLabel label) {
-        Timer timer = new Timer(5000, e -> {
-            gp.remove(label); // Remove the label from the frame
-            gp.revalidate(); // Re-validate the frame to reflect the changes
-            gp.repaint(); // Repaint the frame to reflect the changes
-        });
-        
-        timer.setRepeats(false); // Only execute once
-        timer.start();
-    }
-    
     public void drawInventoryScreen() throws FontFormatException {
         final int x_awal = 478;
         final int y_awal = 264;
@@ -231,6 +217,7 @@ public class UI {
          try {
              inventory_gui = ImageIO.read(getClass().getResourceAsStream("/game_gui/inventory_gui.png"));
              inventory_entity.put("key", ImageIO.read(getClass().getResourceAsStream("/objects/key.png")));
+             inventory_entity.put("boots", ImageIO.read(getClass().getResourceAsStream("/objects/boots.png")));
          }
          
          catch(IOException e){
@@ -239,12 +226,14 @@ public class UI {
          
          g2.drawImage(inventory_gui, 420, 140, 497, 493, null);
          for(String key : gp.player.inventory.keySet()) {
-             if(gp.player.inventory.get(key) > 0) g2.drawImage(inventory_entity.get(key), x_awal, y_awal, 48, 48, null);
+             if(gp.player.inventory.get(key) > 0) {
+                g2.drawImage(inventory_entity.get(key), x_awal + 85 * (n_inventory % 6), y_awal + (n_inventory / 6), 48, 48, null);
                 JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
-                label.setBounds(x_awal_label, y_awal_label, 200, 30);
+                label.setBounds(x_awal_label + 85 * (n_inventory % 6), y_awal_label + (n_inventory / 6), 200, 30);
                 label.setForeground(Color.white);
                 gp.add(label);
                 n_inventory++;
+             }
          }
      }
     
@@ -257,7 +246,6 @@ public class UI {
          catch(IOException e){
             e.printStackTrace();
         }
-         
          g2.drawImage(btn_inventory, 15, 15, 87, 80, null);
      }
     
@@ -337,37 +325,6 @@ public class UI {
         g2.drawImage(btn_load, posX, posY2, 300, 95, null);
         posY2 += 100;
         g2.drawImage(btn_exit, posX, posY2, 300, 95, null);
-    }
-    
-    public void drawInputNameScreen() throws FontFormatException{
-        //pop up input_nama nama
-        try{
-            bg = ImageIO.read(getClass().getResourceAsStream("/story/bg_blank.png"));
-            input_name = ImageIO.read(getClass().getResourceAsStream("/story/intro_input_nama.png"));
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        g2.drawImage(bg, 0, 0, gp.screenWidth, gp.screenHeight, null);
-        
-        //buat draw input_nama e nde tengah
-        int posX = gp.screenWidth/2 - 250;
-        int posY = gp.screenHeight /2 - 250 ;
-        g2.drawImage(input_name, posX, posY, 500, 500, null);
-        
-        input_nama = new JTextField(20);
-        input_nama.setBounds(480,308,835-480,368-308);
-        //buat ilangin border + bkin transparant
-        input_nama.setOpaque(false);
-        input_nama.setBorder(BorderFactory.createLineBorder(Color.white, 0));
-        input_nama.setBackground(null);
-        input_nama.setHorizontalAlignment(JTextField.CENTER);
-        
-        
-        
-        input_nama.setFont(g2.getFont().deriveFont(Font.BOLD,28f));
-        
-        gp.add(input_nama);
     }
     
     public void drawDialogueScreen(){
