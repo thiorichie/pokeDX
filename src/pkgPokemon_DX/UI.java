@@ -98,6 +98,49 @@ public class UI {
         }
     }
     
+    private void drawPokeName(int x,int y,String nama, int lvl){
+        int jarak;
+        g2.drawString(nama, x, y);
+        jarak = x + gp.tilesSize*7;
+        g2.drawString("Lvl "+lvl+"", jarak, y);
+    }
+    
+    private void drawHpBar(int x,int y,int maxHp, int currHp){
+        Color c;
+        int hpLength;
+        int widthBar = gp.tilesSize*9; 
+        int heightBar = gp.tilesSize/2;
+        if (currHp > (7 * maxHp / 10)) {
+            c = Color.GREEN;
+        }
+        else if (currHp > (3 * maxHp /10)) {
+            c = Color.YELLOW;
+        }
+        else{
+            c = Color.RED;
+        }
+        //draw hp bar
+        g2.drawImage(hp_bar, x, y, widthBar, heightBar, null);
+        
+        //draw hp color
+        g2.setColor(c);
+        
+        //set panjang darah
+        
+        hpLength = currHp * widthBar / maxHp;
+        //buat debug
+//        System.out.println("Hp length : "+hpLength +"");
+        
+        //buat set biar ada jarak disisi kanan ma kirinya
+        x+=5;
+        y+=2;
+        hpLength-=10;
+        heightBar-=4;
+        
+        g2.fillRoundRect(x, y, hpLength, heightBar, 25, 25);
+        
+    }
+    
     public void drawBattleScreen(){
         //input battle bg
         try{
@@ -118,13 +161,13 @@ public class UI {
         //gmbr battle bg
         g2.drawImage(bg_battle, 0, 0, gp.screenWidth, gp.screenHeight, null);
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
-        g2.drawString("Pikachu", x_name, y_name);
-        width = x_name + gp.tilesSize*7;
-        g2.drawString("Lvl 1", width, y_name);
-        //draw hp bar
-        height = gp.tilesSize/2;
+        
+        //draw nama poke 1
+        drawPokeName(x_name, y_name, "Pikachu", 1);
+        
+        //draw hp bar poke 1
         y_name+= gp.tilesSize/2;
-        g2.drawImage(hp_bar, x_name, y_name, width, height, null);
+        drawHpBar(x_name, y_name, 100, 60);
         
         //draw poke 1
         //letak posisi awal
@@ -142,13 +185,22 @@ public class UI {
         height = gp.tilesSize*9;
         g2.drawImage(poke2, x_name, y_name, width, height, null);
         
+        //draw nama poke 2
+        //update letak x y
+        g2.setColor(Color.WHITE);
+        x_name = gp.screenWidth - gp.tilesSize*11;
+        y_name = gp.screenHeight - gp.tilesSize*5;
+        drawPokeName(x_name, y_name, "Arceus", 1);
         
+        //draw hp bar poke 2
+        y_name+= gp.tilesSize/2;
+        drawHpBar(x_name, y_name, 100, 30);
         
         //inisialisasi koordinat window dialognya
         int x = gp.tilesSize*2;
-        int y = gp.screenHeight - gp.tilesSize*4 - gp.tilesSize/2 ;
+        int y = gp.screenHeight - gp.tilesSize*3 - gp.tilesSize/2 ;
         width = gp.screenWidth - (x*2);
-        height = gp.tilesSize * 4;
+        height = gp.tilesSize * 3;
         
         drawSubWindow(x, y, width, height);
         //buat pas gambar tulisan di dialog windows
