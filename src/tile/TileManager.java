@@ -28,9 +28,14 @@ public class TileManager {
         mapTileNum = new int [gp.maksMap][gp.maksWorldCol][gp.maksWorldRow];
         getTileImage();
         loadMap("/maps/protomap001.txt",0);
+<<<<<<< Updated upstream
         loadMap("/maps/Village.txt",1);
         loadMap("/maps/Rumah1.txt",2);
         loadMap("/maps/Rumah2.txt",3);
+=======
+        loadMap("/maps/protomap002.txt",1);
+        loadMap("/maps/Village.txt", 2);
+>>>>>>> Stashed changes
     }
     
     public void getTileImage(){
@@ -94,6 +99,7 @@ public class TileManager {
             tile[15].collision = true;
             
             tile[16] = new Tile();
+<<<<<<< Updated upstream
             tile[16].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/1.png"));
             tile[16].collision = true;
             
@@ -127,6 +133,33 @@ public class TileManager {
             tile[24] = new Tile();
             tile[24].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/9.png"));
             tile[24].collision = true;
+=======
+            tile[16].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/1.png"));
+            
+            tile[17] = new Tile();
+            tile[17].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/2.png"));
+            
+            tile[18] = new Tile();
+            tile[18].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/3.png"));
+            
+            tile[19] = new Tile();
+            tile[19].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/4.png"));
+            
+            tile[20] = new Tile();
+            tile[20].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/5.png"));
+            
+            tile[21] = new Tile();
+            tile[21].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/6.png"));
+            
+            tile[22] = new Tile();
+            tile[22].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/7.png"));
+            
+            tile[23] = new Tile();
+            tile[23].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/8.png"));
+            
+            tile[24] = new Tile();
+            tile[24].image = ImageIO.read(getClass().getResourceAsStream("/rumah2/9.png"));
+>>>>>>> Stashed changes
             
         } 
         catch (IOException e) {
