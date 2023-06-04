@@ -22,8 +22,12 @@ public class SuperObject {
     public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
+    
+    //dialog npc
     public String Dialogues[] = new String[20];
     public int dialogueIndex =0;
+    //buat cek klo dia udh pernah battle g bisa battle lagi
+    public boolean sudahBattle;
     
     
     public void draw(Graphics2D g2, GamePanel gp){

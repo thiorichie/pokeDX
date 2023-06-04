@@ -80,6 +80,13 @@ public class KeyHandler implements KeyListener{
             }
         }
         
+        //battle state 
+        else if (gp.gameState == gp.battleState) {
+            //ini cuma sementara nanti diahpus
+            if (code == KeyEvent.VK_ESCAPE) {
+                gp.gameState = gp.playState;
+            }
+        }
     }
 
     @Override

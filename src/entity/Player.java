@@ -149,10 +149,9 @@ public class Player extends Entity{
                     break;
                 case "Fem1":
                     if (gp.gameState == gp.playState && gp.currentMap == 0) {
-                          gp.gameState = gp.battleState;
-//                        gp.gameState = gp.dialogueState;
-//                        gp.currentNPC = gp.obj[gp.currentMap][i];
-//                        gp.currentNPC.speak(gp);
+                        gp.gameState = gp.dialogueState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                        gp.currentNPC.speak(gp);
                     }
                     break;
                 case "Fem2":
