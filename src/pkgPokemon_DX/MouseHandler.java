@@ -59,35 +59,20 @@ public class MouseHandler implements MouseListener{
             
             //cek klo salah satu dari choose monster button ditekan
             if((x >= 163 && x <= 356) && (y <= 264 && y >= 233 && gp.gameState == gp.storyState)){
-                gp.gameState = gp.inputNameState;
+                gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
                 
             }
             if((x >= 552 && x <= 747) && (y <= 264 && y >= 233 && gp.gameState == gp.storyState)){
-                gp.gameState = gp.inputNameState;
+                gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
             }
             if((x >= 932 && x <= 1127) && (y <= 264 && y >= 233 && gp.gameState == gp.storyState)){
-                gp.gameState = gp.inputNameState;
-                gp.stopMusic();
-                gp.playMusic(y);
-            }
-            
-            //cek klo tombol silang di input nama ditekan
-            if((x >= 854 && x <= 878) && (y <= 158 && y >= 131 && gp.gameState == gp.inputNameState)){
-                gp.gameState = gp.storyState;
-                gp.stopMusic();
-                gp.playMusic(y);
-            }
-            
-            //  cek klo tombol confirm di input nama ditekan
-            if((x >= 447 && x <= 847) && (y <= 557 && y >= 495 && gp.gameState == gp.inputNameState)){
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
-                gp.removeAll();
             }
             
         }

@@ -84,9 +84,6 @@ public class UI {
         if (gp.gameState == gp.storyState) {
             drawStoryScreen();
         }
-        if (gp.gameState == gp.inputNameState) {
-            drawInputNameScreen();
-        }
         if (gp.gameState == gp.dialogueState) {
             drawDialogueScreen();
         }
@@ -337,37 +334,6 @@ public class UI {
         g2.drawImage(btn_load, posX, posY2, 300, 95, null);
         posY2 += 100;
         g2.drawImage(btn_exit, posX, posY2, 300, 95, null);
-    }
-    
-    public void drawInputNameScreen() throws FontFormatException{
-        //pop up input_nama nama
-        try{
-            bg = ImageIO.read(getClass().getResourceAsStream("/story/bg_blank.png"));
-            input_name = ImageIO.read(getClass().getResourceAsStream("/story/intro_input_nama.png"));
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        g2.drawImage(bg, 0, 0, gp.screenWidth, gp.screenHeight, null);
-        
-        //buat draw input_nama e nde tengah
-        int posX = gp.screenWidth/2 - 250;
-        int posY = gp.screenHeight /2 - 250 ;
-        g2.drawImage(input_name, posX, posY, 500, 500, null);
-        
-        input_nama = new JTextField(20);
-        input_nama.setBounds(480,308,835-480,368-308);
-        //buat ilangin border + bkin transparant
-        input_nama.setOpaque(false);
-        input_nama.setBorder(BorderFactory.createLineBorder(Color.white, 0));
-        input_nama.setBackground(null);
-        input_nama.setHorizontalAlignment(JTextField.CENTER);
-        
-        
-        
-        input_nama.setFont(g2.getFont().deriveFont(Font.BOLD,28f));
-        
-        gp.add(input_nama);
     }
     
     public void drawDialogueScreen(){
