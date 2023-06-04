@@ -62,7 +62,7 @@ public class EventHandler {
         if (canTouchEvent == true) {
             //event
             if (hit(0,17,10,"any") == true) {
-                teleport(2,7,14);
+                teleport(1,7,14);
             }
             else if (hit(1,20,10,"any") == true) {
                 teleport(2,7, 14);
