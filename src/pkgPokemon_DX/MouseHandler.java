@@ -37,6 +37,7 @@ public class MouseHandler implements MouseListener{
             
             // close inventory
             if(((x >= 846 && x <= 876) && (y >= 176 && y <= 206) || ((x <= 436 || x >= 899) || (y <= 164 || y >= 603))) && gp.gameState == gp.inventoryState) {
+                gp.removeAll();
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);

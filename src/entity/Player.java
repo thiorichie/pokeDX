@@ -129,6 +129,15 @@ public class Player extends Entity{
             String objectName = gp.obj[gp.currentMap][i].name;
             
             switch(objectName){
+                case "Boots":
+                    gp.obj[gp.currentMap][i] = null;
+                    System.out.println("Boots : " + inventory.get("boots"));
+                    if(inventory.containsKey("boots")) {
+                        inventory.put("boots", inventory.get("boots") + 1);
+                    } else {
+                        inventory.put("boots", 1);
+                    }
+                    break;
                 case "Key":
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Key : " + inventory.get("key"));
@@ -143,6 +152,8 @@ public class Player extends Entity{
                         gp.obj[gp.currentMap][i] = null;
                         if(inventory.get("key") - 1 >= 0) {
                             inventory.put("key", inventory.get("key") - 1);
+                        } else {
+                            inventory.remove("key");
                         }
                     }
                     System.out.println("Key : " + inventory.get("key"));
