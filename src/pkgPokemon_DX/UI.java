@@ -19,6 +19,8 @@ import object.OBJ_Key;
 import javax.swing.*;
 import static javax.swing.UIManager.get;
 import java.util.HashMap;
+import poke.Monster;
+import poke.Pokemon;
 
 /**
  *
@@ -31,7 +33,7 @@ public class UI {
     //buat story screen
     BufferedImage bg_intro, intro_choose,input_name;
     //buat battle screen
-    BufferedImage bg_battle,poke1,poke2,hp_bar;
+    BufferedImage bg_battle,hp_bar;
             
     GamePanel gp;
     Graphics2D g2;
@@ -46,6 +48,10 @@ public class UI {
     //input nama
     public JTextField input_nama;
     public String p_name="";
+    
+    //class pokemon
+    Pokemon pokemon = new Pokemon();
+    Monster poke1,poke2;
         
     public UI (GamePanel gp){
         this.gp = gp;
@@ -143,8 +149,9 @@ public class UI {
         try{
             bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
             hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
-            poke1 = ImageIO.read(getClass().getResourceAsStream("/battle/pikachu.png"));
-            poke2 = ImageIO.read(getClass().getResourceAsStream("/battle/arceus.png"));
+//            poke1 = ImageIO.read(getClass().getResourceAsStream("/battle/pikachu.png"));
+            poke1 = pokemon.Axew;
+            poke2 = pokemon.Charmander;
         }
         catch(IOException e){
             e.printStackTrace();
@@ -160,11 +167,11 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
         
         //draw nama poke 1
-        drawPokeName(x_name, y_name, "Pikachu", 1);
+        drawPokeName(x_name, y_name, poke1.getNama(), poke1.getLvl());
         
         //draw hp bar poke 1
         y_name+= gp.tilesSize/2;
-        drawHpBar(x_name, y_name, 100, 60);
+        drawHpBar(x_name, y_name, poke1.getMax_hp(), poke1.getHp());
         
         //draw poke 1
         //letak posisi awal
@@ -172,7 +179,7 @@ public class UI {
         y_name = gp.tilesSize*3;
         width = gp.tilesSize*5;
         height = gp.tilesSize*5;
-        g2.drawImage(poke1, x_name, y_name, width, height, null);
+        g2.drawImage(poke1.getCharacter(), x_name, y_name, width, height, null);
         
         //draw poke 2
         //letak posisi awal
@@ -180,18 +187,18 @@ public class UI {
         y_name = gp.screenHeight - gp.tilesSize*11;
         width = gp.tilesSize*9;
         height = gp.tilesSize*9;
-        g2.drawImage(poke2, x_name, y_name, width, height, null);
+        g2.drawImage(poke2.getCharacter(), x_name, y_name, width, height, null);
         
         //draw nama poke 2
         //update letak x y
         g2.setColor(Color.WHITE);
         x_name = gp.screenWidth - gp.tilesSize*11;
         y_name = gp.screenHeight - gp.tilesSize*5;
-        drawPokeName(x_name, y_name, "Arceus", 1);
+        drawPokeName(x_name, y_name, poke2.getNama(), poke2.getLvl());
         
         //draw hp bar poke 2
         y_name+= gp.tilesSize/2;
-        drawHpBar(x_name, y_name, 100, 30);
+        drawHpBar(x_name, y_name, poke2.getMax_hp(), poke2.getHp());
         
         //inisialisasi koordinat window dialognya
         int x = gp.tilesSize*2;

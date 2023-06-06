@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package pokemon;
+package poke;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -15,14 +15,14 @@ import javax.imageio.ImageIO;
  *
  * @author Ryu A.H
  */
-public class Pokemon_mons {
+public class Monster {
     private String nama;
     private int max_hp,hp,atk,lvl;
     private boolean alive;
     private BufferedImage character; 
     private ArrayList<Skill> skill = new ArrayList<>();
 
-    public Pokemon_mons(String nama, int max_hp, int hp, int atk, int lvl, String char_path) {
+    public Monster(String nama, int max_hp, int hp, int atk, int lvl, String char_path) {
         this.nama = nama;
         this.max_hp = max_hp;
         this.hp = hp;
@@ -40,7 +40,7 @@ public class Pokemon_mons {
         try {
             this.character = ImageIO.read(getClass().getResourceAsStream(path));
         } catch (IOException ex) {
-            Logger.getLogger(Pokemon_mons.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Monster.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
