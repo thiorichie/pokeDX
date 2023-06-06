@@ -28,7 +28,9 @@ public class TileManager {
         mapTileNum = new int [gp.maksMap][gp.maksWorldCol][gp.maksWorldRow];
         getTileImage();
         loadMap("/maps/protomap001.txt",0);
-        loadMap("/maps/protomap002.txt",1);
+        loadMap("/maps/Village.txt",1);
+        loadMap("/maps/Rumah1.txt",2);
+        loadMap("/maps/Rumah2.txt",3);
     }
     
     public void getTileImage(){
@@ -37,8 +39,7 @@ public class TileManager {
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grass.png"));
             
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/wall.png"));
-            tile[1].collision = true;
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tanah.png"));
             
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water.png"));
@@ -91,6 +92,41 @@ public class TileManager {
             tile[15] = new Tile();
             tile[15].image = ImageIO.read(getClass().getResourceAsStream("/rumah/9.png"));
             tile[15].collision = true;
+            
+            tile[16] = new Tile();
+            tile[16].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/1.png"));
+            tile[16].collision = true;
+            
+            tile[17] = new Tile();
+            tile[17].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/2.png"));
+            tile[17].collision = true;
+            
+            tile[18] = new Tile();
+            tile[18].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/3.png"));
+            tile[18].collision = true;
+            
+            tile[19] = new Tile();
+            tile[19].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/4.png"));
+            tile[19].collision = true;
+            
+            tile[20] = new Tile();
+            tile[20].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/5.png"));
+            tile[20].collision = true;
+            
+            tile[21] = new Tile();
+            tile[21].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/6.png"));
+            tile[21].collision = true;
+            
+            tile[22] = new Tile();
+            tile[22].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/7.png"));
+            tile[22].collision = true;
+            
+            tile[23] = new Tile();
+            tile[23].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/8.png"));
+            
+            tile[24] = new Tile();
+            tile[24].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/9.png"));
+            tile[24].collision = true;
         } 
         catch (IOException e) {
             e.printStackTrace();
