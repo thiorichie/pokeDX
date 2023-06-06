@@ -23,6 +23,7 @@ public class NPC_f1 extends SuperObject{
         }
         
         collision = true;
+        sudahBattle = false;
         setDialogue();
     }
     
@@ -37,7 +38,13 @@ public class NPC_f1 extends SuperObject{
         if (Dialogues[dialogueIndex] ==null) {
             //klo udh selesai ngomong
             dialogueIndex=0;
-            gp.gameState = gp.playState;
+            if (sudahBattle == false) {
+                gp.gameState = gp.battleState;
+                sudahBattle=true;
+            }
+            else{
+                gp.gameState = gp.playState;
+            }
             gp.currentNPC=null;
         }
         

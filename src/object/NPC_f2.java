@@ -24,6 +24,7 @@ public class NPC_f2 extends SuperObject{
         }
         
         collision = true;
+        sudahBattle =true;
         setDialogue();
     }
     
