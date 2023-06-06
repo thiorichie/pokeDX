@@ -31,11 +31,8 @@ public class TileManager {
         loadMap("/maps/Village.txt",1);
         loadMap("/maps/Rumah1.txt",2);
         loadMap("/maps/Rumah2.txt",3);
-<<<<<<< Updated upstream
-=======
         loadMap("/maps/protomap002.txt",1);
         loadMap("/maps/Village.txt", 2);
->>>>>>> Stashed changes
     }
     
     public void getTileImage(){
@@ -132,11 +129,6 @@ public class TileManager {
             tile[24] = new Tile();
             tile[24].image = ImageIO.read(getClass().getResourceAsStream("/rumah1/9.png"));
             tile[24].collision = true;
-<<<<<<< Updated upstream
-=======
-
-            
->>>>>>> Stashed changes
         } 
         catch (IOException e) {
             e.printStackTrace();
