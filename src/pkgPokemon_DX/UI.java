@@ -61,7 +61,7 @@ public class UI {
         this.gp = gp;
         
         try {
-            InputStream cusFont = getClass().getResourceAsStream("/font/pkmnrsi.ttf");
+            InputStream cusFont = getClass().getResourceAsStream("/font/PKMN_RBYGSC.ttf");
             pokemonFont = Font.createFont(Font.TRUETYPE_FONT, cusFont);
             cusFont = getClass().getResourceAsStream("/font/Purisa_Bold.ttf");
             PurisaBold = Font.createFont(Font.TRUETYPE_FONT, cusFont);
@@ -177,7 +177,7 @@ public class UI {
         
         //gmbr battle bg
         g2.drawImage(bg_battle, 0, 0, gp.screenWidth, gp.screenHeight, null);
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));
         
         //draw nama poke 1
         drawPokeName(x_name, y_name, poke1.getNama(), poke1.getLvl());
@@ -221,10 +221,10 @@ public class UI {
         
         drawSubWindow(x, y, width, height);
         //buat pas gambar tulisan di dialog windows
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,38F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,32F));
         
         // teks atk
-        x += gp.tilesSize*4 + gp.tilesSize/2;
+        x += gp.tilesSize*3 + gp.tilesSize/2;
         y += gp.tilesSize + gp.tilesSize/8;
         g2.drawString("Attack", x, y);
         if (commandNum == 0) {
@@ -247,7 +247,7 @@ public class UI {
         //teks party
         //reset balik atas
         y-= gp.tilesSize;
-        x = gp.screenWidth - gp.tilesSize*9 + gp.tilesSize/2;
+        x = gp.screenWidth - gp.tilesSize*10 + gp.tilesSize/2;
         g2.drawString("Party", x, y);
         if (commandNum == 2) {
             x-= gp.tilesSize;
@@ -397,7 +397,7 @@ public class UI {
         
         drawSubWindow(x, y, width, height);
         //buat nge set tulisan nya koornya mulai dr mana
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,48F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
         x += gp.tilesSize;
         y += gp.tilesSize + gp.tilesSize/2;
         
