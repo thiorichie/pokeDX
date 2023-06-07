@@ -30,6 +30,10 @@ public class UI {
     HashMap<String, BufferedImage> inventory_entity = new HashMap<>();
     BufferedImage btn_inventory, inventory_gui;
     BufferedImage input, bg, btn_start, btn_load, btn_exit;
+    
+    //buat cursor
+    public int commandNum = 0;
+    
     //buat story screen
     BufferedImage bg_intro, intro_choose,input_name;
     //buat battle screen
@@ -37,7 +41,7 @@ public class UI {
             
     GamePanel gp;
     Graphics2D g2;
-    Font pokemonFont;
+    Font pokemonFont,PurisaBold;
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
@@ -57,8 +61,10 @@ public class UI {
         this.gp = gp;
         
         try {
-            InputStream cusFont = getClass().getResourceAsStream("/font/PKMN_RBYGSC.ttf");
+            InputStream cusFont = getClass().getResourceAsStream("/font/pkmnrsi.ttf");
             pokemonFont = Font.createFont(Font.TRUETYPE_FONT, cusFont);
+            cusFont = getClass().getResourceAsStream("/font/Purisa_Bold.ttf");
+            PurisaBold = Font.createFont(Font.TRUETYPE_FONT, cusFont);
         } catch (FontFormatException ex) {
             Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -144,6 +150,13 @@ public class UI {
         
     }
     
+    public void drawCursor(int x, int y){
+//        g2.setFont(PurisaBold);
+//        g2.setFont(PurisaBold.deriveFont(Font.PLAIN,26F));
+        g2.drawString(">", x, y);
+//        g2.setFont(pokemonFont);
+    }
+    
     public void drawBattleScreen(){
         //input battle bg
         try{
@@ -208,10 +221,51 @@ public class UI {
         
         drawSubWindow(x, y, width, height);
         //buat pas gambar tulisan di dialog windows
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,30F));
-        x += gp.tilesSize;
-        y += gp.tilesSize;
-        g2.drawString("Battle has start", x, y);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,38F));
+        
+        // teks atk
+        x += gp.tilesSize*4 + gp.tilesSize/2;
+        y += gp.tilesSize + gp.tilesSize/8;
+        g2.drawString("Attack", x, y);
+        if (commandNum == 0) {
+            x-= gp.tilesSize;
+            drawCursor(x, y);
+            //balikin ke posisi semula teks
+            x+= gp.tilesSize;
+        }
+        
+        //teks backpack
+        y += gp.tilesSize + gp.tilesSize/16;
+        g2.drawString("Backpack", x, y);
+        if (commandNum == 1) {
+            x-= gp.tilesSize;
+            drawCursor(x, y);
+            //balikin ke posisi semula teks
+            x+= gp.tilesSize;
+        }
+        
+        //teks party
+        //reset balik atas
+        y-= gp.tilesSize;
+        x = gp.screenWidth - gp.tilesSize*9 + gp.tilesSize/2;
+        g2.drawString("Party", x, y);
+        if (commandNum == 2) {
+            x-= gp.tilesSize;
+            drawCursor(x, y);
+            //balikin ke posisi semula teks
+            x+= gp.tilesSize;
+        }
+        
+        //teks run
+        y += gp.tilesSize + gp.tilesSize/16;
+        g2.drawString("Run", x, y);
+        if (commandNum == 3) {
+            x-= gp.tilesSize;
+            drawCursor(x, y);
+            //balikin ke posisi semula teks
+            x+= gp.tilesSize;
+        }
+        
     }
     
     public void drawInventoryScreen() throws FontFormatException {
@@ -343,14 +397,14 @@ public class UI {
         
         drawSubWindow(x, y, width, height);
         //buat nge set tulisan nya koornya mulai dr mana
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,48F));
         x += gp.tilesSize;
-        y += gp.tilesSize;
+        y += gp.tilesSize + gp.tilesSize/2;
         
         //buat cek apakah 1 kalimat ada /n nya? klo ada pindahin ke bwh bang
         for (String line : CurrentDialogue.split("\n")) {
             g2.drawString(line, x, y);
-            y+=40;
+            y+=gp.tilesSize + gp.tilesSize/4;
         }
         
         
