@@ -20,7 +20,7 @@ public class Monster {
     private int max_hp,hp,atk,lvl;
     private boolean alive;
     private BufferedImage character; 
-    private ArrayList<Skill> skill = new ArrayList<>();
+    public ArrayList<Skill> skill = new ArrayList<>();
 
     public Monster(String nama, int max_hp, int hp, int atk, int lvl, String char_path) {
         this.nama = nama;
@@ -63,6 +63,9 @@ public class Monster {
     }
 
     public int getMax_hp() {
+        if (hp==0) {
+            alive = false;
+        }
         return max_hp;
     }
 

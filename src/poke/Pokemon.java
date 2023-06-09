@@ -14,11 +14,11 @@ public class Pokemon {
     public Monster Squirtle = new Monster("Squirtle", 200, 200, 20, 1, "/poke/squirtle.png");
     
     //mid mons
-    public Monster Axew = new Monster("Axew", 250, 250, 30, 1, "/poke/axew.png");
-    public Monster Joltik = new Monster("Joltik", 250, 250, 30, 1, "/poke/Joltik.png");
-    public Monster Lairon = new Monster("Lairon", 250, 250, 30, 1, "/poke/Lairon.png");
-    public Monster Eve = new Monster("Eve", 250, 250, 30, 1, "/poke/Eve.png");
-    public Monster Misdreavus = new Monster("Misdreavus", 250, 250, 30, 1, "/poke/Misdreavus.png");
+    public Monster Axew = new Monster("Axew", 150, 150, 30, 1, "/poke/axew.png");
+    public Monster Joltik = new Monster("Joltik", 150, 150, 30, 1, "/poke/Joltik.png");
+    public Monster Lairon = new Monster("Lairon", 150, 150, 30, 1, "/poke/Lairon.png");
+    public Monster Eve = new Monster("Eve", 175, 175, 30, 1, "/poke/Eve.png");
+    public Monster Misdreavus = new Monster("Misdreavus", 150, 150, 30, 1, "/poke/Misdreavus.png");
     
     //high end
     
@@ -28,5 +28,16 @@ public class Pokemon {
     
     //boss
     public Monster Arceus = new Monster("Arceus", 3000, 3000, 500, 10, "/poke/arceus.png");
+
+    public Pokemon() {
+        Charmander.addSkill(new Skill("Scratch", 40, 0));
+        Charmander.addSkill(new Skill("Dragon Tail", 60, 0));
+        
+        Axew.addSkill(new Skill("Scratch", 40, 0));
+        Axew.addSkill(new Skill("Bite", 60, 0));
+        
+    }
+    
+    
     
 }

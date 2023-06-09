@@ -19,6 +19,7 @@ import object.OBJ_Key;
 import javax.swing.*;
 import static javax.swing.UIManager.get;
 import java.util.HashMap;
+import java.util.Random;
 import poke.Monster;
 import poke.Pokemon;
 
@@ -56,6 +57,17 @@ public class UI {
     //class pokemon
     Pokemon pokemon = new Pokemon();
     Monster poke1,poke2;
+    Random rand = new Random();
+    public Boolean isEnemyAct = false;
+    
+    //menu state
+    public int menu_state = 0;
+    //menu state 1 atk
+    //menu state 2 backpack
+    //menu state 3 party
+    //menu state 4 run
+    //menu state 99 clear box
+    
         
     public UI (GamePanel gp){
         this.gp = gp;
@@ -77,6 +89,11 @@ public class UI {
         message = text;
         messageOn = true;
     }
+    
+//    public void setMessage(String text){
+//        message = text;
+//    }
+    
     public void draw (Graphics2D g2) throws FontFormatException {
         this.g2 = g2;
         g2.setFont(pokemonFont);
@@ -157,6 +174,161 @@ public class UI {
 //        g2.setFont(pokemonFont);
     }
     
+    public void enemy_action(){
+        int index_skill = rand.nextInt(0,poke1.skill.size());
+        int heal = poke1.skill.get(index_skill).getHeal();
+        int atk = poke1.skill.get(index_skill).getDmg();
+        
+        if (heal == 0  && poke2.getHp() > 0) {
+            poke2.setHp(poke2.getHp()-atk);
+            if (poke2.getHp() <= 0) {
+                poke2.setHp(0);
+            }
+            message = poke2.getNama() + " received "+ atk + " dmg!";
+        }
+        else if (heal > 0 && poke1.getHp() > 0) {
+            poke1.setHp(poke1.getHp()+heal);
+            message = poke1.getNama() + " heals "+ heal + " hp!";
+        }
+        isEnemyAct = true;
+    }
+    
+    public void action(int atk, int heal, Monster p, Monster e){
+        if (heal == 0  && e.getHp() > 0) {
+            e.setHp(e.getHp()-atk);
+            if (e.getHp() <= 0) {
+                e.setHp(0);
+            }
+            message = e.getNama() + " received "+ atk + " dmg!";
+        }
+        else if (heal > 0 && p.getHp() > 0) {
+            p.setHp(p.getHp()+heal);
+            message = p.getNama() + " heals "+ heal + " hp!";
+        }
+    }
+    
+    public void clearText(int x,int y){
+        g2.drawString("", x, y);
+    }
+    
+    private void drawMainMenuBattle(int x, int y,int xtext,int ytext){
+        
+        //buat clear pesan / message
+        if (menu_state != 99) {
+            clearText(xtext, ytext);
+        }
+        
+        
+        // teks atk
+        x += gp.tilesSize*3 + gp.tilesSize/2;
+        y += gp.tilesSize + gp.tilesSize/8;
+        
+//        System.out.println(poke2.skill.get(0).getNama());
+        try {
+            if (menu_state == 0) {
+                System.out.println(poke2.skill.get(0).getNama());
+                g2.drawString("Attack", x, y);
+            } 
+            if (menu_state == 1) {
+                g2.drawString(poke2.skill.get(0).getNama(), x, y);
+            }
+            if (menu_state == 99) {
+                clearText(x, y);
+            } 
+
+            if (commandNum == 0 && menu_state != 99) {
+                x -= gp.tilesSize;
+                drawCursor(x, y);
+                //balikin ke posisi semula teks
+                x += gp.tilesSize;
+
+            }
+        } catch (Exception e) {
+            
+        }
+        
+        
+        //teks backpack
+        y += gp.tilesSize + gp.tilesSize/16;
+        
+        try {
+            if (menu_state == 0) {
+                g2.drawString("Backpack", x, y);
+            }
+            else if (menu_state == 1) {
+                g2.drawString(poke2.skill.get(1).getNama(), x, y);
+            }
+            if (menu_state == 99) {
+                clearText(x, y);
+            } 
+            
+            if (commandNum == 1 && menu_state != 99) {
+                x -= gp.tilesSize;
+                drawCursor(x, y);
+                //balikin ke posisi semula teks
+                x += gp.tilesSize;
+            }
+        } catch (Exception e) {
+        }
+        
+        
+        //teks party
+        //reset balik atas
+        y-= gp.tilesSize;
+        x = gp.screenWidth - gp.tilesSize*10 + gp.tilesSize/2;
+        
+        try {
+            if (menu_state == 0) {
+                g2.drawString("Party", x, y);
+            }
+            else if (menu_state == 1) {
+                g2.drawString(poke2.skill.get(2).getNama(), x, y);
+            }
+            if (menu_state == 99) {
+                clearText(x, y);
+            } 
+            
+            if (commandNum == 2 && menu_state != 99) {
+                x -= gp.tilesSize;
+                drawCursor(x, y);
+                //balikin ke posisi semula teks
+                x += gp.tilesSize;
+            }
+        } catch (Exception e) {
+        }
+        
+        
+        //teks run
+        y += gp.tilesSize + gp.tilesSize/16;
+        
+        try {
+            if (menu_state == 0) {
+                g2.drawString("Run", x, y);
+            }
+            else if (menu_state == 1) {
+                g2.drawString(poke2.skill.get(3).getNama(), x, y);
+            }
+            if (menu_state == 99) {
+                clearText(x, y);
+            } 
+            
+            if (commandNum == 3 && menu_state != 99) {
+                x -= gp.tilesSize;
+                drawCursor(x, y);
+                //balikin ke posisi semula teks
+                x += gp.tilesSize;
+            }
+        } catch (Exception e) {
+        }
+        
+        //tampilin message
+        if (menu_state == 99) {
+            g2.drawString(message, xtext, ytext);
+        }
+        
+        
+    }
+    
     public void drawBattleScreen(){
         //input battle bg
         try{
@@ -223,47 +395,12 @@ public class UI {
         //buat pas gambar tulisan di dialog windows
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,32F));
         
-        // teks atk
-        x += gp.tilesSize*3 + gp.tilesSize/2;
-        y += gp.tilesSize + gp.tilesSize/8;
-        g2.drawString("Attack", x, y);
-        if (commandNum == 0) {
-            x-= gp.tilesSize;
-            drawCursor(x, y);
-            //balikin ke posisi semula teks
-            x+= gp.tilesSize;
-        }
         
-        //teks backpack
-        y += gp.tilesSize + gp.tilesSize/16;
-        g2.drawString("Backpack", x, y);
-        if (commandNum == 1) {
-            x-= gp.tilesSize;
-            drawCursor(x, y);
-            //balikin ke posisi semula teks
-            x+= gp.tilesSize;
-        }
+        drawMainMenuBattle(x, y, x+gp.tilesSize,y+gp.tilesSize+(gp.tilesSize/2));
         
-        //teks party
-        //reset balik atas
-        y-= gp.tilesSize;
-        x = gp.screenWidth - gp.tilesSize*10 + gp.tilesSize/2;
-        g2.drawString("Party", x, y);
-        if (commandNum == 2) {
-            x-= gp.tilesSize;
-            drawCursor(x, y);
-            //balikin ke posisi semula teks
-            x+= gp.tilesSize;
-        }
-        
-        //teks run
-        y += gp.tilesSize + gp.tilesSize/16;
-        g2.drawString("Run", x, y);
-        if (commandNum == 3) {
-            x-= gp.tilesSize;
-            drawCursor(x, y);
-            //balikin ke posisi semula teks
-            x+= gp.tilesSize;
+        if (poke1.getHp() <= 0 ) {
+            poke1.revive(poke1.getMax_hp());
+            gp.gameState = gp.playState;
         }
         
     }
@@ -435,6 +572,12 @@ public class UI {
     public int getXforCenteredText(String text){
         int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2 - length/2;
+        return x;
+    }
+    
+    public int getXforAlignToRightText(String text, int tailX){
+        int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = tailX - length;
         return x;
     }
 }
