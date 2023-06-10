@@ -88,7 +88,4 @@ public class Pokemon {
         listpokemon.add(Zorua);
         listpokemon.add(Arceus);
     }
-    
-    
-    
 }

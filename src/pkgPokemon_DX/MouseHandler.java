@@ -6,6 +6,7 @@ package pkgPokemon_DX;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import poke.Pokemon;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.awt.event.MouseListener;
  */
 public class MouseHandler implements MouseListener{
     GamePanel gp;
+    Pokemon poke = new Pokemon();
     boolean clicked = false;
     
     
@@ -60,17 +62,20 @@ public class MouseHandler implements MouseListener{
             
             //cek klo salah satu dari choose monster button ditekan
             if((x >= 163 && x <= 356) && (y <= 264 && y >= 233 && gp.gameState == gp.storyState)){
+                gp.player.party.add(poke.Bulbasour);
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
                 
             }
             if((x >= 552 && x <= 747) && (y <= 264 && y >= 233 && gp.gameState == gp.storyState)){
+                gp.player.party.add(poke.Squirtle);
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);
             }
             if((x >= 932 && x <= 1127) && (y <= 264 && y >= 233 && gp.gameState == gp.storyState)){
+                gp.player.party.add(poke.Charmander);
                 gp.gameState = gp.playState;
                 gp.stopMusic();
                 gp.playMusic(y);

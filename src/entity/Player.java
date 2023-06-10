@@ -31,6 +31,7 @@ public class Player extends Entity{
     //inventory
     public  HashMap<String, Integer> inventory = new HashMap<>();
     public int coin;
+    public int partyIndex = 0;
     public ArrayList<Monster> party = new ArrayList<>();
     
     public Player(GamePanel gp, KeyHandler keyH){
@@ -44,6 +45,11 @@ public class Player extends Entity{
         solidArea = new Rectangle(8, 16, 31, 31);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
+        
+//        this.inventory.put("red_ball", 1);
+//        this.inventory.put("great_ball", 1);
+//        this.inventory.put("ultra_ball", 1);
+//        this.inventory.put("potion", 1);
         
         setDefaultValues();
         getPlayerImage();

@@ -238,6 +238,18 @@ public class UI {
             if (menu_state == 1) {
                 g2.drawString(poke2.skill.get(0).getNama(), x, y);
             }
+            if (menu_state == 2) {
+                g2.drawString("Poke ball", x, y);
+            }
+            if (menu_state == 21) {
+                g2.drawString("Red poke ball", x, y);
+            }
+            if (menu_state == 22) {
+                g2.drawString("Colbur berry", x, y);
+            }
+            if (menu_state == 23) {
+                g2.drawString("Potion", x, y);
+            }
             if (menu_state == 99) {
                 clearText(x, y);
             } 
@@ -264,6 +276,18 @@ public class UI {
             else if (menu_state == 1) {
                 g2.drawString(poke2.skill.get(1).getNama(), x, y);
             }
+            if (menu_state == 2) {
+                g2.drawString("Berries", x, y);
+            }
+            if (menu_state == 21) {
+                g2.drawString("Great ball", x, y);
+            }
+            if (menu_state == 22) {
+                g2.drawString("Chilan berry", x, y);
+            }
+            if (menu_state == 23) {
+                g2.drawString("Super potion", x, y);
+            }
             if (menu_state == 99) {
                 clearText(x, y);
             } 
@@ -289,6 +313,18 @@ public class UI {
             }
             else if (menu_state == 1) {
                 g2.drawString(poke2.skill.get(2).getNama(), x, y);
+            }
+            if (menu_state == 2) {
+                g2.drawString("Potion", x, y);
+            }
+            if (menu_state == 21) {
+                g2.drawString("Ultra ball", x, y);
+            }
+            if (menu_state == 22) {
+                g2.drawString("Rowap berry", x, y);
+            }
+            if (menu_state == 23) {
+                g2.drawString("Hyper potion", x, y);
             }
             if (menu_state == 99) {
                 clearText(x, y);
@@ -349,6 +385,8 @@ public class UI {
         catch(IOException e){
             e.printStackTrace();
         }
+        
+        g2.drawImage(bg_battle, 0, 0, gp.screenWidth, gp.screenHeight, null);
     }
     
     public void drawBattleScreen(){
@@ -358,7 +396,7 @@ public class UI {
             hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
 //            poke1 = ImageIO.read(getClass().getResourceAsStream("/battle/pikachu.png"));
             poke1 = pokemon.Axew;
-            poke2 = pokemon.Charmander;
+            poke2 = gp.player.party.get(gp.player.partyIndex);
         }
         catch(IOException e){
             e.printStackTrace();
@@ -476,6 +514,10 @@ public class UI {
              inventory_gui = ImageIO.read(getClass().getResourceAsStream("/game_gui/inventory_gui.png"));
              inventory_entity.put("key", ImageIO.read(getClass().getResourceAsStream("/objects/key.png")));
              inventory_entity.put("boots", ImageIO.read(getClass().getResourceAsStream("/objects/boots.png")));
+             inventory_entity.put("red_ball", ImageIO.read(getClass().getResourceAsStream("/objects/red_ball.png")));
+             inventory_entity.put("great_ball", ImageIO.read(getClass().getResourceAsStream("/objects/great_ball.png")));
+             inventory_entity.put("ultra_ball", ImageIO.read(getClass().getResourceAsStream("/objects/ultra_ball.png")));
+             inventory_entity.put("potion", ImageIO.read(getClass().getResourceAsStream("/objects/potion.png")));
          }
          
          catch(IOException e){
@@ -485,9 +527,9 @@ public class UI {
          g2.drawImage(inventory_gui, 420, 140, 497, 493, null);
          for(String key : gp.player.inventory.keySet()) {
              if(gp.player.inventory.get(key) > 0) {
-                g2.drawImage(inventory_entity.get(key), x_awal + 85 * (n_inventory % 6), y_awal + (n_inventory / 6), 48, 48, null);
+                g2.drawImage(inventory_entity.get(key), x_awal + 85 * (n_inventory % 5), y_awal + 85 * (n_inventory / 5), 48, 48, null);
                 JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
-                label.setBounds(x_awal_label + 85 * (n_inventory % 6), y_awal_label + (n_inventory / 6), 200, 30);
+                label.setBounds(x_awal_label + 85 * (n_inventory % 5), y_awal_label + 85 * (n_inventory / 5), 200, 30);
                 label.setForeground(Color.white);
                 gp.add(label);
                 n_inventory++;
