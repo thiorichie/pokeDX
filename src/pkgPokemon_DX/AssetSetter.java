@@ -10,6 +10,11 @@ import object.OBJ_Boots;
 import object.OBJ_Chest;
 import object.OBJ_Door;
 import object.OBJ_Key;
+import object.OBJ_Meja1;
+import object.OBJ_Meja2;
+import object.OBJ_Meja3;
+import object.OBJ_Meja4;
+import object.OBJ_Meja5;
 import object.rumah1;
 
 /**
@@ -48,5 +53,13 @@ public class AssetSetter {
         gp.obj[1][0] = new OBJ_Boots();
         gp.obj[1][0].worldX = 7 * gp.tilesSize;
         gp.obj[1][0].worldY = 14 * gp.tilesSize;
+         
+        gp.obj[4][5] = new NPC_f1();
+        gp.obj[4][5].worldX = 13 * gp.tilesSize;
+        gp.obj[4][5].worldY = 16 * gp.tilesSize;
+        
+        gp.obj[4][6] = new NPC_f1();
+        gp.obj[4][6].worldX = 15 * gp.tilesSize;
+        gp.obj[4][6].worldY = 16 * gp.tilesSize;
     }
 }
