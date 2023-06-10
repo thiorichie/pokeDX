@@ -5,6 +5,7 @@
 package pkgPokemon_DX;
 
 import java.awt.Rectangle;
+import java.util.Random;
 
 /**
  *
@@ -63,6 +64,7 @@ public class EventHandler {
             //event
             if (hit(0,17,10,"any") == true) {
                 teleport(1,7,13);
+                gp.currentMap = 1;
             }
             else if (hit(1,20,10,"any") == true) {
                 teleport(2,7, 14);
@@ -108,6 +110,12 @@ public class EventHandler {
         previousEventX = gp.player.worldX;
         previousEventY = gp.player.worldY;
         canTouchEvent = false;
+    }
+    
+    public void battle(int map,int col,int row){
+        Random rand = new Random();
+        gp.currentMap = map;
+        gp.gameState = gp.battleState;
     }
     
 }
