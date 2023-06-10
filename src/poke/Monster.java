@@ -17,16 +17,17 @@ import javax.imageio.ImageIO;
  */
 public class Monster {
     private String nama;
-    private int max_hp,hp,atk,lvl;
+    private int max_hp,hp,max_exp,curr_exp,lvl;
     private boolean alive;
     private BufferedImage character; 
     public ArrayList<Skill> skill = new ArrayList<>();
 
-    public Monster(String nama, int max_hp, int hp, int atk, int lvl, String char_path) {
+    public Monster(String nama, int max_hp, int hp, int lvl, String char_path) {
         this.nama = nama;
         this.max_hp = max_hp;
         this.hp = hp;
-        this.atk = atk;
+        this.curr_exp = 0;
+        this.max_exp = lvl*10;
         this.lvl = lvl;
         alive = true;
         setCharacter(char_path);
@@ -81,13 +82,7 @@ public class Monster {
         this.hp = hp;
     }
 
-    public int getAtk() {
-        return atk;
-    }
-
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
+    
 
     public int getLvl() {
         return lvl;
@@ -111,10 +106,39 @@ public class Monster {
             System.out.println("You cannot revive");
         }
     }
+    
+    public void levelUp(){
+        if (alive) {
+            lvl+=1;
+            max_hp+=50;
+            hp = max_hp;
+            curr_exp = 0;
+            max_exp = lvl*10;
+        }
+        
+    }
+
+    public int getMax_exp() {
+        return max_exp;
+    }
+
+    public void setMax_exp(int max_exp) {
+        this.max_exp = max_exp;
+    }
+
+    public int getCurr_exp() {
+        return curr_exp;
+    }
+
+    public void setCurr_exp(int curr_exp) {
+        this.curr_exp = curr_exp;
+    }
+    
+    
 
     @Override
     public String toString() {
-        return "Pokemon{" + "nama=" + nama + ", max_hp=" + max_hp + ", hp=" + hp + ", atk=" + atk + ", lvl=" + lvl + " ";
+        return "Pokemon " + nama + ", max_hp=" + max_hp + ", hp=" + hp + ", curr_exp=" + curr_exp + ", lvl=" + lvl + ". ";
     }
     
 }
