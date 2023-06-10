@@ -109,11 +109,19 @@ public class KeyHandler implements KeyListener{
                 }
             }
             
+            // untuk enter lnjtin dr pop up text
             if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 99) {
                 // cek dlu enemy udh gerak lom
-                if (gp.ui.isEnemyAct) {
+                if (gp.ui.TextPopup) {
                     gp.ui.menu_state = 0;
-                    gp.ui.isEnemyAct = false;
+                    gp.ui.TextPopup = false;
+                }
+                else if (gp.ui.flee) {
+                    gp.ui.menu_state = 0;
+                    gp.ui.TextPopup = false;
+                    gp.gameState = gp.playState;
+                    //reset
+                    gp.ui.flee =false;
                 }
                 else{
                     gp.ui.commandNum = 0;
@@ -159,7 +167,7 @@ public class KeyHandler implements KeyListener{
                 }
                 if (gp.ui.commandNum == 3) {
                     gp.ui.commandNum = 0;
-                    gp.gameState = gp.playState;
+                    gp.ui.flee = true;
                 }
             }
             

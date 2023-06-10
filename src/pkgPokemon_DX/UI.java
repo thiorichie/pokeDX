@@ -58,7 +58,10 @@ public class UI {
     Pokemon pokemon = new Pokemon();
     Monster poke1,poke2;
     Random rand = new Random();
-    public Boolean isEnemyAct = false;
+    public boolean TextPopup = false;
+    public boolean isBattleOver = false;
+    public boolean lvlUp = false;
+    public boolean flee = false;
     
     //menu state
     public int menu_state = 0;
@@ -190,7 +193,7 @@ public class UI {
             poke1.setHp(poke1.getHp()+heal);
             message = poke1.getNama() + " heals "+ heal + " hp!";
         }
-        isEnemyAct = true;
+        TextPopup = true;
     }
     
     public void action(int atk, int heal, Monster p, Monster e){
@@ -216,8 +219,8 @@ public class UI {
         //buat clear pesan / message
         if (menu_state != 99) {
             clearText(xtext, ytext);
+            clearText(xtext, ytext+ gp.tilesSize + gp.tilesSize / 4);
         }
-        
         
         // teks atk
         x += gp.tilesSize*3 + gp.tilesSize/2;
@@ -226,7 +229,8 @@ public class UI {
 //        System.out.println(poke2.skill.get(0).getNama());
         try {
             if (menu_state == 0) {
-                System.out.println(poke2.skill.get(0).getNama());
+                System.out.println("menu state 0");
+                
                 g2.drawString("Attack", x, y);
             } 
             if (menu_state == 1) {
@@ -323,7 +327,12 @@ public class UI {
         
         //tampilin message
         if (menu_state == 99) {
-            g2.drawString(message, xtext, ytext);
+            int temp_ytext = ytext;
+            for (String line : message.split("\n")) {
+                g2.drawString(line, xtext, ytext);
+                ytext += gp.tilesSize + gp.tilesSize / 4;
+            }
+            ytext = temp_ytext;
         }
         
         
@@ -340,6 +349,22 @@ public class UI {
         }
         catch(IOException e){
             e.printStackTrace();
+        }
+        
+        // buat tampilin msg klo ada pokemon kita yg lvl up
+        if (lvlUp && menu_state!=99) {
+            poke2.levelUp();
+            message = poke2.getNama() + " level up!,\n"+ poke2.getNama() + " is now lvl "+ poke2.getLvl() + ".";
+            isBattleOver = true;
+            menu_state = 99;
+            TextPopup = true;
+            //reset
+            lvlUp = false;
+        }
+        
+        if (flee && menu_state != 99) {
+            message = "Player got away safely!";
+            menu_state = 99;
         }
         
         int x_name=gp.tilesSize*2;
@@ -396,11 +421,33 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,32F));
         
         
-        drawMainMenuBattle(x, y, x+gp.tilesSize,y+gp.tilesSize+(gp.tilesSize/2));
+        drawMainMenuBattle(x, y, x+gp.tilesSize,y+gp.tilesSize);
         
-        if (poke1.getHp() <= 0 ) {
+        //taruh nde bwh draw main menu battle ini biar tulisannya ke clear
+        // klo battle state udh selesai
+        if (isBattleOver && menu_state!=99) {
             poke1.revive(poke1.getMax_hp());
             gp.gameState = gp.playState;
+            //debug
+            System.out.println(poke2);
+            
+            //reset 
+            isBattleOver =false;
+        }
+        
+        if (poke1.getHp() <= 0 && isBattleOver == false) {
+            message = "You recieved " + poke1.getMax_hp()/5 + " coin and " + poke1.getLvl()*5 +" exp.";
+            gp.player.coin += poke1.getMax_hp()/5;
+            if (poke2.getCurr_exp() + poke1.getLvl()*5 >= poke2.getMax_exp()) {
+                lvlUp = true;
+            }
+            else{
+                poke2.setCurr_exp(poke2.getCurr_exp()+poke1.getLvl()*5);
+                isBattleOver = true;
+            }
+            //niar dialog tampil
+            menu_state = 99;
+            TextPopup = true;
         }
         
     }

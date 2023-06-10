@@ -9,27 +9,35 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import pkgPokemon_DX.GamePanel;
 import pkgPokemon_DX.KeyHandler;
 import java.util.HashMap;
+import poke.Monster;
 
 /**
  *
  * @author thior
  */
 public class Player extends Entity{
-    public  HashMap<String, Integer> inventory = new HashMap<>();
+    
     GamePanel gp;
     KeyHandler keyH;
     
     public final int screenX;
     public final int screenY;
     
+    //inventory
+    public  HashMap<String, Integer> inventory = new HashMap<>();
+    public int coin;
+    public ArrayList<Monster> party = new ArrayList<>();
+    
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
         
+        coin = 200;
         screenX = gp.screenWidth / 2 - (gp.tilesSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tilesSize / 2);
         
