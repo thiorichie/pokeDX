@@ -62,14 +62,20 @@ public class EventHandler {
 
         if (canTouchEvent == true) {
             //event
+            //tele map village
             if (hit(0,17,10,"any") == true) {
                 teleport(1,7,13);
-                gp.currentMap = 1;
             }
-            else if (hit(1,20,10,"any") == true) {
-                teleport(2,7, 14);
-            }else if (hit(2,11,17,"up") == true) {
-                teleport(0,17,10);
+            else if (hit(1,9,17,"up") == true) {
+                teleport(2,7, 13);
+            }else if (hit(1,19,17,"up") == true) {
+                teleport(3,7,13);
+            }else if (hit(1,14,25,"up") == true) {
+                teleport(4,7,13);
+            }else if (hit(1,9,31,"up") == true) {
+                teleport(5,7,13);
+            }else if (hit(1,19,31,"up") == true) {
+                teleport(6,7,13);
             }
         }
     }

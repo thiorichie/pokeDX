@@ -31,8 +31,9 @@ public class TileManager {
         loadMap("/maps/Village.txt",1);
         loadMap("/maps/Rumah1.txt",2);
         loadMap("/maps/Rumah2.txt",3);
-        loadMap("/maps/protomap002.txt",1);
-        loadMap("/maps/Village.txt", 2);
+        loadMap("/maps/Rumah3.txt",4);
+        loadMap("/maps/Rumah4.txt",5);
+        loadMap("/maps/Rumah5.txt",6);
     }
     
     public void getTileImage(){
@@ -197,7 +198,6 @@ public class TileManager {
             
             tile[41] = new Tile();
             tile[41].image = ImageIO.read(getClass().getResourceAsStream("/rumah3/8.png"));
-            tile[41].collision = true;
             
             tile[42] = new Tile();
             tile[42].image = ImageIO.read(getClass().getResourceAsStream("/rumah3/9.png"));
@@ -233,7 +233,6 @@ public class TileManager {
             
             tile[50] = new Tile();
             tile[50].image = ImageIO.read(getClass().getResourceAsStream("/rumah4/8.png"));
-            tile[50].collision = true;
             
             tile[51] = new Tile();
             tile[51].image = ImageIO.read(getClass().getResourceAsStream("/rumah4/9.png"));
