@@ -103,7 +103,6 @@ public class UI {
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2.setColor(Color.white);
         
-        
         if(gp.gameState == gp.playState){
             drawGameUI();
         }
@@ -124,6 +123,9 @@ public class UI {
         }
         if (gp.gameState == gp.battleState) {
             drawBattleScreen();
+        }
+        if (gp.gameState == gp.backpackState) {
+            drawBackpackScreen();
         }
     }
     
@@ -334,8 +336,19 @@ public class UI {
             }
             ytext = temp_ytext;
         }
-        
-        
+    }
+    
+    public void drawBackpackScreen() {
+        try{
+            bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
+            hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
+//            poke1 = ImageIO.read(getClass().getResourceAsStream("/battle/pikachu.png"));
+            poke1 = pokemon.Axew;
+            poke2 = pokemon.Charmander;
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
     public void drawBattleScreen(){
