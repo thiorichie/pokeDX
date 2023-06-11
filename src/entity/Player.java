@@ -187,6 +187,14 @@ public class Player extends Entity{
                         gp.currentNPC.speak(gp);
                     }
                     break;
+                case "Meja2":
+                    //bool still speaking buat cek msh ngmg ta ga npc e
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
+                        gp.gameState = gp.dialogueState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                        gp.currentNPC.speak(gp);
+                    }
+                break;
             }
         }
     }

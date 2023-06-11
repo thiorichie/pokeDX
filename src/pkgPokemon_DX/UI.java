@@ -394,7 +394,6 @@ public class UI {
         try{
             bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
             hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
-//            poke1 = ImageIO.read(getClass().getResourceAsStream("/battle/pikachu.png"));
             poke1 = pokemon.Axew;
             poke2 = gp.player.party.get(gp.player.partyIndex);
         }

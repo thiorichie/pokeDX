@@ -15,7 +15,7 @@ import object.OBJ_Chest;
 import object.OBJ_Door;
 import object.OBJ_Key;
 import object.OBJ_Meja1;
-import object.OBJ_Meja2;
+import OBJ_Rumah3.OBJ_Meja2;
 import object.OBJ_Meja3;
 import object.OBJ_Meja4;
 import object.OBJ_Meja5;
@@ -209,5 +209,9 @@ public class AssetSetter {
         gp.obj[4][40] = new chair();
         gp.obj[4][40].worldX = 21 * gp.tilesSize;
         gp.obj[4][40].worldY = 21 * gp.tilesSize;
+        
+        gp.obj[4][41] = new OBJ_Meja2();
+        gp.obj[4][41].worldX = 14 * gp.tilesSize;
+        gp.obj[4][41].worldY = 17 * gp.tilesSize;
     }
 }

@@ -117,6 +117,13 @@ public class Monster {
         }
         
     }
+    
+    public void restoreHP(){
+        if (alive) {
+            this.hp = max_hp;
+            System.out.println("Restore Hp succes!!");
+        }
+    }
 
     public int getMax_exp() {
         return max_exp;
