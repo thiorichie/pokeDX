@@ -72,7 +72,9 @@ public class EventHandler {
                 teleport(3,7,13);
             }else if (hit(1,14,25,"up") == true) {
                 teleport(4,14,23);
-            }else if (hit(1,9,31,"up") == true) {
+            }else if (hit(4,14,23,"down") == true) {
+                teleport(1,14,25);
+            } else if (hit(1,9,31,"up") == true) {
                 teleport(5,7,13);
             }else if (hit(1,19,31,"up") == true) {
                 teleport(6,7,13);

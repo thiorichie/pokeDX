@@ -7,7 +7,6 @@ package pkgPokemon_DX;
 import OBJ_Rumah3.bed1;
 import OBJ_Rumah3.bed2;
 import OBJ_Rumah3.chair;
-import OBJ_Rumah3.lab;
 import OBJ_Rumah3.lift1;
 import object.NPC_f1;
 import object.NPC_f2;

@@ -50,8 +50,7 @@ public class TileManager {
             tile[2].collision = true;
             
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/fence_vertical.png"));
-            tile[3].collision = true;
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/23.png"));
             
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/tree.png"));
@@ -389,14 +388,19 @@ public class TileManager {
             tile[94].image = ImageIO.read(getClass().getResourceAsStream("/indoor/17.png"));
             tile[94].collision = true;
             
-//            tile[95] = new Tile();
-//            tile[95].image = ImageIO.read(getClass().getResourceAsStream("/indoor/18.png"));
-//            tile[95].collision = true;
-//            
-//            tile[96] = new Tile();
-//            tile[96].image = ImageIO.read(getClass().getResourceAsStream("/indoor/19.png"));
-//            tile[96].collision = true;
+            tile[95] = new Tile();
+            tile[95].image = ImageIO.read(getClass().getResourceAsStream("/tiles/22.png"));
             
+            tile[96] = new Tile();
+            tile[96].image = ImageIO.read(getClass().getResourceAsStream("/tiles/24.png"));
+            
+            tile[97] = new Tile();
+            tile[97].image = ImageIO.read(getClass().getResourceAsStream("/tiles/25.png"));
+            tile[97].collision = true;
+            
+            tile[98] = new Tile();
+            tile[98].image = ImageIO.read(getClass().getResourceAsStream("/tiles/26.png"));
+            tile[98].collision = true;
             
         } 
         catch (IOException e) {
