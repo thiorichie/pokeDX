@@ -17,6 +17,7 @@ public class EventHandler {
     eventRect eventrect[][][];
 
     int previousEventX, previousEventY;
+    Random rand = new Random();
     boolean canTouchEvent = true;
 
     public EventHandler(GamePanel gp) {
@@ -63,21 +64,26 @@ public class EventHandler {
         if (canTouchEvent == true) {
             //event
             //tele map village
-            if (hit(0,17,10,"any") == true) {
-                teleport(1,7,13);
-            }
-            else if (hit(1,9,17,"up") == true) {
-                teleport(2,7, 13);
-            }else if (hit(1,19,17,"up") == true) {
-                teleport(3,7,13);
-            }else if (hit(1,14,25,"up") == true) {
-                teleport(4,14,23);
-            }else if (hit(4,14,23,"down") == true) {
-                teleport(1,14,25);
-            } else if (hit(1,9,31,"up") == true) {
-                teleport(5,7,13);
-            }else if (hit(1,19,31,"up") == true) {
-                teleport(6,7,13);
+            if (hit(0, 17, 10, "any") == true) {
+                teleport(1, 7, 13);
+            } else if (hit(1, 9, 17, "up") == true) {
+                teleport(2, 7, 13);
+            } else if (hit(1, 19, 17, "up") == true) {
+                teleport(3, 7, 13);
+            } else if (hit(1, 14, 25, "up") == true) {
+                teleport(4, 14, 23);
+            } else if (hit(4, 14, 23, "down") == true) {
+                teleport(1, 14, 25);
+            } else if (hit(1, 9, 31, "up") == true) {
+                teleport(5, 7, 13);
+            } else if (hit(1, 19, 31, "up") == true) {
+                teleport(6, 7, 13);
+            } else if (hitArea(0, 8, 8,22,10, "any") == true) {
+                battle();
+//                int random_battle = rand.nextInt(1, 11);
+//                if (random_battle == 6) {
+//                    battle();
+//                }
             }
         }
     }
@@ -96,7 +102,6 @@ public class EventHandler {
             if (gp.player.solidArea.intersects(eventrect[map][col][row]) && eventrect[map][col][row].eventDone == false) {
                 if (gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")) {
                     hit = true;
-
                     previousEventX = gp.player.worldX;
                     previousEventY = gp.player.worldY;
                 }
@@ -111,7 +116,39 @@ public class EventHandler {
         return hit;
     }
 
-    public void teleport(int map,int col,int row) {
+    public boolean hitArea(int map, int col, int row, int makscol, int maksrow, String reqDirection) {
+
+        boolean hit = false;
+
+        if (map == gp.currentMap) {
+            gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
+            gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
+            //ngambil solid area eventrect
+            for (int i = col; i < makscol; i++) {
+                for (int j = row; j < maksrow; j++) {
+                    eventrect[map][i][j].x = i * gp.tilesSize + eventrect[map][i][j].x;
+                    eventrect[map][i][j].y = j * gp.tilesSize + eventrect[map][i][j].y;
+
+                    if (gp.player.solidArea.intersects(eventrect[map][i][j]) && eventrect[map][i][j].eventDone == false) {
+                        if (gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")) {
+                            hit = true;
+                            previousEventX = gp.player.worldX;
+                            previousEventY = gp.player.worldY;
+                        }
+                    }
+
+                    gp.player.solidArea.x = gp.player.solidAreaDefaultX;
+                    gp.player.solidArea.y = gp.player.solidAreaDefaultY;
+                    eventrect[map][i][j].x = eventrect[map][i][j].eventRectDefaultX;
+                    eventrect[map][i][j].y = eventrect[map][i][j].eventRectDefaultY;
+                }
+            }
+        }
+
+        return hit;
+    }
+
+    public void teleport(int map, int col, int row) {
         gp.currentMap = map;
         gp.player.worldX = gp.tilesSize * col;
         gp.player.worldY = gp.tilesSize * row;
@@ -119,11 +156,18 @@ public class EventHandler {
         previousEventY = gp.player.worldY;
         canTouchEvent = false;
     }
-    
-    public void battle(int map,int col,int row){
-        Random rand = new Random();
-        gp.currentMap = map;
+
+    public void battle() {
         gp.gameState = gp.battleState;
+        int random_monster_chance = rand.nextInt(1, 10);
+        int random_monster_rare = rand.nextInt(8, 11);
+        int random_monster_normal = rand.nextInt(3, 6);
+        if (random_monster_chance <= 8) {
+            gp.ui.poke1 = gp.ui.pokemon.listpokemon.get(random_monster_normal);
+        } else if (random_monster_chance >= 9) {
+            gp.ui.poke1 = gp.ui.pokemon.listpokemon.get(random_monster_rare);
+        }
+        canTouchEvent = false;
     }
-    
+
 }
