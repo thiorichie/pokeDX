@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/Rumah3.txt</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/Main.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/objects/boots.png</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Key.java</file>
@@ -10,20 +11,25 @@
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/objects/chest.png</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/GamePanel.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/objects/key.png</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Meja2.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/map01.txt</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Meja5.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/tile/TileManager.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/poke/Monster.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/CollisionChecker.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/tile/Tile.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/Rumah2.txt</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/poke/Misdreavus.png</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Meja1.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Boots.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/AssetSetter.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/Sound.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/poke/Pokemon.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/world01.txt</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Meja4.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/Rumah1.txt</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/poke/Zorua.png</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/Village.txt</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/UtilityTool.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/poke/Skill.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/entity/Entity.java</file>
@@ -31,30 +37,20 @@
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/protomap001.txt</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/EventHandler.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/NPC_f1.java</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Chest.java</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Meja3.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/NPC/f-1.png</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/MouseHandler.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/SuperObject.java</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/Rumah4.txt</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/objects/door.png</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/poke/Zekrom.png</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/pkgPokemon_DX/UI.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/OBJ_Door.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/entity/Player.java</file>
+            <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/Rumah5.txt</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/object/NPC_f2.java</file>
             <file>file:/C:/Users/WILLIAM/OneDrive/Documents/GitHub/pokeDX/src/maps/message.txt</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/pkgPokemon_DX/UI.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/poke/Skill.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/object/NPC_f2.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/poke/Monster.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/pkgPokemon_DX/MouseHandler.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/poke/Pokemon.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/pkgPokemon_DX/CollisionChecker.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/pkgPokemon_DX/AssetSetter.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/object/SuperObject.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/pkgPokemon_DX/GamePanel.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/object/NPC_f1.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/entity/Player.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/pkgPokemon_DX/KeyHandler.java</file>
-            <file>file:/C:/Users/Richcie/Desktop/pokeDX/src/pkgPokemon_DX/Main.java</file>
         </group>
     </open-files>
 </project-private>

@@ -357,6 +357,46 @@ public class TileManager {
             tile[86].image = ImageIO.read(getClass().getResourceAsStream("/indoor/9.png"));
             tile[86].collision = true;
             
+            tile[87] = new Tile();
+            tile[87].image = ImageIO.read(getClass().getResourceAsStream("/indoor/10.png"));
+            tile[87].collision = true;
+            
+            tile[88] = new Tile();
+            tile[88].image = ImageIO.read(getClass().getResourceAsStream("/indoor/11.png"));
+            tile[88].collision = true;
+            
+            tile[89] = new Tile();
+            tile[89].image = ImageIO.read(getClass().getResourceAsStream("/indoor/12.png"));
+            tile[89].collision = true;
+            
+            tile[90] = new Tile();
+            tile[90].image = ImageIO.read(getClass().getResourceAsStream("/indoor/13.png"));
+            tile[90].collision = true;
+            
+            tile[91] = new Tile();
+            tile[91].image = ImageIO.read(getClass().getResourceAsStream("/indoor/14.png"));
+            tile[91].collision = true;
+            
+            tile[92] = new Tile();
+            tile[92].image = ImageIO.read(getClass().getResourceAsStream("/indoor/15.png"));
+            tile[92].collision = true;
+            
+            tile[93] = new Tile();
+            tile[93].image = ImageIO.read(getClass().getResourceAsStream("/indoor/16.png"));
+            tile[93].collision = true;
+            
+            tile[94] = new Tile();
+            tile[94].image = ImageIO.read(getClass().getResourceAsStream("/indoor/17.png"));
+            tile[94].collision = true;
+            
+//            tile[95] = new Tile();
+//            tile[95].image = ImageIO.read(getClass().getResourceAsStream("/indoor/18.png"));
+//            tile[95].collision = true;
+//            
+//            tile[96] = new Tile();
+//            tile[96].image = ImageIO.read(getClass().getResourceAsStream("/indoor/19.png"));
+//            tile[96].collision = true;
+            
             
         } 
         catch (IOException e) {
