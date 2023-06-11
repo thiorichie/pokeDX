@@ -38,6 +38,16 @@ public class Skill {
         return heal;
     }
 
+    public void setDmg(int dmg) {
+        this.dmg = dmg;
+    }
+
+    public void setHeal(int heal) {
+        this.heal = heal;
+    }
+    
+    
+
     @Override
     public String toString() {
         //buat tampung string hasil

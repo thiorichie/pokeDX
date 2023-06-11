@@ -220,10 +220,10 @@ public class UI {
     private void drawMainMenuBattle(int x, int y,int xtext,int ytext){
         
         //buat clear pesan / message
-        if (menu_state != 99) {
+//        if (menu_state != 99) {
 //            clearText(xtext, ytext);
 //            clearText(xtext, ytext+ gp.tilesSize + gp.tilesSize / 4);
-        }
+//        }
         
         // teks atk
         x += gp.tilesSize*3 + gp.tilesSize/2;
@@ -393,6 +393,16 @@ public class UI {
         }
     }
     
+    public boolean cekPartyAlive(){
+        boolean status = false;
+        for (Monster party : gp.player.party) {
+            if (party.getStatus()) {
+               status = true; 
+            }
+        }
+        return status;
+    }
+    
     public void drawBackpackScreen() {
         try{
             bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
@@ -502,6 +512,8 @@ public class UI {
             
             //reset 
             isBattleOver =false;
+            //reset index
+            gp.player.partyIndex = 0;
         }
         
         if (poke1.getHp() <= 0 && isBattleOver == false) {
@@ -514,9 +526,26 @@ public class UI {
                 poke2.setCurr_exp(poke2.getCurr_exp()+poke1.getLvl()*5);
                 isBattleOver = true;
             }
-            //niar dialog tampil
+            //biar dialog tampil
             menu_state = 99;
             TextPopup = true;
+        }
+        else if (poke2.getHp() <= 0) {
+            if (cekPartyAlive() == false) {
+                message = "Your pokemon fainted! \nYou have no other pokemon left!";
+                isBattleOver = true;
+                menu_state = 99;
+                TextPopup = true;
+            }
+            else{
+                message = poke2.getNama() +" has fainted!";
+                gp.player.partyIndex++;
+                poke2 = gp.player.party.get(gp.player.partyIndex);
+                //tampilin msg
+                menu_state = 99;
+                TextPopup = true;
+            }
+            
         }
         
     }
