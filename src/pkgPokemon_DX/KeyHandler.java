@@ -98,6 +98,9 @@ public class KeyHandler implements KeyListener{
                 else if(gp.ui.commandNum < 0 && gp.ui.menu_state == 2) {
                     gp.ui.commandNum = 2;
                 }
+                else if (gp.ui.commandNum < 0 && gp.ui.menu_state == 3) {
+                    gp.ui.commandNum = gp.player.party.size() -1;
+                }
                 else if(gp.ui.commandNum < 0 && gp.ui.menu_state >= 21 && gp.ui.menu_state >= 23) {
                     gp.ui.commandNum = 2;
                 }
@@ -112,6 +115,9 @@ public class KeyHandler implements KeyListener{
                     gp.ui.commandNum = 0;
                 }
                 else if(gp.ui.commandNum > 2 && gp.ui.menu_state == 2) {
+                    gp.ui.commandNum = 0;
+                }
+                else if (gp.ui.commandNum >= gp.player.party.size() && gp.ui.menu_state == 3) {
                     gp.ui.commandNum = 0;
                 }
                 else if(gp.ui.commandNum > 2 && gp.ui.menu_state >= 21 && gp.ui.menu_state >= 23) {
@@ -135,6 +141,12 @@ public class KeyHandler implements KeyListener{
                     gp.gameState = gp.playState;
                     //reset
                     gp.ui.flee =false;
+                } else if(gp.ui.catchPokemon) {
+                    gp.gameState = gp.playState;
+                    gp.ui.menu_state = 0;
+                    gp.ui.TextPopup = false;
+                    gp.ui.catchPokemon = false;
+                    System.out.println("masuk di catch pokemon");
                 }
                 else{
                     gp.ui.commandNum = 0;
@@ -142,11 +154,20 @@ public class KeyHandler implements KeyListener{
                 }
             }
             
+            else if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 3) {
+                if(gp.player.partyIndex != gp.ui.commandNum) {
+                    gp.player.partyIndex = gp.ui.commandNum;
+                    gp.ui.message = "You switched to " + gp.player.party.get(gp.player.partyIndex).getNama() + " !";
+                } else gp.ui.message = "Pokemon is in battle !";
+                gp.ui.TextPopup = true;
+                gp.ui.menu_state = 99;
+            }
+            
             else if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 23) {
                 Monster playerPokemon = gp.player.party.get(0);
                 if (gp.ui.commandNum == 0) {
                     if(gp.player.inventory.containsKey("potion")) {
-                        if(gp.player.inventory.get("potion") - 1 >= 0) {
+                        if(gp.player.inventory.get("potion") > 0) {
                             gp.ui.message = "Potion consumed to your pokemon !";
                             if(playerPokemon.getHp() + 20 > playerPokemon.getMax_hp()) playerPokemon.setHp(playerPokemon.getMax_hp());
                             else playerPokemon.setHp(playerPokemon.getHp() + 20);
@@ -160,7 +181,7 @@ public class KeyHandler implements KeyListener{
                 }
                 if (gp.ui.commandNum == 1) {
                     if(gp.player.inventory.containsKey("super_potion")) {
-                        if(gp.player.inventory.get("super_potion") - 1 >= 0) {
+                        if(gp.player.inventory.get("super_potion") > 0) {
                             gp.ui.message = "Super potion consumed to your pokemon !";
                             if(playerPokemon.getHp() + 50 > playerPokemon.getMax_hp()) playerPokemon.setHp(playerPokemon.getMax_hp());
                             else playerPokemon.setHp(playerPokemon.getHp() + 50);
@@ -174,7 +195,7 @@ public class KeyHandler implements KeyListener{
                 }
                 if (gp.ui.commandNum == 2) {
                     if(gp.player.inventory.containsKey("hyper_potion")) {
-                        if(gp.player.inventory.get("hyper_potion") - 1 >= 0) {
+                        if(gp.player.inventory.get("hyper_potion") > 0) {
                             gp.ui.message = "Hyper potion consumed to your pokemon !";
                             if(playerPokemon.getHp() + 200 > playerPokemon.getMax_hp()) playerPokemon.setHp(playerPokemon.getMax_hp());
                             else playerPokemon.setHp(playerPokemon.getHp() + 200);
@@ -194,7 +215,7 @@ public class KeyHandler implements KeyListener{
                 Monster playerPokemon = gp.player.party.get(0);
                 if (gp.ui.commandNum == 0) {
                     if(gp.player.inventory.containsKey("colbur_berry")) {
-                        if(gp.player.inventory.get("colbur_berry") - 1 >= 0) {
+                        if(gp.player.inventory.get("colbur_berry") > 0) {
                             gp.ui.message = "Colbur berry consumed to your pokemon !";
                             if(playerPokemon.getHp() + 25 > playerPokemon.getMax_hp()) playerPokemon.setHp(playerPokemon.getMax_hp());
                             else playerPokemon.setHp(playerPokemon.getHp() + 25);
@@ -208,7 +229,7 @@ public class KeyHandler implements KeyListener{
                 }
                 if (gp.ui.commandNum == 1) {
                     if(gp.player.inventory.containsKey("chilan_berry")) {
-                        if(gp.player.inventory.get("chilan_berry") - 1 >= 0) {
+                        if(gp.player.inventory.get("chilan_berry") > 0) {
                             gp.ui.message = "Chilan berry consumed to your pokemon !";
                             if(playerPokemon.getHp() + 50 > playerPokemon.getMax_hp()) playerPokemon.setHp(playerPokemon.getMax_hp());
                             else playerPokemon.setHp(playerPokemon.getHp() + 50);
@@ -222,7 +243,7 @@ public class KeyHandler implements KeyListener{
                 }
                 if (gp.ui.commandNum == 2) {
                     if(gp.player.inventory.containsKey("rowap_berry")) {
-                        if(gp.player.inventory.get("rowap_berry") - 1 >= 0) {
+                        if(gp.player.inventory.get("rowap_berry") > 0) {
                             gp.ui.message = "Rowap berry consumed to your pokemon !";
                             if(playerPokemon.getHp() + 75 > playerPokemon.getMax_hp()) playerPokemon.setHp(playerPokemon.getMax_hp());
                             else playerPokemon.setHp(playerPokemon.getHp() + 75);
@@ -240,56 +261,85 @@ public class KeyHandler implements KeyListener{
             
             else if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 21) {
                 int getIndex = (new Random()).nextInt(0, 101);
-                if (gp.ui.commandNum == 0) {
-                    if(gp.player.inventory.containsKey("red_poke_ball")) {
-                        if(gp.player.inventory.get("red_poke_ball") - 1 >= 0) {
-                            if(getIndex <= 50) {
-                                gp.ui.message = "You successfully captured the " + gp.ui.poke2.getNama() + " !";
-                                gp.player.party.add(gp.ui.poke2);
-                            } 
-                            else gp.ui.message ="The " + gp.ui.poke2.getNama() + " escaped the capture !";
-                            gp.player.inventory.put("red_poke_ball", gp.player.inventory.get("red_poke_ball") - 1);
-                        } else {
-                            gp.ui.message = "Red poke ball is empty !";
-                        }
-                    } else {
-                         gp.ui.message = "You don't have any red poke ball !";
+                boolean pokemonExist = false;
+                for(Monster party : gp.player.party) {
+                    if(gp.ui.poke1.getNama().equalsIgnoreCase(party.getNama())) {
+                        pokemonExist = true;
+                        break;
                     }
                 }
-                if (gp.ui.commandNum == 1) {
-                    if(gp.player.inventory.containsKey("great_ball")) {
-                        if(gp.player.inventory.get("great_ball") - 1 >= 0) {
-                            if(getIndex <= 75) {
-                                gp.ui.message = "You successfully captured the " + gp.ui.poke2.getNama() + " !";
-                                gp.player.party.add(gp.ui.poke2);
-                            } 
-                            else gp.ui.message ="The " + gp.ui.poke2.getNama() + " escaped the capture !";
-                            gp.player.inventory.put("great_ball", gp.player.inventory.get("great_ball") - 1);
+                if(pokemonExist) {
+                    gp.ui.message = "Pokemon already exist in party !";
+                    gp.ui.TextPopup = true;
+                } else if(gp.player.party.size() == 4) {
+                    gp.ui.message = "Pokemon party already reached it limits (4) !";
+                    gp.ui.TextPopup = true;
+                } else {
+                    if (gp.ui.commandNum == 0) {
+                        if(gp.player.inventory.containsKey("red_poke_ball")) {
+                            if(gp.player.inventory.get("red_poke_ball") > 0) {
+                                if(getIndex <= 50) {
+                                    gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
+                                    gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
+                                    gp.ui.catchPokemon = true;
+                                } 
+                                else {
+                                    gp.ui.message ="Oh no ! The " + gp.ui.poke1.getNama() + " escaped the capture !";
+                                    gp.ui.TextPopup = true;
+                                }
+                                gp.player.inventory.put("red_poke_ball", gp.player.inventory.get("red_poke_ball") - 1);
+                            } else {
+                                gp.ui.message = "Red poke ball is empty !";
+                                gp.ui.TextPopup = true;
+                            }
                         } else {
-                            gp.ui.message = "Great ball is empty !";
+                            gp.ui.message = "You don't have any red poke ball !";
+                            gp.ui.TextPopup = true;
                         }
-                    } else {
-                         gp.ui.message = "You don't have any great ball !";
+                    }
+                    if (gp.ui.commandNum == 1) {
+                        if(gp.player.inventory.containsKey("great_ball")) {
+                            if(gp.player.inventory.get("great_ball") > 0) {
+                                if(getIndex <= 75) {
+                                    gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
+                                    gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
+                                    gp.ui.catchPokemon = true;
+                                } 
+                                else {
+                                    gp.ui.message ="Oh no ! The " + gp.ui.poke1.getNama() + " escaped the capture !";
+                                    gp.ui.TextPopup = true;
+                                }
+                                gp.player.inventory.put("great_ball", gp.player.inventory.get("great_ball") - 1);
+                            } else {
+                                gp.ui.message = "Great ball is empty !";
+                                gp.ui.TextPopup = true;
+                            }
+                        } else {
+                            gp.ui.message = "You don't have any great ball !";
+                            gp.ui.TextPopup = true;
+                        }
+                    }
+                    if (gp.ui.commandNum == 2) {
+                        if(gp.player.inventory.containsKey("ultra_ball")) {
+                            if(gp.player.inventory.get("ultra_ball") > 0) {
+                                gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
+                                gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
+                                gp.ui.catchPokemon = true;
+                                gp.player.inventory.put("ultra_ball", gp.player.inventory.get("ultra_ball") - 1);
+                            } else {
+                                gp.ui.message = "Ultra ball is empty !";
+                                gp.ui.TextPopup = true;
+                            }
+                        } else {
+                            gp.ui.message = "You don't have any ultra ball !";
+                            gp.ui.TextPopup = true;
+                        }
                     }
                 }
-                if (gp.ui.commandNum == 2) {
-                    if(gp.player.inventory.containsKey("ultra_ball")) {
-                        if(gp.player.inventory.get("ultra_ball") - 1 >= 0) {
-                            gp.ui.message = "You successfully captured the " + gp.ui.poke2.getNama() + " !";
-                            gp.player.party.add(gp.ui.poke2);
-                            gp.player.inventory.put("ultra_ball", gp.player.inventory.get("ultra_ball") - 1);
-                        } else {
-                            gp.ui.message = "Ultra ball is empty !";
-                        }
-                    } else {
-                         gp.ui.message = "You don't have any ultra ball !";
-                    }
-                }
-                gp.ui.TextPopup = true;
                 gp.ui.menu_state = 99;
             }
             
-            else if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 2) {;
+            else if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 2) {
                 if (gp.ui.commandNum == 0) {
                     gp.ui.menu_state = 21;
                 }
@@ -369,5 +419,4 @@ public class KeyHandler implements KeyListener{
             rightPressed = false;
         }
     }
-    
 }

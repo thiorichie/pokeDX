@@ -70,7 +70,7 @@ public class Pokemon {
         Zorua.addSkill(new Skill("Tackle", 40, 0));
         Zorua.addSkill(new Skill("Scratch", 60, 0));
         
-        Arceus.addSkill(new Skill("	Earth Power", 90, 0));
+        Arceus.addSkill(new Skill("Earth Power", 90, 0));
         Arceus.addSkill(new Skill("Hyper Voice", 90, 0));
         Arceus.addSkill(new Skill("Extreme Speed", 80, 0));
         Arceus.addSkill(new Skill("Future Sight", 120, 0));
@@ -87,5 +87,54 @@ public class Pokemon {
         listpokemon.add(Zekrom);
         listpokemon.add(Zorua);
         listpokemon.add(Arceus);
+    }
+    
+    public Monster catchMonster(String nama) {
+        Monster temp_monster;
+        switch(nama) {
+            case "axew" -> {
+                temp_monster = new Monster("Axew", 150, 150, 1, "/poke/axew.png");
+                temp_monster.addSkill(new Skill("Scratch", 40, 0));
+                temp_monster.addSkill(new Skill("Bite", 60, 0));
+            }
+            case "joltik" -> {
+                temp_monster = new Monster("Joltik", 210, 210, 1, "/poke/Joltik.png");
+                temp_monster.addSkill(new Skill("Absorb", 20, 0));
+                temp_monster.addSkill(new Skill("Furry Cutter", 40, 0));
+            }
+            case "lairon" -> {
+                temp_monster = new Monster("Lairon", 230, 230, 1, "/poke/Lairon.png");
+                temp_monster.addSkill(new Skill("Tackle", 40, 0));
+                temp_monster.addSkill(new Skill("Metal Claw", 50, 0));
+                temp_monster.addSkill(new Skill("Rock Tomb", 60, 0));
+            }
+            case "eve" -> {
+                temp_monster = new Monster("Eve", 220, 220, 1, "/poke/Eve.png");
+                temp_monster.addSkill(new Skill("Tackle", 40, 0));
+                temp_monster.addSkill(new Skill("Covet", 60, 0));
+            }
+            case "misdreavus" -> {
+                temp_monster = new Monster("Misdreavus", 230, 230, 1, "/poke/Misdreavus.png");
+                temp_monster.addSkill(new Skill("Tackle", 40, 0));
+                temp_monster.addSkill(new Skill("Confusion", 50, 0));
+            }
+            case "pikachu" -> {
+                temp_monster = new Monster("Pikachu", 180, 180, 1, "/poke/pikachu.png");
+                temp_monster.addSkill(new Skill("Quick Attack", 40, 0));
+                temp_monster.addSkill(new Skill("Thunder Shock", 60, 0));
+            }
+            case "zekrom" -> {
+                temp_monster = new Monster("Zekrom", 310, 310, 1, "/poke/Zekrom.png");
+                temp_monster.addSkill(new Skill("Ancient Power", 60, 0));
+                temp_monster.addSkill(new Skill("Dragon Breath", 60, 0));
+                temp_monster.addSkill(new Skill("Thunder Fang", 65, 0));
+            }
+            default -> {
+                temp_monster = new Monster("Zekrom", 310, 310, 1, "/poke/Zekrom.png");
+                temp_monster.addSkill(new Skill("Tackle", 40, 0));
+                temp_monster.addSkill(new Skill("Scratch", 60, 0));
+            }
+        }
+        return temp_monster;
     }
 }

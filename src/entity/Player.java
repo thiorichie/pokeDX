@@ -46,9 +46,9 @@ public class Player extends Entity{
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         
-//        this.inventory.put("red_ball", 1);
+//        this.inventory.put("red_poke_ball", 1);
 //        this.inventory.put("great_ball", 1);
-//        this.inventory.put("ultra_ball", 1);
+        this.inventory.put("ultra_ball", 2);
 //        this.inventory.put("potion", 1);
         
         setDefaultValues();

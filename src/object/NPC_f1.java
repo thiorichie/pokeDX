@@ -40,7 +40,7 @@ public class NPC_f1 extends SuperObject{
             dialogueIndex=0;
             if (sudahBattle == false) {
                 gp.gameState = gp.battleState;
-                sudahBattle=true;
+//                sudahBattle=true;
             }
             else{
                 gp.gameState = gp.playState;
