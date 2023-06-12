@@ -114,6 +114,9 @@ public class Monster {
             hp = max_hp;
             curr_exp = 0;
             max_exp = lvl*10;
+            for (Skill s : skill) {
+                s.setDmg(s.getDmg()+5);
+            }
         }
         
     }

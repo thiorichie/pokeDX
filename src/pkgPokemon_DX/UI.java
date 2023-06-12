@@ -62,6 +62,7 @@ public class UI {
     public boolean isBattleOver = false;
     public boolean lvlUp = false;
     public boolean flee = false;
+    public boolean catchPokemon = false;
     
     //menu state
     public int menu_state = 0;
@@ -219,10 +220,10 @@ public class UI {
     private void drawMainMenuBattle(int x, int y,int xtext,int ytext){
         
         //buat clear pesan / message
-        if (menu_state != 99) {
-            clearText(xtext, ytext);
-            clearText(xtext, ytext+ gp.tilesSize + gp.tilesSize / 4);
-        }
+//        if (menu_state != 99) {
+//            clearText(xtext, ytext);
+//            clearText(xtext, ytext+ gp.tilesSize + gp.tilesSize / 4);
+//        }
         
         // teks atk
         x += gp.tilesSize*3 + gp.tilesSize/2;
@@ -231,8 +232,6 @@ public class UI {
 //        System.out.println(poke2.skill.get(0).getNama());
         try {
             if (menu_state == 0) {
-                System.out.println("menu state 0");
-                
                 g2.drawString("Attack", x, y);
             } 
             if (menu_state == 1) {
@@ -250,8 +249,13 @@ public class UI {
             if (menu_state == 23) {
                 g2.drawString("Potion", x, y);
             }
+             if (menu_state == 3) {
+                 String pokemonName = gp.player.party.get(0).getNama();
+                 if(gp.player.partyIndex == 0) pokemonName += " [Used]";
+                g2.drawString(pokemonName, x, y);
+            }
             if (menu_state == 99) {
-                clearText(x, y);
+//                clearText(x, y);
             } 
 
             if (commandNum == 0 && menu_state != 99) {
@@ -288,8 +292,13 @@ public class UI {
             if (menu_state == 23) {
                 g2.drawString("Super potion", x, y);
             }
+            if (menu_state == 3) {
+                String pokemonName = gp.player.party.get(1).getNama();
+                 if(gp.player.partyIndex == 1) pokemonName += " [Used]";
+                g2.drawString(pokemonName, x, y);
+            }
             if (menu_state == 99) {
-                clearText(x, y);
+//                clearText(x, y);
             } 
             
             if (commandNum == 1 && menu_state != 99) {
@@ -326,8 +335,13 @@ public class UI {
             if (menu_state == 23) {
                 g2.drawString("Hyper potion", x, y);
             }
+            if (menu_state == 3) {
+                String pokemonName = gp.player.party.get(2).getNama();
+                if(gp.player.partyIndex == 2) pokemonName += " [Used]";
+                g2.drawString(pokemonName, x, y);
+            }
             if (menu_state == 99) {
-                clearText(x, y);
+//                clearText(x, y);
             } 
             
             if (commandNum == 2 && menu_state != 99) {
@@ -350,8 +364,13 @@ public class UI {
             else if (menu_state == 1) {
                 g2.drawString(poke2.skill.get(3).getNama(), x, y);
             }
+            if (menu_state == 3) {
+                String pokemonName = gp.player.party.get(3).getNama();
+                if(gp.player.partyIndex == 3) pokemonName += " [Used]";
+                g2.drawString(pokemonName, x, y);
+            }
             if (menu_state == 99) {
-                clearText(x, y);
+//                clearText(x, y);
             } 
             
             if (commandNum == 3 && menu_state != 99) {
@@ -374,6 +393,16 @@ public class UI {
         }
     }
     
+    public boolean cekPartyAlive(){
+        boolean status = false;
+        for (Monster party : gp.player.party) {
+            if (party.getStatus()) {
+               status = true; 
+            }
+        }
+        return status;
+    }
+    
     public void drawBackpackScreen() {
         try{
             bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
@@ -394,7 +423,7 @@ public class UI {
         try{
             bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
             hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
-//            poke1 = pokemon.Axew;
+            poke1 = pokemon.Axew;
             poke2 = gp.player.party.get(gp.player.partyIndex);
         }
         catch(IOException e){
@@ -483,6 +512,8 @@ public class UI {
             
             //reset 
             isBattleOver =false;
+            //reset index
+            gp.player.partyIndex = 0;
         }
         
         if (poke1.getHp() <= 0 && isBattleOver == false) {
@@ -495,9 +526,26 @@ public class UI {
                 poke2.setCurr_exp(poke2.getCurr_exp()+poke1.getLvl()*5);
                 isBattleOver = true;
             }
-            //niar dialog tampil
+            //biar dialog tampil
             menu_state = 99;
             TextPopup = true;
+        }
+        else if (poke2.getHp() <= 0) {
+            if (cekPartyAlive() == false) {
+                message = "Your pokemon fainted! \nYou have no other pokemon left!";
+                isBattleOver = true;
+                menu_state = 99;
+                TextPopup = true;
+            }
+            else{
+                message = poke2.getNama() +" has fainted!";
+                gp.player.partyIndex++;
+                poke2 = gp.player.party.get(gp.player.partyIndex);
+                //tampilin msg
+                menu_state = 99;
+                TextPopup = true;
+            }
+            
         }
         
     }
@@ -513,7 +561,7 @@ public class UI {
              inventory_gui = ImageIO.read(getClass().getResourceAsStream("/game_gui/inventory_gui.png"));
              inventory_entity.put("key", ImageIO.read(getClass().getResourceAsStream("/objects/key.png")));
              inventory_entity.put("boots", ImageIO.read(getClass().getResourceAsStream("/objects/boots.png")));
-             inventory_entity.put("red_ball", ImageIO.read(getClass().getResourceAsStream("/objects/red_ball.png")));
+             inventory_entity.put("red_poke_ball", ImageIO.read(getClass().getResourceAsStream("/objects/red_ball.png")));
              inventory_entity.put("great_ball", ImageIO.read(getClass().getResourceAsStream("/objects/great_ball.png")));
              inventory_entity.put("ultra_ball", ImageIO.read(getClass().getResourceAsStream("/objects/ultra_ball.png")));
              inventory_entity.put("potion", ImageIO.read(getClass().getResourceAsStream("/objects/potion.png")));
