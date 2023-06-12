@@ -136,6 +136,9 @@ public class EventHandler {
                             previousEventY = gp.player.worldY;
                         }
                     }
+                    System.out.println("x : " + i);
+                    System.out.println("y : " + j);
+                    System.out.println(hit);
 
                     gp.player.solidArea.x = gp.player.solidAreaDefaultX;
                     gp.player.solidArea.y = gp.player.solidAreaDefaultY;
@@ -167,7 +170,6 @@ public class EventHandler {
         } else if (random_monster_chance >= 9) {
             gp.ui.poke1 = gp.ui.pokemon.listpokemon.get(random_monster_rare);
         }
-        canTouchEvent = false;
     }
 
 }
