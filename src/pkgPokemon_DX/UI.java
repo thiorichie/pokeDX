@@ -55,8 +55,8 @@ public class UI {
     public String p_name="";
     
     //class pokemon
-    Pokemon pokemon = new Pokemon();
-    Monster poke1,poke2;
+    public Pokemon pokemon = new Pokemon();
+    public Monster poke1,poke2;
     Random rand = new Random();
     public boolean TextPopup = false;
     public boolean isBattleOver = false;
@@ -423,12 +423,14 @@ public class UI {
         try{
             bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
             hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
-            poke1 = pokemon.Axew;
+//            poke1 = pokemon.Axew;
             poke2 = gp.player.party.get(gp.player.partyIndex);
         }
         catch(IOException e){
             e.printStackTrace();
         }
+        
+//        System.out.println("player party index : " + gp.player.partyIndex);
         
         // buat tampilin msg klo ada pokemon kita yg lvl up
         if (lvlUp && menu_state!=99) {
@@ -506,14 +508,21 @@ public class UI {
         // klo battle state udh selesai
         if (isBattleOver && menu_state!=99) {
             poke1.revive(poke1.getMax_hp());
+            if (cekPartyAlive() == false) {
+                gp.eHandler.teleport(4, 14, 19);
+                for (Monster party : gp.player.party) {
+                    party.revive(party.getMax_hp());
+                }
+                //reset index
+                gp.player.partyIndex = 0;
+            }
             gp.gameState = gp.playState;
             //debug
             System.out.println(poke2);
             
             //reset 
             isBattleOver =false;
-            //reset index
-            gp.player.partyIndex = 0;
+            
         }
         
         if (poke1.getHp() <= 0 && isBattleOver == false) {
@@ -539,7 +548,12 @@ public class UI {
             }
             else{
                 message = poke2.getNama() +" has fainted!";
-                gp.player.partyIndex++;
+                if (gp.player.partyIndex < gp.player.party.size()-1) {
+                    gp.player.partyIndex++;
+                }
+                else{
+                    gp.player.partyIndex=0;
+                }
                 poke2 = gp.player.party.get(gp.player.partyIndex);
                 //tampilin msg
                 menu_state = 99;

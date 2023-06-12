@@ -34,8 +34,18 @@ public class KeyHandler implements KeyListener{
         
         //play state
         if (gp.gameState == gp.playState) {
+            if ((code == KeyEvent.VK_W || code == KeyEvent.VK_A || code == KeyEvent.VK_S || code == KeyEvent.VK_D) && gp.eHandler.getIndexTile(gp.currentMap) == 3) {
+//                Random rand = new Random();
+//                int Random_Battle = rand.nextInt(1,21);
+//                if (Random_Battle >= 1 && Random_Battle <= 3) {
+//                    gp.eHandler.battle();
+//                }
+//                gp.eHandler.battle();
+            }
+            
             if (code == KeyEvent.VK_W) {
                 upPressed = true;
+                
             }
 
             if (code == KeyEvent.VK_A) {

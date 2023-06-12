@@ -78,12 +78,8 @@ public class EventHandler {
                 teleport(5, 7, 13);
             } else if (hit(1, 19, 31, "up") == true) {
                 teleport(6, 7, 13);
-            } else if (hitArea(0, 8, 8,22,10, "any") == true) {
-                battle();
-//                int random_battle = rand.nextInt(1, 11);
-//                if (random_battle == 6) {
-//                    battle();
-//                }
+            } else if (hit(1, 19, 31, "up") == true) {
+                teleport(6, 7, 13);
             }
         }
     }
@@ -113,42 +109,37 @@ public class EventHandler {
             eventrect[map][col][row].y = eventrect[map][col][row].eventRectDefaultY;
         }
 
+//        System.out.println("hit ");
+        
         return hit;
     }
-
-    public boolean hitArea(int map, int col, int row, int makscol, int maksrow, String reqDirection) {
-
-        boolean hit = false;
-
+    
+    public int getIndexTile(int map) {
         if (map == gp.currentMap) {
-            gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
-            gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
-            //ngambil solid area eventrect
-            for (int i = col; i < makscol; i++) {
-                for (int j = row; j < maksrow; j++) {
-                    eventrect[map][i][j].x = i * gp.tilesSize + eventrect[map][i][j].x;
-                    eventrect[map][i][j].y = j * gp.tilesSize + eventrect[map][i][j].y;
+            for(int x = 0; x != gp.maksWorldCol; x++) {
+                for(int y = 0; y != gp.maksWorldRow; y++) {
+                    gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
+                    gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
+                    //ngambil solid area eventrect
+                    eventrect[map][x][y].x = x * gp.tilesSize + eventrect[map][x][y].x;
+                    eventrect[map][x][y].y = y * gp.tilesSize + eventrect[map][x][y].y;
 
-                    if (gp.player.solidArea.intersects(eventrect[map][i][j]) && eventrect[map][i][j].eventDone == false) {
-                        if (gp.player.direction.contentEquals(reqDirection) || reqDirection.contentEquals("any")) {
-                            hit = true;
-                            previousEventX = gp.player.worldX;
-                            previousEventY = gp.player.worldY;
-                        }
+                    if (gp.player.solidArea.intersects(eventrect[map][x][y])) {
+//                        System.out.println("x : " + x);
+//                        System.out.println("y : " + y);
+//                        System.out.println("Posisi player di index tile : " + gp.tileManager.mapTileNum[map][x][y]);
+                        System.out.println(gp.tileManager.mapTileNum[map][x][y]);
+                        return gp.tileManager.mapTileNum[map][x][y];
                     }
-                    System.out.println("x : " + i);
-                    System.out.println("y : " + j);
-                    System.out.println(hit);
 
                     gp.player.solidArea.x = gp.player.solidAreaDefaultX;
                     gp.player.solidArea.y = gp.player.solidAreaDefaultY;
-                    eventrect[map][i][j].x = eventrect[map][i][j].eventRectDefaultX;
-                    eventrect[map][i][j].y = eventrect[map][i][j].eventRectDefaultY;
+                    eventrect[map][x][y].x = eventrect[map][x][y].eventRectDefaultX;
+                    eventrect[map][x][y].y = eventrect[map][x][y].eventRectDefaultY;
                 }
             }
         }
-
-        return hit;
+        return -1;
     }
 
     public void teleport(int map, int col, int row) {

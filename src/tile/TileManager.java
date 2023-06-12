@@ -25,7 +25,7 @@ public class TileManager {
         this.gp = gp;
         
         tile = new Tile[200];
-        mapTileNum = new int [gp.maksMap][gp.maksWorldCol][gp.maksWorldRow];
+        mapTileNum = new int [gp.maksMap][gp.maksWorldCol * 2][gp.maksWorldRow * 2];
         getTileImage();
         loadMap("/maps/protomap001.txt",0);
         loadMap("/maps/Village.txt",1);
@@ -421,6 +421,7 @@ public class TileManager {
                     String numbers[] = line.split(" ");
                     int num = Integer.parseInt(numbers[col]);
                     mapTileNum[map][col][row] = num;
+                    System.out.println("map : " + num);
                     col++;
                 }
                 if (col == gp.maksWorldCol){
