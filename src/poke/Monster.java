@@ -6,6 +6,7 @@ package poke;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,12 +16,13 @@ import javax.imageio.ImageIO;
  *
  * @author Ryu A.H
  */
-public class Monster {
+public class Monster implements Serializable{
     private String nama;
     private int max_hp,hp,max_exp,curr_exp,lvl;
     private boolean alive;
-    private BufferedImage character; 
+    private transient BufferedImage character; 
     public ArrayList<Skill> skill = new ArrayList<>();
+    private String char_path;
 
     public Monster(String nama, int max_hp, int hp, int lvl, String char_path) {
         this.nama = nama;
@@ -29,6 +31,7 @@ public class Monster {
         this.curr_exp = 0;
         this.max_exp = lvl*10;
         this.lvl = lvl;
+        this.char_path = char_path;
         alive = true;
         setCharacter(char_path);
     }
@@ -37,7 +40,7 @@ public class Monster {
         return character;
     }
 
-    private void setCharacter(String path) {
+    public void setCharacter(String path) {
         try {
             this.character = ImageIO.read(getClass().getResourceAsStream(path));
         } catch (IOException ex) {
@@ -80,6 +83,14 @@ public class Monster {
 
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public String getChar_path() {
+        return char_path;
+    }
+
+    public void setChar_path(String char_path) {
+        this.char_path = char_path;
     }
 
     

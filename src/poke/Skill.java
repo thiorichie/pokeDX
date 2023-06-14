@@ -4,11 +4,13 @@
  */
 package poke;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ryu A.H
  */
-public class Skill {
+public class Skill implements Serializable{
     private String nama;
     private int dmg,heal;
 

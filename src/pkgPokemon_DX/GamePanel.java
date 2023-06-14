@@ -10,10 +10,16 @@ import java.awt.Dimension;
 import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import object.SuperObject;
+import poke.Monster;
 import tile.TileManager;
 
 /**
@@ -42,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable{
     int FPS = 60;
      
     //SYSTEM
+    int counterTime = 0;
     TileManager tileManager = new TileManager(this);
     KeyHandler keyH = new KeyHandler(this);
     MouseHandler mouseH = new MouseHandler(this);
@@ -76,6 +83,204 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyH);
         this.addMouseListener(mouseH);
         this.setFocusable(true);
+        File fileSave = new File("loadPlayer.txt");
+        Scanner scanner = new Scanner(System.in);
+    }
+    
+    public void saveAll(){
+        try {
+            saveInventory(player.inventory);
+            saveMonster(player.party);
+            savePartyIndex(player.partyIndex);
+            saveCoin(player.coin);
+        } catch (IOException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void loadAll(){
+        try {
+            player.inventory = loadInventory();
+            player.party = loadMonster();
+            player.partyIndex = loadPartyIndex();
+            player.coin = loadCoin();
+            
+            System.out.println("Coin : "+player.coin);
+            System.out.println("PartyIndex : "+player.partyIndex);
+            for (Monster pt : player.party) {
+                System.out.println(pt);
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void saveInventory(HashMap<String, Integer> inventory) throws IOException {
+        System.out.println("=====SAVING INVENTORY=====");
+        //kita hubungkan dulu dengan filenya
+        FileOutputStream fo = new FileOutputStream("inventory.txt");
+
+        //create "pensil" nya untuk menulis ke file tsb
+        ObjectOutputStream out = new ObjectOutputStream(fo);
+
+        out.writeObject(inventory);
+
+        //kalau lupa close, file tidak tersimpan!
+        out.close();
+        fo.close();
+        System.out.println("inventory saved successfully.");
+    }
+    
+    public void saveMonster(ArrayList<Monster> monster) throws IOException {
+        System.out.println("=====SAVING MONSTER=====");
+        //kita hubungkan dulu dengan filenya
+        FileOutputStream fo = new FileOutputStream("monster.txt");
+
+        //create "pensil" nya untuk menulis ke file tsb
+        ObjectOutputStream out = new ObjectOutputStream(fo);
+
+        out.writeObject(monster);
+
+        //kalau lupa close, file tidak tersimpan!
+        out.close();
+        fo.close();
+        System.out.println("monster saved successfully.");
+    }
+    
+    public void savePartyIndex(Integer partyIndex) throws IOException {
+        System.out.println("=====SAVING PARTYINDEX=====");
+        //kita hubungkan dulu dengan filenya
+        FileOutputStream fo = new FileOutputStream("partyIndex.txt");
+
+        //create "pensil" nya untuk menulis ke file tsb
+        ObjectOutputStream out = new ObjectOutputStream(fo);
+
+        out.writeObject(partyIndex);
+
+        //kalau lupa close, file tidak tersimpan!
+        out.close();
+        fo.close();
+        System.out.println("partyIndex saved successfully.");
+    }
+    
+    public void saveCoin(Integer coin) throws IOException {
+        System.out.println("=====SAVING PARTYINDEX=====");
+        //kita hubungkan dulu dengan filenya
+        FileOutputStream fo = new FileOutputStream("coin.txt");
+
+        //create "pensil" nya untuk menulis ke file tsb
+        ObjectOutputStream out = new ObjectOutputStream(fo);
+
+        out.writeObject(coin);
+
+        //kalau lupa close, file tidak tersimpan!
+        out.close();
+        fo.close();
+        System.out.println("coin saved successfully.");
+    }
+    
+    public HashMap<String, Integer> loadInventory() throws IOException, ClassNotFoundException {
+        //ini baru cek saja apakah filenya ada atau tidak
+        File f = new File("inventory.txt");
+        if (!f.exists()){
+            //kalau ga ada, buat file
+            f.createNewFile();
+
+            //isi dengan ArrayList kosongan
+            saveInventory(new HashMap<String, Integer>());
+        }
+
+        HashMap<String, Integer> temp = new HashMap<>();
+
+        //menghubungkan dengan filenya
+        FileInputStream fin = new FileInputStream("inventory.txt");
+        ObjectInputStream baca = new ObjectInputStream(fin);
+        temp = (HashMap<String, Integer>) baca.readObject();
+
+        fin.close();
+        baca.close();
+        System.out.println("inventory load successfully.");
+        return temp;
+    }
+    
+    public ArrayList<Monster> loadMonster() throws IOException, ClassNotFoundException {
+        //ini baru cek saja apakah filenya ada atau tidak
+        File f = new File("monster.txt");
+        if (!f.exists()){
+            //kalau ga ada, buat file
+            f.createNewFile();
+
+            //isi dengan ArrayList kosongan
+            saveMonster(new ArrayList<Monster>());
+        }
+
+        ArrayList<Monster> temp = new ArrayList<Monster>();
+
+        //menghubungkan dengan filenya
+        FileInputStream fin = new FileInputStream("monster.txt");
+        ObjectInputStream baca = new ObjectInputStream(fin);
+        temp = (ArrayList<Monster>) baca.readObject();
+        
+        for (Monster t : temp) {
+            t.setCharacter(t.getChar_path());
+        }
+
+        fin.close();
+        baca.close();
+        System.out.println("monster load successfully.");
+        return temp;
+    }
+    
+    public Integer loadPartyIndex() throws IOException, ClassNotFoundException {
+        //ini baru cek saja apakah filenya ada atau tidak
+        File f = new File("partyIndex.txt");
+        if (!f.exists()){
+            //kalau ga ada, buat file
+            f.createNewFile();
+
+            //isi dengan ArrayList kosongan
+            Integer test = 0;
+            savePartyIndex(test);
+        }
+
+        Integer temp ;
+
+        //menghubungkan dengan filenya
+        FileInputStream fin = new FileInputStream("partyIndex.txt");
+        ObjectInputStream baca = new ObjectInputStream(fin);
+        temp = (Integer) baca.readObject();
+
+        fin.close();
+        baca.close();
+        System.out.println("partyIndex load successfully.");
+        return temp;
+    }
+    
+    public Integer loadCoin() throws IOException, ClassNotFoundException {
+        //ini baru cek saja apakah filenya ada atau tidak
+        File f = new File("coin.txt");
+        if (!f.exists()){
+            //kalau ga ada, buat file
+            f.createNewFile();
+
+            //isi dengan coin awal kosongan
+            Integer test = 0;
+            saveCoin(test);
+        }
+
+        Integer temp ;
+
+        //menghubungkan dengan filenya
+        FileInputStream fin = new FileInputStream("coin.txt");
+        ObjectInputStream baca = new ObjectInputStream(fin);
+        temp = (Integer) baca.readObject();
+
+        fin.close();
+        baca.close();
+        System.out.println("coin load successfully.");
+        return temp;
     }
     
     public void setupGame(){
@@ -110,6 +315,12 @@ public class GamePanel extends JPanel implements Runnable{
                 repaint();
                 delta--;
                 drawCount++;
+            }
+            if(gameState == battleState){
+                counterTime++;
+                if(counterTime % 300 == 0){
+                    
+                }
             }
         }
     }

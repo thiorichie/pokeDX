@@ -30,8 +30,8 @@ public class Player extends Entity{
     
     //inventory
     public  HashMap<String, Integer> inventory = new HashMap<>();
-    public int coin;
-    public int partyIndex = 0;
+    public Integer coin;
+    public Integer partyIndex = 0;
     public ArrayList<Monster> party = new ArrayList<>();
     
     public Player(GamePanel gp, KeyHandler keyH){

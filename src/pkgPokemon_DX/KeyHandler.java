@@ -64,6 +64,16 @@ public class KeyHandler implements KeyListener{
                 gp.gameState = gp.pauseState;
                 
             }
+            
+            if (code == KeyEvent.VK_V) {
+                gp.gameState = gp.pauseState;
+                gp.saveAll();
+            }
+            
+            if (code == KeyEvent.VK_L) {
+                gp.gameState = gp.pauseState;
+                gp.loadAll();
+            }
 
             //DEBUG
             if (code == KeyEvent.VK_T) {
