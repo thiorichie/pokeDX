@@ -59,7 +59,7 @@ public class Player extends Entity{
         
         worldX = gp.tilesSize * 2;
         worldY = gp.tilesSize * 4;
-        speed = 10;
+        speed = 3;
         direction = "right";
     }
     
