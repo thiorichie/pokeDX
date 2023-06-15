@@ -47,6 +47,8 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinish = false;
+    public boolean isTrainerBattle = false;
+    public boolean isBossBattle = false;
     
     //dialog yg ditampilin
     public String CurrentDialogue = "";
@@ -444,7 +446,15 @@ public class UI {
         }
         
         if (flee && menu_state != 99) {
-            message = "Player got away safely!";
+            //buat cek lg battle ama sapa klo selain wild pokemon ga isa lari
+            if (isTrainerBattle == false && isBossBattle == false) {
+                message = "Player got away safely!";
+            }
+            else {
+                message = "You cannot run from this battle!";
+                flee = false;
+                TextPopup = true;
+            }
             menu_state = 99;
         }
         
@@ -535,6 +545,19 @@ public class UI {
                 poke2.setCurr_exp(poke2.getCurr_exp()+poke1.getLvl()*5);
                 isBattleOver = true;
             }
+            
+            if (isTrainerBattle) {
+                message += "\n and also a key!";
+                //tmbh key lek dr 0
+                if (gp.player.inventory.containsKey("key")) {
+                    gp.player.inventory.put("key", gp.player.inventory.get("key") + 1);
+                } else {
+                    gp.player.inventory.put("key", 1);
+                }
+                //reset
+                isTrainerBattle =false;
+            }
+            
             //biar dialog tampil
             menu_state = 99;
             TextPopup = true;

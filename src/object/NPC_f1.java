@@ -41,7 +41,8 @@ public class NPC_f1 extends SuperObject{
             if (sudahBattle == false) {
                 gp.gameState = gp.battleState;
                 gp.ui.poke1 = gp.ui.pokemon.catchMonster("misdreavus");
-//                sudahBattle=true;
+                gp.ui.isTrainerBattle = true;
+                sudahBattle=true;
             }
             else{
                 gp.gameState = gp.playState;

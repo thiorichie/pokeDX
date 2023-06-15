@@ -36,7 +36,7 @@ public class Pokemon {
         Charmander.addSkill(new Skill("Scratch", 40, 0));
         Charmander.addSkill(new Skill("Dragon Tail", 60, 0));
         //sementara
-//        Charmander.setCurr_exp(5);
+        Charmander.setCurr_exp(5);
         
         Axew.addSkill(new Skill("Scratch", 40, 0));
         Axew.addSkill(new Skill("Bite", 60, 0));

@@ -161,6 +161,7 @@ public class KeyHandler implements KeyListener{
                     gp.gameState = gp.playState;
                     //reset
                     gp.ui.flee =false;
+                    gp.ui.poke1.restoreHP();
                 } else if(gp.ui.catchPokemon) {
                     gp.gameState = gp.playState;
                     gp.ui.menu_state = 0;
@@ -297,7 +298,7 @@ public class KeyHandler implements KeyListener{
                 } else {
                     if (gp.ui.commandNum == 0) {
                         if(gp.player.inventory.containsKey("red_poke_ball")) {
-                            if(gp.player.inventory.get("red_poke_ball") > 0) {
+                            if(gp.player.inventory.get("red_poke_ball") > 0 && gp.ui.isTrainerBattle == false && gp.ui.isBossBattle == false) {
                                 if(getIndex <= 50) {
                                     gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
                                     gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
@@ -313,13 +314,21 @@ public class KeyHandler implements KeyListener{
                                 gp.ui.TextPopup = true;
                             }
                         } else {
-                            gp.ui.message = "You don't have any red poke ball !";
+                            if (gp.ui.isTrainerBattle) {
+                                gp.ui.message = "You cannot catch a trainee pokemon !";
+                            } 
+                            else if (gp.ui.isBossBattle) {
+                                gp.ui.message = "You cannot catch a boss pokemon !";
+                            }
+                            else {
+                                gp.ui.message = "You don't have any red poke ball !";
+                            }
                             gp.ui.TextPopup = true;
                         }
                     }
                     if (gp.ui.commandNum == 1) {
                         if(gp.player.inventory.containsKey("great_ball")) {
-                            if(gp.player.inventory.get("great_ball") > 0) {
+                            if(gp.player.inventory.get("great_ball") > 0 && gp.ui.isTrainerBattle == false && gp.ui.isBossBattle == false) {
                                 if(getIndex <= 75) {
                                     gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
                                     gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
@@ -335,19 +344,35 @@ public class KeyHandler implements KeyListener{
                                 gp.ui.TextPopup = true;
                             }
                         } else {
-                            gp.ui.message = "You don't have any great ball !";
+                            if (gp.ui.isTrainerBattle) {
+                                gp.ui.message = "You cannot catch a trainee pokemon !";
+                            } 
+                            else if (gp.ui.isBossBattle) {
+                                gp.ui.message = "You cannot catch a boss pokemon !";
+                            }
+                            else {
+                                gp.ui.message = "You don't have any great ball !";
+                            }
                             gp.ui.TextPopup = true;
                         }
                     }
                     if (gp.ui.commandNum == 2) {
                         if(gp.player.inventory.containsKey("ultra_ball")) {
-                            if(gp.player.inventory.get("ultra_ball") > 0) {
+                            if(gp.player.inventory.get("ultra_ball") > 0 && gp.ui.isTrainerBattle == false && gp.ui.isBossBattle == false) {
                                 gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
                                 gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
                                 gp.ui.catchPokemon = true;
                                 gp.player.inventory.put("ultra_ball", gp.player.inventory.get("ultra_ball") - 1);
                             } else {
-                                gp.ui.message = "Ultra ball is empty !";
+                                if (gp.ui.isTrainerBattle) {
+                                    gp.ui.message = "You cannot catch a trainee pokemon !";
+                                }
+                                else if (gp.ui.isBossBattle) {
+                                    gp.ui.message = "You cannot catch a boss pokemon !";
+                                }
+                                else{
+                                    gp.ui.message = "Ultra ball is empty !";
+                                }
                                 gp.ui.TextPopup = true;
                             }
                         } else {
@@ -374,20 +399,22 @@ public class KeyHandler implements KeyListener{
             //buat key action pas atk
             else if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 1) {
                 Monster temp = gp.ui.poke2;
+                int multiplier = 5 * (temp.getLvl()-1);
+//                System.out.println("dmg multiplier: "+multiplier);
                 if (gp.ui.commandNum == 0) {
-                    gp.ui.action(temp.skill.get(0).getDmg(), temp.skill.get(0).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(0).getDmg() + (temp.skill.get(0).getDmg()*multiplier /100), temp.skill.get(0).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
                 if (gp.ui.commandNum == 1) {
-                    gp.ui.action(temp.skill.get(1).getDmg(), temp.skill.get(1).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(1).getDmg() + (temp.skill.get(1).getDmg()*multiplier /100), temp.skill.get(1).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
                 if (gp.ui.commandNum == 2) {
-                    gp.ui.action(temp.skill.get(2).getDmg(), temp.skill.get(2).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(2).getDmg() + (temp.skill.get(2).getDmg()*multiplier /100), temp.skill.get(2).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
                 if (gp.ui.commandNum == 3) {
-                    gp.ui.action(temp.skill.get(3).getDmg(), temp.skill.get(3).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(3).getDmg() + (temp.skill.get(3).getDmg()*multiplier /100), temp.skill.get(3).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
             }
