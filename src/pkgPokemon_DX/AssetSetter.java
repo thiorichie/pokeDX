@@ -43,6 +43,10 @@ import OBJ_Rumah3.vend1;
 import OBJ_Rumah3.vend2;
 import OBJ_Rumah3.vend3;
 import OBJ_Rumah3.vend4;
+import object.OBJ_Door2;
+import object.OBJ_Door3;
+import object.OBJ_Key2;
+import object.OBJ_Key3;
 import object.rumah1;
 import object.rumah2;
 import object.rumah3;
@@ -77,9 +81,17 @@ public class AssetSetter {
         gp.obj[1][3].worldX = 24 * gp.tilesSize;
         gp.obj[1][3].worldY = 8 * gp.tilesSize;
         
-        gp.obj[1][4] = new OBJ_Boots();
-        gp.obj[1][4].worldX = 7 * gp.tilesSize;
-        gp.obj[1][4].worldY = 5 * gp.tilesSize;
+        gp.obj[1][4] = new OBJ_Door3();
+        gp.obj[1][4].worldX = 23 * gp.tilesSize;
+        gp.obj[1][4].worldY = 83 * gp.tilesSize;
+        
+        gp.obj[1][5] = new OBJ_Key3();
+        gp.obj[1][5].worldX = 24 * gp.tilesSize;
+        gp.obj[1][5].worldY = 83 * gp.tilesSize;
+        
+        gp.obj[1][6] = new OBJ_Boots();
+        gp.obj[1][6].worldX = 7 * gp.tilesSize;
+        gp.obj[1][6].worldY = 5 * gp.tilesSize;
         
         gp.obj[0][0] = new rumah1();
         gp.obj[0][0].worldX = 9 * gp.tilesSize;
@@ -96,6 +108,14 @@ public class AssetSetter {
         gp.obj[0][3] = new rumah4();
         gp.obj[0][3].worldX = 19 * gp.tilesSize;
         gp.obj[0][3].worldY = 31 * gp.tilesSize;
+         
+        gp.obj[0][4] = new OBJ_Door2();
+        gp.obj[0][4].worldX = 20 * gp.tilesSize;
+        gp.obj[0][4].worldY = 13 * gp.tilesSize;
+        
+        gp.obj[0][5] = new OBJ_Key2();
+        gp.obj[0][5].worldX = 19 * gp.tilesSize;
+        gp.obj[0][5].worldY = 13 * gp.tilesSize;
          
         gp.obj[4][5] = new NPC_f1();
         gp.obj[4][5].worldX = 14 * gp.tilesSize;

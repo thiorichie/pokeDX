@@ -11,11 +11,11 @@ import javax.imageio.ImageIO;
  *
  * @author thior
  */
-public class OBJ_Chest extends SuperObject{
-    public OBJ_Chest(){
-        name = "chest";
+public class OBJ_Key3 extends SuperObject{
+    public OBJ_Key3(){
+        name = "Key3";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/chest.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/objects/key3.png"));
         }
         catch (IOException e){
             e.printStackTrace();
@@ -23,3 +23,4 @@ public class OBJ_Chest extends SuperObject{
         
     }
 }
+

@@ -9,17 +9,18 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author thior
+ * @author rici
  */
-public class OBJ_Chest extends SuperObject{
-    public OBJ_Chest(){
-        name = "chest";
+public class OBJ_ShopShelf extends SuperObject {
+    public OBJ_ShopShelf(){
+        name = "ShopShelf";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/chest.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/objects/shop_shelf.png"));
         }
         catch (IOException e){
             e.printStackTrace();
         }
         
+        collision = true;
     }
 }

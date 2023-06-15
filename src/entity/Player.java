@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import pkgPokemon_DX.GamePanel;
 import pkgPokemon_DX.KeyHandler;
 import java.util.HashMap;
+import java.util.Random;
 import poke.Monster;
 
 /**
@@ -144,7 +145,7 @@ public class Player extends Entity{
             
             switch(objectName){
                 case "Boots":
-                    speed+= 1;
+                    speed+= 10;
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Boots : " + inventory.get("boots"));
                     if(inventory.containsKey("boots")) {
@@ -173,6 +174,115 @@ public class Player extends Entity{
                     }
                     System.out.println("Key : " + inventory.get("key"));
                     break;
+                case "Key2":
+                    gp.obj[gp.currentMap][i] = null;
+                    System.out.println("Key2 : " + inventory.get("key2"));
+                    if(inventory.containsKey("key2")) {
+                        inventory.put("key2", inventory.get("key2") + 1);
+                    } else {
+                        inventory.put("key2", 1);
+                    }
+                    break;
+                case "Key3":
+                    gp.obj[gp.currentMap][i] = null;
+                    System.out.println("Key3 : " + inventory.get("key3"));
+                    if(inventory.containsKey("key3")) {
+                        inventory.put("key3", inventory.get("key3") + 1);
+                    } else {
+                        inventory.put("key3", 1);
+                    }
+                    break;
+                case "Door3":
+                    if (inventory.containsKey("key3") ) {
+                        gp.obj[gp.currentMap][i] = null;
+                        if(inventory.get("key3") - 1 >= 0) {
+                            inventory.put("key3", inventory.get("key3") - 1);
+                        } else {
+                            inventory.remove("key3");
+                        }
+                    }
+                    System.out.println("Key2 : " + inventory.get("key2"));
+                    break;
+                case "Door2":
+                    if (inventory.containsKey("key2") ) {
+                        gp.obj[gp.currentMap][i] = null;
+                        if(inventory.get("key2") - 1 >= 0) {
+                            inventory.put("key2", inventory.get("key2") - 1);
+                        } else {
+                            inventory.remove("key2");
+                        }
+                    }
+                    System.out.println("Key2 : " + inventory.get("key2"));
+                    break;
+                case "chest":
+                    gp.obj[gp.currentMap][i] = null;
+                    Random rand = new Random();
+                    int random_item = rand.nextInt(1,10);
+                    if (random_item <= 3) {
+                        int random_rarity = rand.nextInt(1,11);
+                        if (random_rarity <= 7) {
+                            if (inventory.containsKey("red_poke_ball")) {
+                                inventory.put("red_poke_ball", inventory.get("red_poke_ball") + 1);
+                            } else {
+                                inventory.put("red_poke_ball", 1);
+                            }
+                        }else if (random_rarity <= 9) {
+                            if (inventory.containsKey("great_ball")) {
+                                inventory.put("great_ball", inventory.get("great_ball") + 1);
+                            } else {
+                                inventory.put("great_ball", 1);
+                            }
+                        } else if (random_rarity == 10) {
+                            if (inventory.containsKey("ultra_ball")) {
+                                inventory.put("ultra_ball", inventory.get("ultra_ball") + 1);
+                            } else {
+                                inventory.put("ultra_ball", 1);
+                            }
+                        }
+                    }else if (random_item <= 6) {
+                        int random_rarity = rand.nextInt(1,11);
+                        if (random_rarity <= 7) {
+                            if (inventory.containsKey("potion")) {
+                                inventory.put("potion", inventory.get("potion") + 1);
+                            } else {
+                                inventory.put("potion", 1);
+                            }
+                        }else if (random_rarity <= 9) {
+                            if (inventory.containsKey("super_potion")) {
+                                inventory.put("super_potion", inventory.get("super_potion") + 1);
+                            } else {
+                                inventory.put("super_potion", 1);
+                            }
+                        } else if (random_rarity == 10) {
+                            if (inventory.containsKey("hyper_potion")) {
+                                inventory.put("hyper_potion", inventory.get("hyper_potion") + 1);
+                            } else {
+                                inventory.put("hyper_potion", 1);
+                            }
+                        }
+                    }else if (random_item <= 9) {
+                        int random_rarity = rand.nextInt(1,11);
+                        if (random_rarity <= 7) {
+                            if (inventory.containsKey("colbur_berry")) {
+                                inventory.put("colbur_berry", inventory.get("colbur_berry") + 1);
+                            } else {
+                                inventory.put("colbur_berry", 1);
+                            }
+                        }else if (random_rarity <= 9) {
+                            if (inventory.containsKey("chilan_berry")) {
+                                inventory.put("chilan_berry", inventory.get("chilan_berry") + 1);
+                            } else {
+                                inventory.put("chilan_berry", 1);
+                            }
+                        } else if (random_rarity == 10) {
+                            if (inventory.containsKey("rowap_berry")) {
+                                inventory.put("rowap_berry", inventory.get("rowap_berry") + 1);
+                            } else {
+                                inventory.put("rowap_berry", 1);
+                            }
+                        }
+                    }
+                    break;
                 case "Fem1":
                     if (gp.gameState == gp.playState && gp.currentMap == 1) {
                         gp.gameState = gp.dialogueState;
@@ -195,6 +305,12 @@ public class Player extends Entity{
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         gp.currentNPC.speak(gp);
+                    }
+                break;
+                case "ShopShelf":
+                    //bool still speaking buat cek msh ngmg ta ga npc e
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
+                        gp.gameState = gp.shopState;
                     }
                 break;
                 case "rumah1":

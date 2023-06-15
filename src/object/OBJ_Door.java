@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
  *
  * @author thior
  */
-public class OBJ_Door extends SuperObject{
+public class OBJ_Door extends SuperObject {
     public OBJ_Door(){
         name = "Door";
         try{
