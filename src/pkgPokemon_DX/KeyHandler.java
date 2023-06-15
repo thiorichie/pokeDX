@@ -298,7 +298,7 @@ public class KeyHandler implements KeyListener{
                 } else {
                     if (gp.ui.commandNum == 0) {
                         if(gp.player.inventory.containsKey("red_poke_ball")) {
-                            if(gp.player.inventory.get("red_poke_ball") > 0) {
+                            if(gp.player.inventory.get("red_poke_ball") > 0 && gp.ui.isTrainerBattle == false && gp.ui.isBossBattle == false) {
                                 if(getIndex <= 50) {
                                     gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
                                     gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
@@ -314,13 +314,21 @@ public class KeyHandler implements KeyListener{
                                 gp.ui.TextPopup = true;
                             }
                         } else {
-                            gp.ui.message = "You don't have any red poke ball !";
+                            if (gp.ui.isTrainerBattle) {
+                                gp.ui.message = "You cannot catch a trainee pokemon !";
+                            } 
+                            else if (gp.ui.isBossBattle) {
+                                gp.ui.message = "You cannot catch a boss pokemon !";
+                            }
+                            else {
+                                gp.ui.message = "You don't have any red poke ball !";
+                            }
                             gp.ui.TextPopup = true;
                         }
                     }
                     if (gp.ui.commandNum == 1) {
                         if(gp.player.inventory.containsKey("great_ball")) {
-                            if(gp.player.inventory.get("great_ball") > 0) {
+                            if(gp.player.inventory.get("great_ball") > 0 && gp.ui.isTrainerBattle == false && gp.ui.isBossBattle == false) {
                                 if(getIndex <= 75) {
                                     gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
                                     gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
@@ -336,19 +344,35 @@ public class KeyHandler implements KeyListener{
                                 gp.ui.TextPopup = true;
                             }
                         } else {
-                            gp.ui.message = "You don't have any great ball !";
+                            if (gp.ui.isTrainerBattle) {
+                                gp.ui.message = "You cannot catch a trainee pokemon !";
+                            } 
+                            else if (gp.ui.isBossBattle) {
+                                gp.ui.message = "You cannot catch a boss pokemon !";
+                            }
+                            else {
+                                gp.ui.message = "You don't have any great ball !";
+                            }
                             gp.ui.TextPopup = true;
                         }
                     }
                     if (gp.ui.commandNum == 2) {
                         if(gp.player.inventory.containsKey("ultra_ball")) {
-                            if(gp.player.inventory.get("ultra_ball") > 0) {
+                            if(gp.player.inventory.get("ultra_ball") > 0 && gp.ui.isTrainerBattle == false && gp.ui.isBossBattle == false) {
                                 gp.ui.message = "You successfully captured the " + gp.ui.poke1.getNama() + " !";
                                 gp.player.party.add(gp.ui.pokemon.catchMonster(gp.ui.poke1.getNama().toLowerCase()));
                                 gp.ui.catchPokemon = true;
                                 gp.player.inventory.put("ultra_ball", gp.player.inventory.get("ultra_ball") - 1);
                             } else {
-                                gp.ui.message = "Ultra ball is empty !";
+                                if (gp.ui.isTrainerBattle) {
+                                    gp.ui.message = "You cannot catch a trainee pokemon !";
+                                }
+                                else if (gp.ui.isBossBattle) {
+                                    gp.ui.message = "You cannot catch a boss pokemon !";
+                                }
+                                else{
+                                    gp.ui.message = "Ultra ball is empty !";
+                                }
                                 gp.ui.TextPopup = true;
                             }
                         } else {
