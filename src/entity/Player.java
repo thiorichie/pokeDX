@@ -315,6 +315,12 @@ public class Player extends Entity{
                         gp.currentNPC.speak(gp);
                     }
                 break;
+                case "ShopShelf":
+                    //bool still speaking buat cek msh ngmg ta ga npc e
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
+                        gp.gameState = gp.shopState;
+                    }
+                break;
                 case "rumah1":
                     //bool still speaking buat cek msh ngmg ta ga npc e
                     if ( gp.gameState == gp.playState  && gp.currentMap == 0) {

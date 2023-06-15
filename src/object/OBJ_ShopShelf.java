@@ -9,13 +9,13 @@ import javax.imageio.ImageIO;
 
 /**
  *
- * @author thior
+ * @author rici
  */
-public class OBJ_Door extends SuperObject {
-    public OBJ_Door(){
-        name = "Door";
+public class OBJ_ShopShelf extends SuperObject {
+    public OBJ_ShopShelf(){
+        name = "ShopShelf";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/door.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/objects/shop_shelf.png"));
         }
         catch (IOException e){
             e.printStackTrace();

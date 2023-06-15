@@ -395,6 +395,53 @@ public class UI {
         }
     }
     
+    public void drawShopShelfMenu() {
+        try{
+            shelfShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/shop.png"));
+            pokeShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/poke_ball.png"));
+            berriesShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/berry.png"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        g2.drawImage(shopMenu, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
+        label.setBounds(50, 50, 200, 30);
+        label.setForeground(Color.white);
+        gp.add(label);
+    }
+    
+    public void drawPokeBallShopMenu() {
+        try{
+            shopMenu = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        g2.drawImage(shopMenu, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
+        label.setBounds(50, 50, 200, 30);
+        label.setForeground(Color.white);
+        gp.add(label);
+    }
+    
+    public void drawBerriesShopMenu() {
+        try{
+            shopMenu = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        g2.drawImage(shopMenu, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
+        label.setBounds(50, 50, 200, 30);
+        label.setForeground(Color.white);
+        gp.add(label);
+    }
+    
     public boolean cekPartyAlive(){
         boolean status = false;
         for (Monster party : gp.player.party) {
@@ -403,21 +450,6 @@ public class UI {
             }
         }
         return status;
-    }
-    
-    public void drawBackpackScreen() {
-        try{
-            bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
-            hp_bar = ImageIO.read(getClass().getResourceAsStream("/battle/hpbar.png"));
-//            poke1 = ImageIO.read(getClass().getResourceAsStream("/battle/pikachu.png"));
-            poke1 = pokemon.Axew;
-            poke2 = pokemon.Charmander;
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        
-        g2.drawImage(bg_battle, 0, 0, gp.screenWidth, gp.screenHeight, null);
     }
     
     public void drawBattleScreen(){
