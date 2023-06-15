@@ -574,11 +574,18 @@ public class UI {
          try {
              inventory_gui = ImageIO.read(getClass().getResourceAsStream("/game_gui/inventory_gui.png"));
              inventory_entity.put("key", ImageIO.read(getClass().getResourceAsStream("/objects/key.png")));
+             inventory_entity.put("key2", ImageIO.read(getClass().getResourceAsStream("/objects/key2.png")));
+             inventory_entity.put("key3", ImageIO.read(getClass().getResourceAsStream("/objects/key3.png")));
              inventory_entity.put("boots", ImageIO.read(getClass().getResourceAsStream("/objects/boots.png")));
              inventory_entity.put("red_poke_ball", ImageIO.read(getClass().getResourceAsStream("/objects/red_ball.png")));
              inventory_entity.put("great_ball", ImageIO.read(getClass().getResourceAsStream("/objects/great_ball.png")));
              inventory_entity.put("ultra_ball", ImageIO.read(getClass().getResourceAsStream("/objects/ultra_ball.png")));
              inventory_entity.put("potion", ImageIO.read(getClass().getResourceAsStream("/objects/potion.png")));
+             inventory_entity.put("super_potion", ImageIO.read(getClass().getResourceAsStream("/objects/super_potion.png")));
+             inventory_entity.put("hyper_potion", ImageIO.read(getClass().getResourceAsStream("/objects/hyper_potion.png")));
+             inventory_entity.put("rowap_berry", ImageIO.read(getClass().getResourceAsStream("/objects/rowap_berry.png")));
+             inventory_entity.put("chilan_berry", ImageIO.read(getClass().getResourceAsStream("/objects/chilan_berry.png")));
+             inventory_entity.put("colbur_berry", ImageIO.read(getClass().getResourceAsStream("/objects/colbur_berry.png")));
          }
          
          catch(IOException e){

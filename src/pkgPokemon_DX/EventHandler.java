@@ -70,7 +70,7 @@ public class EventHandler {
                 teleport(0, 14, 13);
             } else if (hit(0, 14, 25, "up") == true) {
                 teleport(4, 14, 23);
-            } else if (hit(4, 14, 23, "down") == true) {
+            } else if (hit(4, 14, 23, "any") == true) {
                 teleport(0, 14, 25);
             } else if (hit(1, 8, 8, "any") == true) {
                 int random_battle = rand.nextInt(1,101);
@@ -1425,8 +1425,10 @@ public class EventHandler {
         int random_monster_normal = rand.nextInt(3, 6);
         if (random_monster_chance <= 8) {
             gp.ui.poke1 = gp.ui.pokemon.listpokemon.get(random_monster_normal);
+            canTouchEvent = false;
         } else if (random_monster_chance >= 9) {
             gp.ui.poke1 = gp.ui.pokemon.listpokemon.get(random_monster_rare);
+            canTouchEvent = false;
         }
     }
 
