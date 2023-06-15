@@ -12,11 +12,11 @@ import pkgPokemon_DX.GamePanel;
  *
  * @author WILLIAM
  */
-public class rumah1 extends SuperObject {
-    public rumah1(){
-        name = "rumah1";
+public class rumah2 extends SuperObject {
+    public rumah2(){
+        name = "rumah2";
         try{
-            image = ImageIO.read(getClass().getResourceAsStream("/rumah1/8.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/rumah2/8.png"));
         }
         catch (IOException e){
             e.printStackTrace();

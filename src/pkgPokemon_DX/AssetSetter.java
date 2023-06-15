@@ -44,6 +44,9 @@ import OBJ_Rumah3.vend2;
 import OBJ_Rumah3.vend3;
 import OBJ_Rumah3.vend4;
 import object.rumah1;
+import object.rumah2;
+import object.rumah3;
+import object.rumah4;
 
 /**
  *
@@ -85,6 +88,18 @@ public class AssetSetter {
         gp.obj[1][1] = new rumah1();
         gp.obj[1][1].worldX = 9 * gp.tilesSize;
         gp.obj[1][1].worldY = 17 * gp.tilesSize;
+         
+        gp.obj[1][2] = new rumah2();
+        gp.obj[1][2].worldX = 19 * gp.tilesSize;
+        gp.obj[1][2].worldY = 17 * gp.tilesSize;
+         
+        gp.obj[1][3] = new rumah3();
+        gp.obj[1][3].worldX = 9 * gp.tilesSize;
+        gp.obj[1][3].worldY = 31 * gp.tilesSize;
+         
+        gp.obj[1][4] = new rumah4();
+        gp.obj[1][4].worldX = 19 * gp.tilesSize;
+        gp.obj[1][4].worldY = 31 * gp.tilesSize;
          
         gp.obj[4][5] = new NPC_f1();
         gp.obj[4][5].worldX = 14 * gp.tilesSize;

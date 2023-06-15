@@ -65,19 +65,11 @@ public class EventHandler {
             //event
             //tele map village
             if (hit(0, 17, 10, "any") == true) {
-                teleport(1, 7, 13);
-            } else if (hit(1, 19, 17, "up") == true) {
-                teleport(3, 7, 13);
+                teleport(1, 14, 13);
             } else if (hit(1, 14, 25, "up") == true) {
                 teleport(4, 14, 23);
             } else if (hit(4, 14, 23, "down") == true) {
                 teleport(1, 14, 25);
-            } else if (hit(1, 9, 31, "up") == true) {
-                teleport(5, 7, 13);
-            } else if (hit(1, 19, 31, "up") == true) {
-                teleport(6, 7, 13);
-            } else if (hit(1, 19, 31, "up") == true) {
-                teleport(6, 7, 13);
             } else if (hit(0, 8, 8, "any") == true) {
                 int random_battle = rand.nextInt(1,101);
                 if (random_battle == 69) {
@@ -673,17 +665,682 @@ public class EventHandler {
                 if (random_battle == 69) {
                     battle();
                 }
-            } else if (hit(0, 24, 38, "any") == true) {
-                int random_battle = rand.nextInt(1,101);
-                if (random_battle == 69) {
-                    battle();
-                }
-            } else if (hit(0, 25, 38, "any") == true) {
-                int random_battle = rand.nextInt(1,101);
-                if (random_battle == 69) {
-                    battle();
-                }
             } else if (hit(0, 26, 38, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 33, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            }  else if (hit(0, 17, 33, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 33, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 33, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 32, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 31, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 10, 38, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 10, 37, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 10, 36, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 10, 35, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 10, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 9, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 8, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 7, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 6, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 5, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 4, 34, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 22, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 23, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 24, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 48, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 49, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 50, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 51, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 52, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 53, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 49, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 50, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 51, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 52, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 53, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 22, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 23, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 24, 54, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 56, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 56, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 56, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 56, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 56, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 57, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 57, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 57, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 57, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 57, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 58, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 58, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 58, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 58, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 58, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 59, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 59, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 59, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 59, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 59, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 60, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 60, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 60, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 60, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 60, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 17, 61, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 19, 61, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 20, 61, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 18, 61, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 21, 61, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 12, 64, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 64, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 64, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 64, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 64, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 12, 65, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 65, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 65, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 65, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 65, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 12, 66, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 66, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 66, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 66, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 66, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 12, 67, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 67, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 67, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 67, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 67, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 12, 68, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 68, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 68, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 68, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 68, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 12, 69, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 13, 69, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 14, 69, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 15, 69, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 16, 69, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 23, 74, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 24, 74, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 74, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 26, 74, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 27, 74, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 23, 75, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 24, 75, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 75, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 26, 75, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 27, 75, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 23, 76, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 24, 76, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 76, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 26, 76, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 27, 76, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 23, 77, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 24, 77, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 25, 77, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 26, 77, "any") == true) {
+                int random_battle = rand.nextInt(1,101);
+                if (random_battle == 69) {
+                    battle();
+                }
+            } else if (hit(0, 27, 77, "any") == true) {
                 int random_battle = rand.nextInt(1,101);
                 if (random_battle == 69) {
                     battle();
