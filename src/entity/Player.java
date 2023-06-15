@@ -176,6 +176,7 @@ public class Player extends Entity{
                     if (gp.gameState == gp.playState && gp.currentMap == 0) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
+                        System.out.println("x = "+gp.currentNPC.worldX + ",y = "+gp.currentNPC.worldY);
                         gp.currentNPC.speak(gp);
                     }
                     break;

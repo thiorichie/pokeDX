@@ -35,7 +35,7 @@ public class NPC_f1 extends SuperObject{
     }
     
     public void speak(GamePanel gp){
-        if (Dialogues[dialogueIndex] ==null) {
+        if (Dialogues[dialogueIndex] == null) {
             //klo udh selesai ngomong
             dialogueIndex=0;
             if (sudahBattle == false) {

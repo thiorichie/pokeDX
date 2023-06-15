@@ -81,6 +81,10 @@ public class AssetSetter {
         gp.obj[1][0] = new OBJ_Boots();
         gp.obj[1][0].worldX = 7 * gp.tilesSize;
         gp.obj[1][0].worldY = 14 * gp.tilesSize;
+        
+        gp.obj[1][1] = new rumah1();
+        gp.obj[1][1].worldX = 9 * gp.tilesSize;
+        gp.obj[1][1].worldY = 17 * gp.tilesSize;
          
         gp.obj[4][5] = new NPC_f1();
         gp.obj[4][5].worldX = 14 * gp.tilesSize;
