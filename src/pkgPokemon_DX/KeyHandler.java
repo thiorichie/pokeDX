@@ -161,6 +161,7 @@ public class KeyHandler implements KeyListener{
                     gp.gameState = gp.playState;
                     //reset
                     gp.ui.flee =false;
+                    gp.ui.poke1.restoreHP();
                 } else if(gp.ui.catchPokemon) {
                     gp.gameState = gp.playState;
                     gp.ui.menu_state = 0;
@@ -374,20 +375,22 @@ public class KeyHandler implements KeyListener{
             //buat key action pas atk
             else if (code == KeyEvent.VK_ENTER && gp.ui.menu_state == 1) {
                 Monster temp = gp.ui.poke2;
+                int multiplier = 5 * (temp.getLvl()-1);
+//                System.out.println("dmg multiplier: "+multiplier);
                 if (gp.ui.commandNum == 0) {
-                    gp.ui.action(temp.skill.get(0).getDmg(), temp.skill.get(0).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(0).getDmg() + (temp.skill.get(0).getDmg()*multiplier /100), temp.skill.get(0).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
                 if (gp.ui.commandNum == 1) {
-                    gp.ui.action(temp.skill.get(1).getDmg(), temp.skill.get(1).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(1).getDmg() + (temp.skill.get(1).getDmg()*multiplier /100), temp.skill.get(1).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
                 if (gp.ui.commandNum == 2) {
-                    gp.ui.action(temp.skill.get(2).getDmg(), temp.skill.get(2).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(2).getDmg() + (temp.skill.get(2).getDmg()*multiplier /100), temp.skill.get(2).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
                 if (gp.ui.commandNum == 3) {
-                    gp.ui.action(temp.skill.get(3).getDmg(), temp.skill.get(3).getHeal(), temp, gp.ui.poke1);
+                    gp.ui.action(temp.skill.get(3).getDmg() + (temp.skill.get(3).getDmg()*multiplier /100), temp.skill.get(3).getHeal(), temp, gp.ui.poke1);
                     gp.ui.menu_state = 99;
                 }
             }
