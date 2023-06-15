@@ -57,8 +57,8 @@ public class Player extends Entity{
     
     public void setDefaultValues(){
         
-        worldX = gp.tilesSize * 2;
-        worldY = gp.tilesSize * 4;
+        worldX = gp.tilesSize * 14;
+        worldY = gp.tilesSize * 19;
         speed = 3;
         direction = "right";
     }
@@ -146,12 +146,12 @@ public class Player extends Entity{
                 case "Boots":
                     speed+= 1;
                     gp.obj[gp.currentMap][i] = null;
-//                    System.out.println("Boots : " + inventory.get("boots"));
-//                    if(inventory.containsKey("boots")) {
-//                        inventory.put("boots", inventory.get("boots") + 1);
-//                    } else {
-//                        inventory.put("boots", 1);
-//                    }
+                    System.out.println("Boots : " + inventory.get("boots"));
+                    if(inventory.containsKey("boots")) {
+                        inventory.put("boots", inventory.get("boots") + 1);
+                    } else {
+                        inventory.put("boots", 1);
+                    }
                     break;
                 case "Key":
                     gp.obj[gp.currentMap][i] = null;
@@ -174,7 +174,7 @@ public class Player extends Entity{
                     System.out.println("Key : " + inventory.get("key"));
                     break;
                 case "Fem1":
-                    if (gp.gameState == gp.playState && gp.currentMap == 0) {
+                    if (gp.gameState == gp.playState && gp.currentMap == 1) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         System.out.println("x = "+gp.currentNPC.worldX + ",y = "+gp.currentNPC.worldY);
@@ -183,7 +183,7 @@ public class Player extends Entity{
                     break;
                 case "Fem2":
                     //bool still speaking buat cek msh ngmg ta ga npc e
-                    if ( gp.gameState == gp.playState  && gp.currentMap == 0) {
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         gp.currentNPC.speak(gp);
@@ -199,7 +199,7 @@ public class Player extends Entity{
                 break;
                 case "rumah1":
                     //bool still speaking buat cek msh ngmg ta ga npc e
-                    if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 0) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         gp.currentNPC.speak(gp);
@@ -207,7 +207,7 @@ public class Player extends Entity{
                 break;
                 case "rumah2":
                     //bool still speaking buat cek msh ngmg ta ga npc e
-                    if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 0) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         gp.currentNPC.speak(gp);
@@ -215,7 +215,7 @@ public class Player extends Entity{
                 break;
                 case "rumah3":
                     //bool still speaking buat cek msh ngmg ta ga npc e
-                    if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 0) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         gp.currentNPC.speak(gp);
@@ -223,7 +223,7 @@ public class Player extends Entity{
                 break;
                 case "rumah4":
                     //bool still speaking buat cek msh ngmg ta ga npc e
-                    if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 0) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         gp.currentNPC.speak(gp);

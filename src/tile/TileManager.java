@@ -27,8 +27,8 @@ public class TileManager {
         tile = new Tile[200];
         mapTileNum = new int [gp.maksMap][gp.maksWorldCol * 2][gp.maksWorldRow * 2];
         getTileImage();
-        loadMap("/maps/protomap001.txt",0);
-        loadMap("/maps/Village.txt",1);
+        loadMap("/maps/Village.txt",0);
+        loadMap("/maps/protomap001.txt",1);
         loadMap("/maps/Rumah1.txt",2);
         loadMap("/maps/Rumah2.txt",3);
         loadMap("/maps/Rumah3.txt",4);

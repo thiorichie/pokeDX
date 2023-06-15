@@ -61,45 +61,41 @@ public class AssetSetter {
     
     public void setObject(){
         
-        gp.obj[0][0] = new OBJ_Key();
-        gp.obj[0][0].worldX = 6 * gp.tilesSize;
-        gp.obj[0][0].worldY = 5 * gp.tilesSize;
+        gp.obj[1][0] = new OBJ_Key();
+        gp.obj[1][0].worldX = 6 * gp.tilesSize;
+        gp.obj[1][0].worldY = 5 * gp.tilesSize;
         
-        gp.obj[0][1] = new OBJ_Door();
-        gp.obj[0][1].worldX = 7 * gp.tilesSize;
-        gp.obj[0][1].worldY = 7 * gp.tilesSize;
+        gp.obj[1][1] = new OBJ_Door();
+        gp.obj[1][1].worldX = 7 * gp.tilesSize;
+        gp.obj[1][1].worldY = 7 * gp.tilesSize;
         
-        gp.obj[0][2] = new NPC_f1();
-        gp.obj[0][2].worldX = 15 * gp.tilesSize;
-        gp.obj[0][2].worldY = 17 * gp.tilesSize;
-        
-        gp.obj[0][3] = new NPC_f2();
-        gp.obj[0][3].worldX = 24 * gp.tilesSize;
-        gp.obj[0][3].worldY = 8 * gp.tilesSize;
-        
-        gp.obj[0][4] = new OBJ_Boots();
-        gp.obj[0][4].worldX = 7 * gp.tilesSize;
-        gp.obj[0][4].worldY = 5 * gp.tilesSize;
-        
-        gp.obj[1][0] = new OBJ_Boots();
-        gp.obj[1][0].worldX = 7 * gp.tilesSize;
-        gp.obj[1][0].worldY = 14 * gp.tilesSize;
-        
-        gp.obj[1][1] = new rumah1();
-        gp.obj[1][1].worldX = 9 * gp.tilesSize;
-        gp.obj[1][1].worldY = 17 * gp.tilesSize;
-         
-        gp.obj[1][2] = new rumah2();
-        gp.obj[1][2].worldX = 19 * gp.tilesSize;
+        gp.obj[1][2] = new NPC_f1();
+        gp.obj[1][2].worldX = 15 * gp.tilesSize;
         gp.obj[1][2].worldY = 17 * gp.tilesSize;
+        
+        gp.obj[1][3] = new NPC_f2();
+        gp.obj[1][3].worldX = 24 * gp.tilesSize;
+        gp.obj[1][3].worldY = 8 * gp.tilesSize;
+        
+        gp.obj[1][4] = new OBJ_Boots();
+        gp.obj[1][4].worldX = 7 * gp.tilesSize;
+        gp.obj[1][4].worldY = 5 * gp.tilesSize;
+        
+        gp.obj[0][0] = new rumah1();
+        gp.obj[0][0].worldX = 9 * gp.tilesSize;
+        gp.obj[0][0].worldY = 17 * gp.tilesSize;
          
-        gp.obj[1][3] = new rumah3();
-        gp.obj[1][3].worldX = 9 * gp.tilesSize;
-        gp.obj[1][3].worldY = 31 * gp.tilesSize;
+        gp.obj[0][1] = new rumah2();
+        gp.obj[0][1].worldX = 19 * gp.tilesSize;
+        gp.obj[0][1].worldY = 17 * gp.tilesSize;
          
-        gp.obj[1][4] = new rumah4();
-        gp.obj[1][4].worldX = 19 * gp.tilesSize;
-        gp.obj[1][4].worldY = 31 * gp.tilesSize;
+        gp.obj[0][2] = new rumah3();
+        gp.obj[0][2].worldX = 9 * gp.tilesSize;
+        gp.obj[0][2].worldY = 31 * gp.tilesSize;
+         
+        gp.obj[0][3] = new rumah4();
+        gp.obj[0][3].worldX = 19 * gp.tilesSize;
+        gp.obj[0][3].worldY = 31 * gp.tilesSize;
          
         gp.obj[4][5] = new NPC_f1();
         gp.obj[4][5].worldX = 14 * gp.tilesSize;
