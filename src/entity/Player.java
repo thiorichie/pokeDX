@@ -60,7 +60,7 @@ public class Player extends Entity{
         
         worldX = gp.tilesSize * 14;
         worldY = gp.tilesSize * 19;
-        speed = 3;
+        speed = 10;
         direction = "right";
     }
     
@@ -292,6 +292,14 @@ public class Player extends Entity{
                     }
                     break;
                 case "Fem2":
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
+                        gp.gameState = gp.dialogueState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                        gp.currentNPC.speak(gp);
+                    }
+                    break;
+                    case "arceus":
+                    //bool still speaking buat cek msh ngmg ta ga npc e
                     if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
