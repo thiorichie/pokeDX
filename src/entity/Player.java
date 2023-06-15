@@ -145,7 +145,7 @@ public class Player extends Entity{
             
             switch(objectName){
                 case "Boots":
-                    speed+= 10;
+                    speed+= 1;
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Boots : " + inventory.get("boots"));
                     if(inventory.containsKey("boots")) {
@@ -292,7 +292,6 @@ public class Player extends Entity{
                     }
                     break;
                 case "Fem2":
-                    //bool still speaking buat cek msh ngmg ta ga npc e
                     if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
@@ -300,17 +299,34 @@ public class Player extends Entity{
                     }
                     break;
                 case "Meja2":
-                    //bool still speaking buat cek msh ngmg ta ga npc e
                     if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
                         gp.gameState = gp.dialogueState;
                         gp.currentNPC = gp.obj[gp.currentMap][i];
                         gp.currentNPC.speak(gp);
                     }
                 break;
-                case "ShopShelf":
-                    //bool still speaking buat cek msh ngmg ta ga npc e
+                case "rak3":
                     if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
                         gp.gameState = gp.shopState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                    }
+                break;
+                case "rak4":
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
+                        gp.gameState = gp.shopState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                    }
+                break;
+                case "vend3":
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
+                        gp.gameState = gp.vendingShopState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                    }
+                break;
+                case "vend4":
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 4) {
+                        gp.gameState = gp.vendingShopState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
                     }
                 break;
                 case "rumah1":
