@@ -47,7 +47,7 @@ public class Pokemon {
         Bulbasour.addSkill(new Skill("Tackle", 40, 0));
         Bulbasour.addSkill(new Skill("Vine Whip", 45, 0));
         
-        Squirtle.addSkill(new Skill("Tackle", 40, 0));
+        Squirtle.addSkill(new Skill("Tackle", 500, 0));
         Squirtle.addSkill(new Skill("Water Gun", 45, 0));
         
         Lairon.addSkill(new Skill("Tackle", 40, 0));

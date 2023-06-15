@@ -531,6 +531,17 @@ public class UI {
             System.out.println(poke2);
             
             //reset 
+            //reset boss
+            if (isBossBattle) {
+                System.out.println("sudah kalah bosnya");
+                if (gp.player.inventory.containsKey("key3")) {
+                    gp.player.inventory.put("key3", gp.player.inventory.get("key3") + 1);
+                } else {
+                    gp.player.inventory.put("key3", 1);
+                }
+                gp.obj[1][7] = null;
+                isBossBattle = false;
+            }
             isBattleOver =false;
             
         }
@@ -556,6 +567,11 @@ public class UI {
                 }
                 //reset
                 isTrainerBattle =false;
+            }
+            if (isBossBattle) {
+                message = "Soo Eazy";
+                
+                
             }
             
             //biar dialog tampil

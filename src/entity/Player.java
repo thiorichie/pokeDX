@@ -60,7 +60,7 @@ public class Player extends Entity{
         
         worldX = gp.tilesSize * 14;
         worldY = gp.tilesSize * 19;
-        speed = 3;
+        speed = 10;
         direction = "right";
     }
     
@@ -145,7 +145,7 @@ public class Player extends Entity{
             
             switch(objectName){
                 case "Boots":
-                    speed+= 10;
+                    speed+= 1;
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Boots : " + inventory.get("boots"));
                     if(inventory.containsKey("boots")) {
@@ -292,6 +292,14 @@ public class Player extends Entity{
                     }
                     break;
                 case "Fem2":
+                    //bool still speaking buat cek msh ngmg ta ga npc e
+                    if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
+                        gp.gameState = gp.dialogueState;
+                        gp.currentNPC = gp.obj[gp.currentMap][i];
+                        gp.currentNPC.speak(gp);
+                    }
+                    break;
+                    case "arceus":
                     //bool still speaking buat cek msh ngmg ta ga npc e
                     if ( gp.gameState == gp.playState  && gp.currentMap == 1) {
                         gp.gameState = gp.dialogueState;

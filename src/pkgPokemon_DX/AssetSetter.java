@@ -43,6 +43,7 @@ import OBJ_Rumah3.vend1;
 import OBJ_Rumah3.vend2;
 import OBJ_Rumah3.vend3;
 import OBJ_Rumah3.vend4;
+import object.Arceus;
 import object.OBJ_Door2;
 import object.OBJ_Door3;
 import object.OBJ_Key2;
@@ -85,13 +86,13 @@ public class AssetSetter {
         gp.obj[1][4].worldX = 23 * gp.tilesSize;
         gp.obj[1][4].worldY = 83 * gp.tilesSize;
         
-        gp.obj[1][5] = new OBJ_Key3();
-        gp.obj[1][5].worldX = 24 * gp.tilesSize;
-        gp.obj[1][5].worldY = 83 * gp.tilesSize;
-        
         gp.obj[1][6] = new OBJ_Boots();
         gp.obj[1][6].worldX = 7 * gp.tilesSize;
         gp.obj[1][6].worldY = 5 * gp.tilesSize;
+        
+        gp.obj[1][7] = new Arceus();
+        gp.obj[1][7].worldX = 27 * gp.tilesSize;
+        gp.obj[1][7].worldY = 97 * gp.tilesSize;
         
         gp.obj[0][0] = new rumah1();
         gp.obj[0][0].worldX = 9 * gp.tilesSize;
