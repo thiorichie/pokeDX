@@ -1420,6 +1420,8 @@ public class EventHandler {
 
     public void battle() {
         gp.gameState = gp.battleState;
+        gp.stopMusic();
+        gp.playMusic(6);
         int random_monster_chance = rand.nextInt(1, 10);
         int random_monster_rare = rand.nextInt(8, 11);
         int random_monster_normal = rand.nextInt(3, 6);

@@ -42,6 +42,8 @@ public class Arceus extends SuperObject{
                 gp.gameState = gp.battleState;
                 gp.ui.poke1 = gp.ui.pokemon.Arceus;
                 gp.ui.isBossBattle = true;
+                gp.stopMusic();
+                gp.playMusic(5);
                 sudahBattle=true;
             }
             else{

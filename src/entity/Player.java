@@ -145,6 +145,7 @@ public class Player extends Entity{
             
             switch(objectName){
                 case "Boots":
+                    gp.playSE(2);
                     speed+= 1;
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Boots : " + inventory.get("boots"));
@@ -155,6 +156,7 @@ public class Player extends Entity{
                     }
                     break;
                 case "Key":
+                    gp.playSE(1);
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Key : " + inventory.get("key"));
                     if(inventory.containsKey("key")) {
@@ -168,13 +170,16 @@ public class Player extends Entity{
                         gp.obj[gp.currentMap][i] = null;
                         if(inventory.get("key") - 1 >= 0) {
                             inventory.put("key", inventory.get("key") - 1);
+                            gp.playSE(3);
                         } else {
                             inventory.remove("key");
+                            gp.playSE(3);
                         }
                     }
                     System.out.println("Key : " + inventory.get("key"));
                     break;
                 case "Key2":
+                    gp.playSE(1);
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Key2 : " + inventory.get("key2"));
                     if(inventory.containsKey("key2")) {
@@ -184,6 +189,7 @@ public class Player extends Entity{
                     }
                     break;
                 case "Key3":
+                    gp.playSE(1);
                     gp.obj[gp.currentMap][i] = null;
                     System.out.println("Key3 : " + inventory.get("key3"));
                     if(inventory.containsKey("key3")) {
@@ -197,8 +203,10 @@ public class Player extends Entity{
                         gp.obj[gp.currentMap][i] = null;
                         if(inventory.get("key3") - 1 >= 0) {
                             inventory.put("key3", inventory.get("key3") - 1);
+                            gp.playSE(3);
                         } else {
                             inventory.remove("key3");
+                            gp.playSE(3);
                         }
                     }
                     System.out.println("Key2 : " + inventory.get("key2"));
@@ -208,13 +216,16 @@ public class Player extends Entity{
                         gp.obj[gp.currentMap][i] = null;
                         if(inventory.get("key2") - 1 >= 0) {
                             inventory.put("key2", inventory.get("key2") - 1);
+                            gp.playSE(3);
                         } else {
                             inventory.remove("key2");
+                            gp.playSE(3);
                         }
                     }
                     System.out.println("Key2 : " + inventory.get("key2"));
                     break;
                 case "chest":
+                    gp.playSE(3);
                     gp.obj[gp.currentMap][i] = null;
                     Random rand = new Random();
                     int random_item = rand.nextInt(1,10);
