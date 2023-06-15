@@ -144,13 +144,14 @@ public class Player extends Entity{
             
             switch(objectName){
                 case "Boots":
+                    speed+= 1;
                     gp.obj[gp.currentMap][i] = null;
-                    System.out.println("Boots : " + inventory.get("boots"));
-                    if(inventory.containsKey("boots")) {
-                        inventory.put("boots", inventory.get("boots") + 1);
-                    } else {
-                        inventory.put("boots", 1);
-                    }
+//                    System.out.println("Boots : " + inventory.get("boots"));
+//                    if(inventory.containsKey("boots")) {
+//                        inventory.put("boots", inventory.get("boots") + 1);
+//                    } else {
+//                        inventory.put("boots", 1);
+//                    }
                     break;
                 case "Key":
                     gp.obj[gp.currentMap][i] = null;
