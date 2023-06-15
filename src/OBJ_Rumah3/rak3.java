@@ -7,6 +7,7 @@ package OBJ_Rumah3;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import object.SuperObject;
+import pkgPokemon_DX.GamePanel;
 
 /**
  *
@@ -26,4 +27,12 @@ public class rak3 extends SuperObject{
         collision = true;
     }
     
+    public void speak(GamePanel gp){
+        if (Dialogues[dialogueIndex] == null) {
+            dialogueIndex=0;
+            gp.currentNPC=null;
+            gp.gameState = gp.playState;
+        }
+        gp.ui.CurrentDialogue = Dialogues[dialogueIndex];
+    }
 }

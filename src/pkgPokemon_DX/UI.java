@@ -29,8 +29,9 @@ import poke.Pokemon;
  */
 public class UI {
     HashMap<String, BufferedImage> inventory_entity = new HashMap<>();
-    BufferedImage btn_inventory, inventory_gui;
+    BufferedImage btn_inventory, inventory_gui, gold_gui;
     BufferedImage input, bg, btn_start, btn_load, btn_exit;
+    BufferedImage shelfShopMenu, pokeShopMenu, berriesShopMenu, vendingShopMenu;
     
     //buat cursor
     public int commandNum = 0;
@@ -127,9 +128,18 @@ public class UI {
         if (gp.gameState == gp.battleState) {
             drawBattleScreen();
         }
-//        if (gp.gameState == gp.backpackState) {
-//            drawBackpackScreen();
-//        }
+        if (gp.gameState == gp.shopState) {
+            drawShopShelfMenu();
+        }
+        if (gp.gameState == gp.vendingShopState) {
+            drawVendingShopMenu();
+        }
+        if (gp.gameState == gp.buyPokeState) {
+            drawPokeBallShopMenu();
+        }
+        if (gp.gameState == gp.buyBerriesState) {
+            drawBerriesShopMenu();
+        }
     }
     
     private void drawPokeName(int x,int y,String nama, int lvl){
@@ -395,52 +405,113 @@ public class UI {
         }
     }
     
-//    public void drawShopShelfMenu() {
-//        try{
-//            shelfShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/shop.png"));
-//            pokeShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/poke_ball.png"));
-//            berriesShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/berry.png"));
-//        }
-//        catch(IOException e){
-//            e.printStackTrace();
-//        }
-//        
-//        g2.drawImage(shopMenu, 0, 0, gp.screenWidth, gp.screenHeight, null);
-//        JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
-//        label.setBounds(50, 50, 200, 30);
-//        label.setForeground(Color.white);
-//        gp.add(label);
-//    }
-//    
-//    public void drawPokeBallShopMenu() {
-//        try{
-//            shopMenu = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
-//        }
-//        catch(IOException e){
-//            e.printStackTrace();
-//        }
-//        
-//        g2.drawImage(shopMenu, 0, 0, gp.screenWidth, gp.screenHeight, null);
-//        JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
-//        label.setBounds(50, 50, 200, 30);
-//        label.setForeground(Color.white);
-//        gp.add(label);
-//    }
-//    
-//    public void drawBerriesShopMenu() {
-//        try{
-//            shopMenu = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
-//        }
-//        catch(IOException e){
-//            e.printStackTrace();
-//        }
-//        
-//        g2.drawImage(shopMenu, 0, 0, gp.screenWidth, gp.screenHeight, null);
-//        JLabel label = new JLabel(gp.player.inventory.get(key).toString() + "X");
-//        label.setBounds(50, 50, 200, 30);
-//        label.setForeground(Color.white);
-//        gp.add(label);
-//    }
+    public void drawShopShelfMenu() {
+        try{
+            shelfShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/shop.png"));
+            pokeShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/poke_ball.png"));
+            berriesShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/berry.png"));
+            vendingShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/potion.png"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        g2.drawImage(shelfShopMenu, (gp.screenWidth - 635) / 2, (gp.screenHeight - 390) / 2, 635, 390, null);
+    }
+    
+    public void drawPokeBallShopMenu() {
+        gp.removeAll();
+        final int x_awal = 740;
+        final int y_awal = 265;
+        g2.drawImage(pokeShopMenu, (gp.screenWidth - 615) / 2, (gp.screenHeight - 364) / 2, 615, 364, null);
+        for(int i = 0; i != 3; i++) {
+            String[] item = {"ultra_ball", "great_ball", "red_poke_ball"};
+            int[] itemPrice = {300, 150, 50};
+            JLabel label;
+            if(gp.player.inventory.containsKey(item[i])) {
+                label = new JLabel("In backpack : " + gp.player.inventory.get(item[i]));
+            } else {
+                label = new JLabel("In backpack : 0");
+            }
+            Font font = label.getFont();
+            label.setFont(new Font(font.getName(), Font.PLAIN, 25));
+            label.setBounds(x_awal, y_awal + (i * 114), 200, 30);
+            label.setForeground(Color.white);
+            gp.add(label);
+            
+            JLabel priceLabel = new JLabel(itemPrice[i] + " G");
+            Font priceFont = priceLabel.getFont();
+            priceLabel.setFont(new Font(priceFont.getName(), Font.ITALIC, 15));
+            priceLabel.setBounds(x_awal - 382, y_awal - 25 + (i * 110), 200, 30);
+            priceLabel.setForeground(Color.white);
+            gp.add(priceLabel);
+        }
+    }
+    
+    public void drawBerriesShopMenu() {
+        gp.removeAll();
+        final int x_awal = 740;
+        final int y_awal = 250;
+        g2.drawImage(berriesShopMenu, (gp.screenWidth - 615) / 2, (gp.screenHeight - 364) / 2, 615, 364, null);
+        for(int i = 0; i != 3; i++) {
+            String[] item = {"rowap_berry", "chilan_berry", "colbur_berry"};
+            int[] itemPrice = {75, 50, 25};
+            JLabel label;
+            if(gp.player.inventory.containsKey(item[i])) {
+                label = new JLabel("In backpack : " + gp.player.inventory.get(item[i]));
+            } else {
+                label = new JLabel("In backpack : 0");
+            }
+            Font font = label.getFont();
+            label.setFont(new Font(font.getName(), Font.PLAIN, 25));
+            label.setBounds(x_awal, y_awal + (i * 117), 200, 30);
+            label.setForeground(Color.white);
+            gp.add(label);
+            
+            JLabel priceLabel = new JLabel(itemPrice[i] + " G");
+            Font priceFont = priceLabel.getFont();
+            priceLabel.setFont(new Font(priceFont.getName(), Font.ITALIC, 18));
+            priceLabel.setBounds(x_awal - 375, y_awal + 5 + (i * 110), 200, 30);
+            priceLabel.setForeground(Color.white);
+            gp.add(priceLabel);
+        }
+    }
+    
+    public void drawVendingShopMenu() {
+        try{
+            vendingShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/potion.png"));
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        
+        gp.removeAll();
+        final int x_awal = 740;
+        final int y_awal = 250;
+        g2.drawImage(vendingShopMenu, (gp.screenWidth - 615) / 2, (gp.screenHeight - 364) / 2, 615, 364, null);
+        for(int i = 0; i != 3; i++) {
+            String[] item = {"hyper_potion", "super_potion", "potion"};
+            int[] itemPrice = {200, 50, 20};
+            JLabel label;
+            if(gp.player.inventory.containsKey(item[i])) {
+                label = new JLabel("In backpack : " + gp.player.inventory.get(item[i]));
+            } else {
+                label = new JLabel("In backpack : 0");
+            }
+            Font font = label.getFont();
+            label.setFont(new Font(font.getName(), Font.PLAIN, 25));
+            label.setBounds(x_awal, y_awal + (i * 117), 200, 30);
+            label.setForeground(Color.white);
+            gp.add(label);
+            
+            JLabel priceLabel = new JLabel(itemPrice[i] + " G");
+            Font priceFont = priceLabel.getFont();
+            priceLabel.setFont(new Font(priceFont.getName(), Font.ITALIC, 18));
+            priceLabel.setBounds(x_awal - 387, y_awal + (i * 110), 200, 30);
+            priceLabel.setForeground(Color.white);
+            gp.add(priceLabel);
+        }
+    }
     
     public boolean cekPartyAlive(){
         boolean status = false;
@@ -453,6 +524,7 @@ public class UI {
     }
     
     public void drawBattleScreen(){
+        gp.removeAll();
         //input battle bg
         try{
             bg_battle = ImageIO.read(getClass().getResourceAsStream("/battle/bg_battle.png"));
@@ -684,12 +756,24 @@ public class UI {
          // GAME UI
          try {
              btn_inventory = ImageIO.read(getClass().getResourceAsStream("/button/inventory.png"));
+             gold_gui = ImageIO.read(getClass().getResourceAsStream("/game_gui/gold.png"));
          }
          
          catch(IOException e){
             e.printStackTrace();
         }
+         gp.removeAll();
+         
          g2.drawImage(btn_inventory, 15, 15, 87, 80, null);
+         g2.drawImage(gold_gui, gp.screenWidth - 60, 15, 45, 30, null);
+         
+         
+        JLabel label = new JLabel(gp.player.coin.toString() + " G");
+        Font font = label.getFont();
+        label.setFont(new Font(font.getName(), Font.BOLD, 22));
+        label.setBounds(gp.screenWidth - 135, 15, 100, 30);
+        label.setForeground(Color.white);
+        gp.add(label);
      }
     
     public void drawStoryScreen() throws FontFormatException{
