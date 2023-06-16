@@ -406,7 +406,6 @@ public class UI {
     }
     
     public void drawShopShelfMenu() {
-        gp.removeAll();
         try{
             shelfShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/shop.png"));
             pokeShopMenu = ImageIO.read(getClass().getResourceAsStream("/game_gui/poke_ball.png"));
